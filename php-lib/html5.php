@@ -28,8 +28,11 @@ abstract class :xhp:html-element extends :x:primitive {
   // attributes.
   attribute
     // HTML attributes
-    string accesskey, string class, string dir, string id, string lang,
+    string accesskey, string class, enum { "", "true", "false" } contenteditable,
+    string contextmenu, string dir, enum { "true", "false" } draggable, 
+    bool hidden, string id, string lang, enum { "", "true", "false" } spellcheck,
     string style, string tabindex, string title,
+
 
     // Javascript events
     string onabort, string onblur, string onchange, string onclick,

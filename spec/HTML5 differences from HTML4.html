@@ -12,6 +12,7 @@
       code :link, code :visited { color:inherit }
       pre code { color:inherit }
       .done { background-color: #97ED8C; }
+      .done-syntax-only, .done-so { background-color: #8CC8ED; }
       .na { background-color: #F2EC96; }
     </STYLE>
   <LINK href="http://www.w3.org/StyleSheets/TR/W3C-WD" rel="stylesheet">
@@ -767,11 +768,11 @@
   </P><P>There are also several new global attributes:
 
   </P><UL>
-   <LI>The <CODE>contenteditable</CODE> attribute indicates that the element
+   <LI class=done-so>The <CODE>contenteditable</CODE> attribute indicates that the element
     is an editable area. The user can change the contents of the element and
     manipulate the markup.
 
-   </LI><LI>The <CODE>contextmenu</CODE> attribute can be used to point to a
+   </LI><LI class=done-so>The <CODE>contextmenu</CODE> attribute can be used to point to a
     context menu provided by the author.
 
    </LI><LI>The <CODE>data-<VAR>*</VAR></CODE> collection of author-defined
@@ -780,16 +781,16 @@
     of HTML. The only requirement on these attributes is that they are not
     used for user agent extensions.
 
-   </LI><LI>The <CODE>draggable</CODE> attribute can be used together with the new
+   </LI><LI class=done-so>The <CODE>draggable</CODE> attribute can be used together with the new
     drag &amp; drop API.
 
-   </LI><LI>The <CODE>hidden</CODE> attribute indicates that an element is not
+   </LI><LI class=done-so>The <CODE>hidden</CODE> attribute indicates that an element is not
     yet, or is no longer, relevant.
 
    </LI><LI>The <CODE>role</CODE> and <CODE>aria-<VAR>*</VAR></CODE> collection
     attributes which can be used to instruct assistive technology.
 
-   </LI><LI>The <CODE>spellcheck</CODE> attribute allows for hinting whether
+   </LI><LI class=done-so>The <CODE>spellcheck</CODE> attribute allows for hinting whether
     content can be checked for spelling or not.
   </LI></UL>
 
