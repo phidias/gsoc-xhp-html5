@@ -218,17 +218,13 @@ class :code extends :xhp:html-element {
 
 class :col extends :xhp:html-singleton {
   attribute
-    enum { "left", "right", "center", "justify", "char" } align, string char,
-    int charoff, int span,
-    enum { "top", "middle", "bottom", "baseline" } valign, string width;
+    int span;
   protected $tagName = 'col';
 }
 
 class :colgroup extends :xhp:html-element {
   attribute
-    enum { "left", "right", "center", "justify", "char" } align, string char,
-    int charoff, int span,
-    enum { "top", "middle", "bottom", "baseline" } valign, string width;
+    int span;
   children (:col)*;
   protected $tagName = 'colgroup';
 }
@@ -358,10 +354,7 @@ class :i extends :xhp:html-element {
 
 class :iframe extends :xhp:pseudo-singleton {
   attribute
-    enum {"1", "0"} frameborder,
-    string height, int marginheight,
-    int marginwidth, string name, enum { "yes", "no", "auto" } scrolling,
-    string src, string width;
+    string height, string name, string src, string width;
   category %flow, %phrase, %interactive;
   children empty;
   protected $tagName = 'iframe';
@@ -384,8 +377,7 @@ class :input extends :xhp:html-singleton {
     enum { "on", "off" } autocomplete,
     string placeholder,
     // HTML
-    string accept, enum { "left", "right", "top", "middle", "bottom" } align,
-    string alt, bool checked, bool disabled, int maxlength, string name,
+    string accept, string alt, bool checked, bool disabled, int maxlength, string name,
     bool readonly, int size, string src,
     enum {
       "button", "checkbox", "file", "hidden", "image", "password", "radio",
@@ -463,9 +455,8 @@ class :noscript extends :xhp:html-element {
 
 class :object extends :xhp:html-element {
   attribute
-    enum { "left", "right", "top", "bottom" } align, int border,
-    string data, int height, int hspace, string name, string type,
-    string usemap, int vspace, int width;
+    string data, int height, string name, string type,
+    string usemap, int width;
   category %flow, %phrase;
   // transparent, after the params
   children (:param*, (pcdata | %flow)*);
@@ -575,13 +566,7 @@ class :sup extends :xhp:html-element {
 
 class :table extends :xhp:html-element {
   attribute
-    int border, int cellpadding, int cellspacing,
-    enum {
-      "void", "above", "below", "hsides", "lhs", "rhs", "vsides", "box",
-      "border"
-    } frame,
-    enum { "none", "groups", "rows", "cols", "all" } rules,
-    string summary, string width;
+    string summary;
   category %flow;
   children (
     :caption?, :colgroup*,
@@ -595,9 +580,6 @@ class :table extends :xhp:html-element {
 }
 
 class :tbody extends :xhp:html-element {
-  attribute
-    enum { "right", "left", "center", "justify", "char" } align, string char,
-    int charoff, enum { "top", "middle", "bottom", "baseline" } valign;
   children (:tr)*;
   protected $tagName = 'tbody';
 }
@@ -605,9 +587,7 @@ class :tbody extends :xhp:html-element {
 
 class :td extends :xhp:html-element {
   attribute
-    enum { "left", "right", "center", "justify", "char" } align,
-    string char, int charoff, int colspan, string headers,
-    int rowspan, enum { "top", "middle", "bottom", "baseline" } valign;
+    int colspan, string headers, int rowspan;
   children (pcdata | %flow)*;
   protected $tagName = 'td';
 }
@@ -619,27 +599,19 @@ class :textarea extends :xhp:pseudo-singleton {
 }
 
 class :tfoot extends :xhp:html-element {
-  attribute
-    enum { "left", "right", "center", "justify", "char" } align, string char,
-    int charoff, enum { "top", "middle", "bottom", "baseline" } valign;
   children (:tr)*;
   protected $tagName = 'tfoot';
 }
 
 class :th extends :xhp:html-element {
   attribute
-    enum { "left", "right", "center", "justify", "char" } align,
-    string char, int charoff, int colspan, int rowspan,
-    enum { "col", "colgroup", "row", "rowgroup" } scope,
-    enum { "top", "middle", "bottom", "baseline" } valign;
+    int colspan, int rowspan,
+    enum { "col", "colgroup", "row", "rowgroup" } scope;
   children (pcdata | %flow)*;
   protected $tagName = 'th';
 }
 
 class :thead extends :xhp:html-element {
-  attribute
-    enum { "left", "right", "center", "justify", "char" } align, string char,
-    int charoff, enum { "top", "middle", "bottom", "baseline" } valign;
   children (:tr)*;
   protected $tagName = 'thead';
 }
@@ -651,9 +623,6 @@ class :title extends :xhp:pseudo-singleton {
 }
 
 class :tr extends :xhp:html-element {
-  attribute
-    enum { "left", "right", "center", "justify", "char" } align, string char,
-    int charoff, enum { "top", "middle", "bottom", "baseline" } valign;
   children (:th | :td)*;
   protected $tagName = 'tr';
 }
