@@ -1,0 +1,1863 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN">
+<!-- saved from url=(0053)http://www.w3.org/TR/html5-diff/#backwards-compatible -->
+<HTML lang="en-US"><HEAD><META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <TITLE>HTML5 differences from HTML4</TITLE>
+
+  <STYLE type="text/css">
+      div.example { border-left:double }
+      .note { margin-left:2em; font-weight:bold; font-style:italic; color:green }
+      p.note::before { content:"Note: " }
+      dfn { font-style:normal; font-weight:bold }
+      code { color:orangered }
+      code :link, code :visited { color:inherit }
+      pre code { color:inherit }
+      .done { background-color: #97ED8C; }
+      .na { background-color: #F2EC96; }
+    </STYLE>
+  <LINK href="http://www.w3.org/StyleSheets/TR/W3C-WD" rel="stylesheet">
+
+ </HEAD><BODY>
+  <DIV class="head">
+   <P><A href="http://www.w3.org/"><IMG alt="W3C" height="48" src="./HTML5 differences from HTML4_files/w3c_home" width="72"></A></P>
+
+   <H1 id="html5-diff">HTML5 differences from HTML4</H1>
+
+   <H2 class="no-num no-toc" id="w3c-doctype">W3C Working Draft 04 March 2010</H2>
+
+   <DL>
+    <DT>This Version:
+
+    </DT><DD><A href="http://www.w3.org/TR/2010/WD-html5-diff-20100304/">http://www.w3.org/TR/2010/WD-html5-diff-20100304/</A>
+
+    </DD><DT>Latest Published Version:
+
+    </DT><DD><A href="http://www.w3.org/TR/html5-diff/">http://www.w3.org/TR/html5-diff/</A>
+
+    </DD><DT>Latest Editor's Draft:
+
+    </DT><DD><A href="http://dev.w3.org/html5/html4-differences/">http://dev.w3.org/html5/html4-differences/</A>
+
+    </DD><DT>Previous Versions:
+
+    </DT><DD><A href="http://www.w3.org/TR/2009/WD-html5-diff-20090825/">http://www.w3.org/TR/2009/WD-html5-diff-20090825/</A>
+
+    </DD><DD><A href="http://www.w3.org/TR/2009/WD-html5-diff-20090423/">http://www.w3.org/TR/2009/WD-html5-diff-20090423/</A>
+
+    </DD><DD><A href="http://www.w3.org/TR/2009/WD-html5-diff-20090212/">http://www.w3.org/TR/2009/WD-html5-diff-20090212/</A>
+
+    </DD><DD><A href="http://www.w3.org/TR/2008/WD-html5-diff-20080610/">http://www.w3.org/TR/2008/WD-html5-diff-20080610/</A>
+
+    </DD><DD><A href="http://www.w3.org/TR/2008/WD-html5-diff-20080122/">http://www.w3.org/TR/2008/WD-html5-diff-20080122/</A>
+
+    </DD><DT>Editor:
+
+    </DT><DD><A href="http://annevankesteren.nl/">Anne van Kesteren</A> (<A href="http://www.opera.com/">Opera Software ASA</A>) &lt;<A href="mailto:annevk@opera.com">annevk@opera.com</A>&gt;
+   </DD></DL>
+
+   <P class="copyright"><A href="http://www.w3.org/Consortium/Legal/ipr-notice#Copyright">Copyright</A>
+    © 2010 <A href="http://www.w3.org/"><ABBR title="World Wide Web
+    Consortium">W3C</ABBR></A><SUP>®</SUP> (<A href="http://www.csail.mit.edu/"><ABBR title="Massachusetts Institute of
+    Technology">MIT</ABBR></A>, <A href="http://www.ercim.org/"><ABBR title="European Research Consortium for Informatics and
+    Mathematics">ERCIM</ABBR></A>, <A href="http://www.keio.ac.jp/">Keio</A>), All Rights Reserved. W3C <A href="http://www.w3.org/Consortium/Legal/ipr-notice#Legal_Disclaimer">liability</A>,
+    <A href="http://www.w3.org/Consortium/Legal/ipr-notice#W3C_Trademarks">trademark</A>
+    and <A href="http://www.w3.org/Consortium/Legal/copyright-documents">document
+    use</A> rules apply.</P>
+  </DIV>
+
+  <HR>
+
+  <H2 class="no-num no-toc" id="abstract">Abstract</H2>
+
+  <P>HTML5 defines the fifth major revision of the core language of the World
+   Wide Web, HTML. "HTML5 differences from HTML4" describes the differences
+   between HTML4 and HTML5 and provides some of the rationale for the
+   changes. This document may not provide accurate information as the HTML5
+   specification is still actively in development. When in doubt, always
+   check the HTML5 specification itself. [<CITE><A href="http://www.w3.org/TR/html5-diff/#ref-html5">HTML5</A></CITE>]
+
+  </P><H2 class="no-num no-toc" id="sotd">Status of this Document</H2>
+
+  <P><EM>This section describes the status of this document at the time of
+   its publication. Other documents may supersede this document. A list of
+   current W3C publications and the latest revision of this technical report
+   can be found in the <A href="http://www.w3.org/TR/">W3C technical reports
+   index</A> at http://www.w3.org/TR/.</EM>
+
+  </P><P>This is the 04 March 2010 W3C Working Draft produced by the <A href="http://www.w3.org/html/wg/">HTML Working Group</A>, part of the <A href="http://www.w3.org/MarkUp/Activity">HTML Activity</A>. The Working
+   Group intends to publish this document as a <A href="http://www.w3.org/2005/10/Process-20051014/#WGNote">Working Group
+   Note</A> to accompany the <A href="http://www.w3.org/TR/html5/">HTML5
+   specification</A>. The appropriate forum for comments is <A href="mailto:public-html-comments@w3.org">public-html-comments@w3.org</A>,
+   a mailing list with a <A href="http://lists.w3.org/Archives/Public/public-html-comments/" title="Archive for HTML comments mailing-list">public archive</A>.
+
+  </P><P>Publication as a Working Draft does not imply endorsement by the W3C
+   Membership. This is a draft document and may be updated, replaced or
+   obsoleted by other documents at any time. It is inappropriate to cite this
+   document as other than work in progress.
+
+  </P><P>This document was produced by a group operating under the <A href="http://www.w3.org/Consortium/Patent-Policy-20040205/">5 February
+   2004 W3C Patent Policy</A>. W3C maintains a <A href="http://www.w3.org/2004/01/pp-impl/40318/status" rel="disclosure">public list of any patent disclosures</A> made in
+   connection with the deliverables of the group; that page also includes
+   instructions for disclosing a patent. An individual who has actual
+   knowledge of a patent which the individual believes contains <A href="http://www.w3.org/Consortium/Patent-Policy-20040205/#def-essential">Essential
+   Claim(s)</A> must disclose the information in accordance with <A href="http://www.w3.org/Consortium/Patent-Policy-20040205/#sec-Disclosure">section
+   6 of the W3C Patent Policy</A>.
+
+  </P><H2 class="no-num no-toc" id="toc">Table of Contents</H2>
+  <!--begin-toc-->
+
+  <UL class="toc">
+   <LI><A href="http://www.w3.org/TR/html5-diff/#introduction"><SPAN class="secno">1. </SPAN>Introduction</A>
+    <UL class="toc">
+     <LI><A href="http://www.w3.org/TR/html5-diff/#open-issues"><SPAN class="secno">1.1. </SPAN>Open Issues</A>
+      
+
+     </LI><LI><A href="./HTML5 differences from HTML4_files/HTML5 differences from HTML4.html"><SPAN class="secno">1.2.
+      </SPAN>Backwards Compatible</A>
+
+     </LI><LI><A href="http://www.w3.org/TR/html5-diff/#development-model"><SPAN class="secno">1.3.
+      </SPAN>Development Model</A>
+
+     </LI><LI><A href="http://www.w3.org/TR/html5-diff/#webarch"><SPAN class="secno">1.4. </SPAN>Impact on Web
+      Architecture</A>
+    </LI></UL>
+
+   </LI><LI><A href="http://www.w3.org/TR/html5-diff/#syntax"><SPAN class="secno">2. </SPAN>Syntax</A>
+    <UL class="toc">
+     <LI><A href="http://www.w3.org/TR/html5-diff/#character-encoding"><SPAN class="secno">2.1.
+      </SPAN>Character Encoding</A>
+
+     </LI><LI><A href="http://www.w3.org/TR/html5-diff/#doctype"><SPAN class="secno">2.2. </SPAN>The DOCTYPE</A>
+
+     </LI><LI><A href="http://www.w3.org/TR/html5-diff/#mathml-svg"><SPAN class="secno">2.3. </SPAN>MathML and
+      SVG</A>
+
+     </LI><LI><A href="http://www.w3.org/TR/html5-diff/#syntax-misc"><SPAN class="secno">2.4.
+      </SPAN>Miscellaneous</A>
+    </LI></UL>
+
+   </LI><LI><A href="http://www.w3.org/TR/html5-diff/#language"><SPAN class="secno">3. </SPAN>Language</A>
+    <UL class="toc">
+     <LI><A href="http://www.w3.org/TR/html5-diff/#new-elements"><SPAN class="secno">3.1. </SPAN>New
+      Elements</A>
+
+     </LI><LI><A href="http://www.w3.org/TR/html5-diff/#new-attributes"><SPAN class="secno">3.2. </SPAN>New
+      Attributes</A>
+
+     </LI><LI><A href="http://www.w3.org/TR/html5-diff/#changed-elements"><SPAN class="secno">3.3. </SPAN>Changed
+      Elements</A>
+
+     </LI><LI><A href="http://www.w3.org/TR/html5-diff/#changed-attributes"><SPAN class="secno">3.4. </SPAN>Changed
+      attributes</A>
+
+     </LI><LI><A href="http://www.w3.org/TR/html5-diff/#absent-elements"><SPAN class="secno">3.5. </SPAN>Absent
+      Elements</A>
+
+     </LI><LI><A href="http://www.w3.org/TR/html5-diff/#absent-attributes"><SPAN class="secno">3.6. </SPAN>Absent
+      Attributes</A>
+    </LI></UL>
+
+   </LI><LI><A href="http://www.w3.org/TR/html5-diff/#apis"><SPAN class="secno">4. </SPAN>APIs</A>
+    <UL class="toc">
+     <LI><A href="http://www.w3.org/TR/html5-diff/#htmldocument-extensions"><SPAN class="secno">4.1.
+      </SPAN>Extensions to <CODE>HTMLDocument</CODE></A>
+
+     </LI><LI><A href="http://www.w3.org/TR/html5-diff/#htmlelement-extensions"><SPAN class="secno">4.2.
+      </SPAN>Extensions to <CODE>HTMLElement</CODE></A>
+    </LI></UL>
+
+   </LI><LI><A href="http://www.w3.org/TR/html5-diff/#changelog"><SPAN class="secno">5. </SPAN>HTML5 Changelogs</A>
+    <UL class="toc">
+     <LI><A href="http://www.w3.org/TR/html5-diff/#changes-2009-08-25"><SPAN class="secno">5.1. </SPAN>Changes
+      since 25 August 2009</A>
+
+     </LI><LI><A href="http://www.w3.org/TR/html5-diff/#changes-2009-04-23"><SPAN class="secno">5.2. </SPAN>Changes
+      from 23 April 2009 to 25 August 2009</A>
+
+     </LI><LI><A href="http://www.w3.org/TR/html5-diff/#changes-2009-02-12"><SPAN class="secno">5.3. </SPAN>Changes
+      from 12 February 2009 to 23 April 2009</A>
+
+     </LI><LI><A href="http://www.w3.org/TR/html5-diff/#changes-2008-06-10"><SPAN class="secno">5.4. </SPAN>Changes
+      from 10 June 2008 to 12 February 2009</A>
+
+     </LI><LI><A href="http://www.w3.org/TR/html5-diff/#changes-2008-01-22"><SPAN class="secno">5.5. </SPAN>Changes
+      from 22 January 2008 to 10 June 2008</A>
+    </LI></UL>
+
+   </LI><LI class="no-num"><A href="http://www.w3.org/TR/html5-diff/#acknowledgments">Acknowledgments</A>
+
+   </LI><LI class="no-num"><A href="http://www.w3.org/TR/html5-diff/#references">References</A>
+  </LI></UL>
+  <!--end-toc-->
+
+  <H2 id="introduction"><SPAN class="secno">1. </SPAN>Introduction</H2>
+
+  <P>HTML has been in continuous evolution since it was introduced to the
+   Internet in the early 1990s. Some features were introduced in
+   specifications; others were introduced in software releases. In some
+   respects, implementations and author practices have converged with each
+   other and with specifications and standards, but in other ways, they
+   continue to diverge.
+
+  </P><P>HTML4 became a W3C Recommendation in 1997. While it continues to serve
+   as a rough guide to many of the core features of HTML, it does not provide
+   enough information to build implementations that interoperate with each
+   other and, more importantly, with a critical mass of deployed content. The
+   same goes for XHTML1, which defines an XML serialization for HTML4, and
+   DOM Level 2 HTML, which defines JavaScript APIs for both HTML and XHTML.
+   HTML5 will replace these documents. [<CITE><A href="http://www.w3.org/TR/html5-diff/#ref-dom2html">DOM2HTML</A></CITE>] [<CITE><A href="http://www.w3.org/TR/html5-diff/#ref-html4">HTML4</A></CITE>] [<CITE><A href="http://www.w3.org/TR/html5-diff/#ref-xhtml1">XHTML1</A></CITE>]
+
+  </P><P>The HTML5 draft reflects an effort, started in 2004, to study
+   contemporary HTML implementations and deployed content. The draft:
+
+  </P><OL>
+   <LI>Defines a single language called HTML5 which can be written in HTML
+    syntax and in XML syntax.
+
+   </LI><LI>Defines detailed processing models to foster interoperable
+    implementations.
+
+   </LI><LI>Improves markup for documents.
+
+   </LI><LI>Introduces markup and APIs for emerging idioms, such as Web
+    applications.
+  </LI></OL>
+
+  <H3 id="open-issues"><SPAN class="secno">1.1. </SPAN>Open Issues</H3>
+
+  <P><STRONG>HTML5 is still a draft.</STRONG> The contents of HTML5, as well
+   as the contents of this document which depend on HTML5, are still being
+   discussed on the HTML Working Group and WHATWG mailing lists. The open
+   issues include (this list is not exhaustive):
+
+  </P><UL>
+   <LI>De facto semantic definitions for some formerly presentational
+    elements.
+
+   </LI><LI>Details of accessibility and media-independence features, such as the
+    <CODE>alt</CODE> and <CODE>summary</CODE> attributes.
+  </LI></UL>
+
+  <H3 id="backwards-compatible"><SPAN class="secno">1.2. </SPAN>Backwards
+   Compatible</H3>
+
+  <P>HTML5 is defined in a way that it is backwards compatible with the way
+   user agents handle deployed content. To keep the authoring language
+   relatively simple for authors several elements and attributes are not
+   included as outlined in the other sections of this document, such as
+   presentational elements that are better dealt with using CSS.
+
+  </P><P>User agents, however, will always have to support these older elements
+   and attributes and this is why the specification clearly separates
+   requirements for authors and user agents. This means that authors cannot
+   use the <CODE>isindex</CODE> or the <CODE>plaintext</CODE> element, but
+   user agents are required to support them in a way that is compatible with
+   how these elements need to behave for compatibility with deployed content.
+
+  </P><P>Since HTML5 has separate conformance requirements for authors and user
+   agents there is no longer a need for marking features "deprecated".
+
+  </P><H3 id="development-model"><SPAN class="secno">1.3. </SPAN>Development Model</H3>
+
+  <P>The HTML5 specification will not be considered finished before there are
+   at least two complete implementations of the specification. This is a
+   different approach than previous versions of HTML had. The goal is to
+   ensure that the specification is implementable and usable by designers and
+   developers once it is finished.</P>
+  <!-- The following <div> is here for Michael(tm) Smith who owes the
+    editor one beer in exchange. -->
+
+  <DIV>
+   <H3 id="webarch"><SPAN class="secno">1.4. </SPAN>Impact on Web Architecture</H3>
+   <!-- http://lists.w3.org/Archives/Public/www-tag/2008May/0087.html
+         modified to match actual contents of W3C HTML5 -->
+   
+   <P>The following areas / features defined in HTML5 are believed to impact
+    the Web architecture:</P>
+
+   <UL>
+    <LI>The use of the DOM as a basis for defining the language.
+
+    </LI><LI>The concept of browsing contexts.
+
+    </LI><LI>The distinction between user agent requirements and authoring
+     requirements.
+
+    </LI><LI>The use of imperative definitions rather than abstract definitions
+     with the requirement of black-box equivalence in implementations.
+
+    </LI><LI>The new content model concepts (replacing HTML4's block and inline
+     concepts).
+
+    </LI><LI>The focus on accessibility as a built-in concept for new features
+     (such as the <CODE>hidden</CODE> attribute, the <CODE>progress</CODE>
+     element, et cetera) instead of an add-on (like the <CODE>alt</CODE>
+     attribute).
+
+    </LI><LI>The focus on defining the semantics in detail (e.g. the outline
+     algorithm, replacing the vague semantics in HTML4).
+
+    </LI><LI>The <CODE>menu</CODE> and <CODE>command</CODE> elements.
+
+    </LI><LI>The origin concept.
+
+    </LI><LI>Offline Web application caches.
+
+    </LI><LI>The definition of the browsing context "navigation" algorithm and the
+     related session history traversal algorithms.
+
+    </LI><LI>The content-type sniffing and character encoding sniffing.
+
+    </LI><LI>The very explicit definition of a parser.
+
+    </LI><LI>The <CODE>contentEditable</CODE> feature and the
+     <CODE>UndoManager</CODE> feature.
+
+    </LI><LI>The Drag and Drop and Copy and Paste architecture.
+
+    </LI><LI>The new sandboxing features for <CODE>iframe</CODE>.
+   </LI></UL>
+  </DIV>
+  <!-- This closes the <div> added for Michael(tm) Smith. -->
+
+  <H2 id="syntax"><SPAN class="secno">2. </SPAN>Syntax</H2>
+
+  <P>HTML5 defines an HTML syntax that is compatible with HTML4 and XHTML1
+   documents published on the Web, but is not compatible with the more
+   esoteric SGML features of HTML4, such as <A href="http://www.w3.org/TR/1999/REC-html401-19991224/appendix/notes.html#h-B.3.6">processing
+   instructions</A> and <A href="http://www.w3.org/TR/1999/REC-html401-19991224/appendix/notes.html#h-B.3.7">shorthand
+   markup</A>. Documents using the HTML syntax are almost always served with
+   the <CODE>text/html</CODE> media type.
+
+  </P><P>HTML5 also defines detailed parsing rules (including "error handling")
+   for this syntax which are largely compatible with popular implementations.
+   User agents must use these rules for resources that have the
+   <CODE>text/html</CODE> media type. Here is an example document that
+   conforms to the HTML syntax:
+
+  </P><PRE><CODE>&lt;!doctype html&gt;
+&lt;html&gt;
+  &lt;head&gt;
+    &lt;meta charset="UTF-8"&gt;
+    &lt;title&gt;Example document&lt;/title&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+    &lt;p&gt;Example paragraph&lt;/p&gt;
+  &lt;/body&gt;
+&lt;/html&gt;</CODE></PRE>
+
+  <P>HTML5 also defines a <CODE>text/html-sandboxed</CODE> media type for
+   documents using the HTML syntax. This can be used when hosting untrusted
+   content.
+
+  </P><P>The other syntax that can be used for HTML5 is XML. This syntax is
+   compatible with XHTML1 documents and implementations. Documents using this
+   syntax need to be served with an XML media type and elements need to be
+   put in the <CODE>http://www.w3.org/1999/xhtml</CODE> namespace following
+   the rules set forth by the XML specifications. [<CITE><A href="http://www.w3.org/TR/html5-diff/#ref-xml">XML</A></CITE>]
+
+  </P><P>Below is an example document that conforms to the XML syntax of HTML5.
+   Note that XML documents must have an XML media type such as
+   <CODE>application/xhtml+xml</CODE> or <CODE>application/xml</CODE>.
+
+  </P><PRE><CODE>&lt;?xml version="1.0" encoding="UTF-8"?&gt;
+&lt;html xmlns="http://www.w3.org/1999/xhtml"&gt;
+  &lt;head&gt;
+    &lt;title&gt;Example document&lt;/title&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+    &lt;p&gt;Example paragraph&lt;/p&gt;
+  &lt;/body&gt;
+&lt;/html&gt;</CODE></PRE>
+
+  <H3 id="character-encoding"><SPAN class="secno">2.1. </SPAN>Character Encoding</H3>
+
+  <P>For the HTML syntax of HTML5 authors have three means of setting the
+   character encoding:
+
+  </P><UL>
+   <LI>At the transport level. By using the HTTP <CODE>Content-Type</CODE>
+    header for instance.
+
+   </LI><LI>Using a Unicode Byte Order Mark (BOM) character at the start of the
+    file. This character provides a signature for the encoding used.
+
+   </LI><LI>Using a <CODE>meta</CODE> element with a <CODE>charset</CODE>
+    attribute that specifies the encoding within the first 512 bytes of the
+    document. E.g. <CODE>&lt;meta charset="UTF-8"&gt;</CODE> could be used to
+    specify the UTF-8 encoding. This replaces the need for <CODE>&lt;meta
+    http-equiv="Content-Type" content="text/html; charset=UTF-8"&gt;</CODE>
+    although that syntax is still allowed.
+  </LI></UL>
+
+  <P>For the XML syntax, authors have to use the rules as set forth in the
+   XML specifications to set the character encoding.
+
+  </P><H3 id="doctype"><SPAN class="secno">2.2. </SPAN>The DOCTYPE</H3>
+
+  <P>The HTML syntax of HTML5 requires a DOCTYPE to be specified to ensure
+   that the browser renders the page in standards mode. The DOCTYPE has no
+   other purpose and is therefore optional for XML. Documents with an XML
+   media type are always handled in standards mode. [<CITE><A href="http://www.w3.org/TR/html5-diff/#ref-doctype">DOCTYPE</A></CITE>]
+
+  </P><P>The DOCTYPE declaration is <CODE>&lt;!DOCTYPE html&gt;</CODE> and is
+   case-insensitive in the HTML syntax. DOCTYPEs from earlier versions of
+   HTML were longer because the HTML language was SGML-based and therefore
+   required a reference to a DTD. With HTML5 this is no longer the case and
+   the DOCTYPE is only needed to enable standards mode for documents written
+   using the HTML syntax. Browsers already do this for <CODE>&lt;!DOCTYPE
+   html&gt;</CODE>.
+
+  </P><H3 id="mathml-svg"><SPAN class="secno">2.3. </SPAN>MathML and SVG</H3>
+
+  <P>The HTML syntax of HTML5 allows for MathML and SVG elements to be used
+   inside a document. E.g. a very simple document using some of the minimal
+   syntax features could look like:
+
+  </P><PRE><CODE>&lt;!doctype html&gt;
+&lt;title&gt;SVG in text/html&lt;/title&gt;
+&lt;p&gt;
+ A green circle:
+ &lt;svg&gt; &lt;circle r="50" cx="50" cy="50" fill="green"/&gt; &lt;/svg&gt;
+&lt;/p&gt;</CODE></PRE>
+
+  <P>More complex combinations are also possible. E.g. with the SVG
+   <CODE>foreignObject</CODE> element you could nest MathML, HTML, or both
+   inside an SVG fragment that is itself inside HTML.
+
+  </P><H3 id="syntax-misc"><SPAN class="secno">2.4. </SPAN>Miscellaneous</H3>
+
+  <P>There are a few other syntax changes worthy of mentioning:
+
+  </P><UL>
+   <LI>HTML now has native support for IRIs, though they can only be fully
+    used if the document encoding is UTF-8 or UTF-16.
+
+   </LI><LI>The <CODE>lang</CODE> attribute takes the empty string in addition to
+    a valid language identifier, just like <CODE>xml:lang</CODE> does in XML.
+  </LI></UL>
+
+  <H2 id="language"><SPAN class="secno">3. </SPAN>Language</H2>
+
+  <P>This section is split up in several subsections to more clearly
+   illustrate the various differences there are between HTML4 and HTML5.
+
+  </P><H3 id="new-elements"><SPAN class="secno">3.1. </SPAN>New Elements</H3>
+
+  <P class="note">The links in this section may stop working if elements are
+   renamed and/or removed. They should function in the latest version of this
+   draft.
+
+  </P><P>The following elements have been introduced for better structure:
+
+  </P><UL>
+   <LI>
+    <P><A href="http://www.w3.org/TR/html5/semantics.html#the-section-element"><CODE>section</CODE></A>
+     represents a generic document or application section. It can be <A href="http://www.w3.org/TR/html5/semantics.html#headings-and-sections" title="Headings and sections">used together</A> with the
+     <CODE>h1</CODE>, <CODE>h2</CODE>, <CODE>h3</CODE>, <CODE>h4</CODE>,
+     <CODE>h5</CODE>, and <CODE>h6</CODE> elements to indicate the document
+     structure.
+
+   </P></LI><LI>
+    <P><A href="http://www.w3.org/TR/html5/semantics.html#the-article-element"><CODE>article</CODE></A>
+     represents an independent piece of content of a document, such as a blog
+     entry or newspaper article.
+
+   </P></LI><LI>
+    <P><A href="http://www.w3.org/TR/html5/semantics.html#the-aside-element"><CODE>aside</CODE></A>
+     represents a piece of content that is only slightly related to the rest
+     of the page.
+
+   </P></LI><LI>
+    <P><A href="http://www.w3.org/TR/html5/semantics.html#the-hgroup-element"><CODE>hgroup</CODE></A>
+     represents the header of a section.
+
+   </P></LI><LI>
+    <P><A href="http://www.w3.org/TR/html5/semantics.html#the-header-element"><CODE>header</CODE></A>
+     represents a group of introductory or navigational aids.
+
+   </P></LI><LI>
+    <P><A href="http://www.w3.org/TR/html5/semantics.html#the-footer-element"><CODE>footer</CODE></A>
+     represents a footer for a section and can contain information about the
+     author, copyright information, et cetera.
+
+   </P></LI><LI>
+    <P><A href="http://www.w3.org/TR/html5/semantics.html#the-nav-element"><CODE>nav</CODE></A>
+     represents a section of the document intended for navigation.
+
+   </P></LI><LI>
+    <P><A href="http://www.w3.org/TR/html5/embedded-content-0.html#the-figure-element"><CODE>figure</CODE></A>
+     can be used to associate a caption together with some embedded content,
+     such as a graphic or video:</P>
+
+    <PRE><CODE>&lt;figure&gt;
+ &lt;video src="ogg"&gt;&lt;/video&gt;
+ &lt;figcaption&gt;Example&lt;/figcaption&gt;
+&lt;/figure&gt;</CODE></PRE>
+
+    <P><CODE>figcaption</CODE> provides the caption.</P>
+  </LI></UL>
+
+  <P>Then there are several other new elements:
+
+  </P><UL>
+   <LI>
+    <P><A href="http://www.w3.org/TR/html5/video.html#video"><CODE>video</CODE></A>
+     and <A href="http://www.w3.org/TR/html5/video.html#audio"><CODE>audio</CODE></A>
+     for multimedia content. Both provide an API so application authors can
+     script their own user interface, but there is also a way to trigger a
+     user interface provided by the user agent. <A href="http://www.w3.org/TR/html5/video.html#the-source-element"><CODE>source</CODE></A>
+     elements are used together with these elements if there are multiple
+     streams available of different types.
+
+   </P></LI><LI>
+    <P><A href="http://www.w3.org/TR/html5/embedded-content-0.html#the-embed-element"><CODE>embed</CODE></A>
+     is used for plugin content.
+
+   </P></LI><LI>
+    <P><A href="http://www.w3.org/TR/html5/text-level-semantics.html#the-mark-element"><CODE>mark</CODE></A>
+     represents a run of marked text.
+
+   </P></LI><LI>
+    <P><A href="http://www.w3.org/TR/html5/text-level-semantics.html#the-progress-element"><CODE>progress</CODE></A>
+     represents a completion of a task, such as downloading or when
+     performing a series of expensive operations.
+
+   </P></LI><LI>
+    <P><A href="http://www.w3.org/TR/html5/text-level-semantics.html#the-meter-element"><CODE>meter</CODE></A>
+     represents a measurement, such as disk usage.
+
+   </P></LI><LI>
+    <P><A href="http://www.w3.org/TR/html5/text-level-semantics.html#the-time-element"><CODE>time</CODE></A>
+     represents a date and/or time.
+
+   </P></LI><LI>
+    <P><A href="http://dev.w3.org/html5/spec/text-level-semantics.html#the-ruby-element"><CODE>ruby</CODE></A>,
+     <A href="http://dev.w3.org/html5/spec/text-level-semantics.html#the-rt-element"><CODE>rt</CODE></A>
+     and <A href="http://dev.w3.org/html5/spec/text-level-semantics.html#the-rp-element"><CODE>rp</CODE></A>
+     allow for marking up ruby annotations.
+
+   </P></LI><LI>
+    <P><A href="http://www.w3.org/TR/html5/the-canvas-element.html#the-canvas-element"><CODE>canvas</CODE></A>
+     is used for rendering dynamic bitmap graphics on the fly, such as graphs
+     or games.
+
+   </P></LI><LI>
+    <P><A href="http://www.w3.org/TR/html5/interactive-elements.html#the-command"><CODE>command</CODE></A>
+     represents a command the user can invoke.
+
+   </P></LI><LI>
+    <P><A href="http://www.w3.org/TR/html5/interactive-elements.html#the-details-element"><CODE>details</CODE></A>
+     represents additional information or controls which the user can obtain
+     on demand. The <CODE>summary</CODE> element provides its summary,
+     legend, or caption.
+
+   </P></LI><LI>
+    <P><A href="http://dev.w3.org/html5/spec/forms.html#the-datalist-element"><CODE>datalist</CODE></A>
+     together with the a new <CODE>list</CODE> attribute for
+     <CODE>input</CODE> can be used to make comboboxes:</P>
+
+    <PRE><CODE>&lt;input list="browsers"&gt;
+&lt;datalist id="browsers"&gt;
+ &lt;option value="Safari"&gt;
+ &lt;option value="Internet Explorer"&gt;
+ &lt;option value="Opera"&gt;
+ &lt;option value="Firefox"&gt;
+&lt;/datalist&gt;</CODE></PRE>
+
+   </LI><LI>
+    <P><A href="http://dev.w3.org/html5/spec/forms.html#the-keygen-element"><CODE>keygen</CODE></A>
+     represents control for key pair generation.
+
+   </P></LI><LI>
+    <P><A href="http://dev.w3.org/html5/spec/forms.html#the-output-element"><CODE>output</CODE></A>
+     represents some type of output, such as from a calculation done through
+     scripting.
+  </P></LI></UL>
+
+  <P>The <CODE>input</CODE> element's <CODE>type</CODE> attribute now has the
+   following new values:
+
+  </P><UL>
+   <LI><A href="http://www.w3.org/TR/html5/forms.html#telephone-state"><CODE>tel</CODE>
+    </A>
+
+   </LI><LI><A href="http://www.w3.org/TR/html5/forms.html#text-state-and-search-state"><CODE>search</CODE></A>
+    
+
+   </LI><LI><A href="http://www.w3.org/TR/html5/forms.html#url-state"><CODE>url</CODE>
+    </A>
+
+   </LI><LI><A href="http://www.w3.org/TR/html5/forms.html#e-mail-state"><CODE>email</CODE></A>
+    
+
+   </LI><LI><A href="http://www.w3.org/TR/html5/forms.html#date-and-time-state"><CODE>datetime</CODE></A>
+    
+
+   </LI><LI><A href="http://www.w3.org/TR/html5/forms.html#date-state"><CODE>date</CODE></A>
+    
+
+   </LI><LI><A href="http://www.w3.org/TR/html5/forms.html#month-state"><CODE>month</CODE></A>
+    
+
+   </LI><LI><A href="http://www.w3.org/TR/html5/forms.html#week-state"><CODE>week</CODE></A>
+    
+
+   </LI><LI><A href="http://www.w3.org/TR/html5/forms.html#time-state"><CODE>time</CODE></A>
+    
+
+   </LI><LI><A href="http://www.w3.org/TR/html5/forms.html#local-date-and-time-state"><CODE>datetime-local</CODE></A>
+    
+
+   </LI><LI><A href="http://www.w3.org/TR/html5/forms.html#number-state"><CODE>number</CODE></A>
+    
+
+   </LI><LI><A href="http://www.w3.org/TR/html5/forms.html#range-state"><CODE>range</CODE></A>
+    
+
+   </LI><LI><A href="http://www.w3.org/TR/html5/forms.html#color-state"><CODE>color</CODE></A>
+    
+  </LI></UL>
+
+  <P>The idea of these new types is that the user agent can provide the user
+   interface, such as a calendar date picker or integration with the user's
+   address book, and submit a defined format to the server. It gives the user
+   a better experience as his input is checked before sending it to the
+   server meaning there is less time to wait for feedback.
+
+  </P><H3 id="new-attributes"><SPAN class="secno">3.2. </SPAN>New Attributes</H3>
+
+  <P>HTML5 has introduced several new attributes to various elements that
+   were already part of HTML4:
+
+  </P><UL>
+   <LI>
+    <P>The <CODE>a</CODE> and <CODE>area</CODE> elements now have a
+     <CODE>media</CODE> attribute for consistency with the <CODE>link</CODE>
+     element. It is purely advisory.
+
+   </P></LI><LI>
+    <P>The <CODE>a</CODE> and <CODE>area</CODE> elements have a new attribute
+     called <CODE>ping</CODE> that specifies a space-separated list of URLs
+     which have to be pinged when the hyperlink is followed. Currently user
+     tracking is mostly done through redirects. This attribute allows the
+     user agent to inform users which URLs are going to be pinged as well as
+     giving privacy-conscious users a way to turn it off.
+
+   </P></LI><LI>
+    <P>The <CODE>area</CODE> element, for consistency with the <CODE>a</CODE>
+     and <CODE>link</CODE> elements, now also has the <CODE>hreflang</CODE>
+     and <CODE>rel</CODE> attributes.
+
+   </P></LI><LI>
+    <P>The <CODE>base</CODE> element can now have a <CODE>target</CODE>
+     attribute as well, mainly for consistency with the <CODE>a</CODE>
+     element. (This is already widely supported.) Also, the
+     <CODE>target</CODE> attribute for the <CODE>a</CODE> and
+     <CODE>area</CODE> elements is no longer deprecated, as it is useful in
+     Web applications, e.g. in conjunction with <CODE>iframe</CODE>.
+
+   </P></LI><LI>
+    <P>The <CODE>value</CODE> attribute for the <CODE>li</CODE> element is no
+     longer deprecated as it is not presentational. The same goes for the
+     <CODE>start</CODE> attribute of the <CODE>ol</CODE> element.
+
+   </P></LI><LI>
+    <P>The <CODE>meta</CODE> element has a <CODE>charset</CODE> attribute now
+     as this was already widely supported and provides a nice way to specify
+     the <A href="http://www.w3.org/TR/html5-diff/#character-encoding">character encoding</A> for the
+     document.
+
+   </P></LI><LI>
+    <P>A new <CODE>autofocus</CODE> attribute can be specified on the
+     <CODE>input</CODE> (except when the <CODE>type</CODE> attribute is
+     <CODE>hidden</CODE>), <CODE>select</CODE>, <CODE>textarea</CODE> and
+     <CODE>button</CODE> elements. It provides a declarative way to focus a
+     form control during page load. Using this feature should enhance the
+     user experience as the user can turn it off if he does not like it, for
+     instance.
+
+   </P></LI><LI>
+    <P>A new <CODE>placeholder</CODE> attribute can be specified on the
+     <CODE>input</CODE> and <CODE>textarea</CODE> elements.
+
+   </P></LI><LI>
+    <P>The new <CODE>form</CODE> attribute for <CODE>input</CODE>,
+     <CODE>output</CODE>, <CODE>select</CODE>, <CODE>textarea</CODE>,
+     <CODE>button</CODE> and <CODE>fieldset</CODE> elements allows for
+     controls to be associated with a form. I.e. these elements can now be
+     placed anywhere on a page, not just as descendants of the
+     <CODE>form</CODE> element.
+
+   </P></LI><LI>
+    <P>The new <CODE>required</CODE> attribute applies to <CODE>input</CODE>
+     (except when the <CODE>type</CODE> attribute is <CODE>hidden</CODE>,
+     <CODE>image</CODE> or some button type such as <CODE>submit</CODE>) and
+     <CODE>textarea</CODE>. It indicates that the user has to fill in a value
+     in order to submit the form.
+
+   </P></LI><LI>
+    <P>The <CODE>fieldset</CODE> element now allows the <CODE>disabled</CODE>
+     attribute disabling all its contents when specified.
+
+   </P></LI><LI>
+    <P>The <CODE>input</CODE> element has several new attributes to specify
+     constraints: <CODE>autocomplete</CODE>, <CODE>min</CODE>,
+     <CODE>max</CODE>, <CODE>multiple</CODE>, <CODE>pattern</CODE> and
+     <CODE>step</CODE>. As mentioned before it also has a new
+     <CODE>list</CODE> attribute which can be used together with the
+     <CODE>datalist</CODE> element.
+
+   </P></LI><LI>
+    <P>The <CODE>form</CODE> element has a <CODE>novalidate</CODE> attribute
+     that can be used to disable form validation submission (i.e. the form
+     can always be submitted).
+
+   </P></LI><LI>
+    <P>The <CODE>input</CODE> and <CODE>button</CODE> elements have
+     <CODE>formaction</CODE>, <CODE>formenctype</CODE>,
+     <CODE>formmethod</CODE>, <CODE>formnovalidate</CODE>, and
+     <CODE>formtarget</CODE> as new attributes. If present, they override the
+     <CODE>action</CODE>, <CODE>enctype</CODE>, <CODE>method</CODE>,
+     <CODE>novalidate</CODE>, and <CODE>target</CODE> attributes on the
+     <CODE>form</CODE> element.</P>
+
+   </LI><LI>
+    <P>The <CODE>menu</CODE> element has two new attributes:
+     <CODE>type</CODE> and <CODE>label</CODE>. They allow the element to
+     transform into a menu as found in typical user interfaces as well as
+     providing for context menus in conjunction with the global
+     <CODE>contextmenu</CODE> attribute.
+
+   </P></LI><LI>
+    <P>The <CODE>style</CODE> element has a new <CODE>scoped</CODE> attribute
+     which can be used to enable scoped style sheets. Style rules within such
+     a <CODE>style</CODE> element only apply to the local tree.
+
+   </P></LI><LI>
+    <P>The <CODE>script</CODE> element has a new attribute called
+     <CODE>async</CODE> that influences script loading and execution.
+
+   </P></LI><LI>
+    <P>The <CODE>html</CODE> element has a new attribute called
+     <CODE>manifest</CODE> that points to an application cache manifest used
+     in conjunction with the API for offline Web applications.
+
+   </P></LI><LI>
+    <P>The <CODE>link</CODE> element has a new attribute called
+     <CODE>sizes</CODE>. It can be used in conjunction with the
+     <CODE>icon</CODE> relationship (set through the <CODE>rel</CODE>
+     attribute) to indicate the size of the referenced icon.
+
+   </P></LI><LI>
+    <P>The <CODE>ol</CODE> element has a new attribute called
+     <CODE>reversed</CODE> to indicate that the list order is descending when
+     present.
+
+   </P></LI><LI>
+    <P>The <CODE>iframe</CODE> element has three new attributes called
+     <CODE>sandbox</CODE>, <CODE>seamless</CODE>, and <CODE>srcdoc</CODE>
+     which allow for sandboxing content, e.g. blog comments.
+  </P></LI></UL>
+
+  <P>Several attributes from HTML4 now apply to all elements. These are
+   called global attributes: <CODE>class</CODE>, <CODE>dir</CODE>,
+   <CODE>id</CODE>, <CODE>lang</CODE>, <CODE>style</CODE>,
+   <CODE>tabindex</CODE> and <CODE>title</CODE>.
+
+  </P><P>There are also several new global attributes:
+
+  </P><UL>
+   <LI>The <CODE>contenteditable</CODE> attribute indicates that the element
+    is an editable area. The user can change the contents of the element and
+    manipulate the markup.
+
+   </LI><LI>The <CODE>contextmenu</CODE> attribute can be used to point to a
+    context menu provided by the author.
+
+   </LI><LI>The <CODE>data-<VAR>*</VAR></CODE> collection of author-defined
+    attributes. Authors can define any attribute they want as long as they
+    prefix it with <CODE>data-</CODE> to avoid clashes with future versions
+    of HTML. The only requirement on these attributes is that they are not
+    used for user agent extensions.
+
+   </LI><LI>The <CODE>draggable</CODE> attribute can be used together with the new
+    drag &amp; drop API.
+
+   </LI><LI>The <CODE>hidden</CODE> attribute indicates that an element is not
+    yet, or is no longer, relevant.
+
+   </LI><LI>The <CODE>role</CODE> and <CODE>aria-<VAR>*</VAR></CODE> collection
+    attributes which can be used to instruct assistive technology.
+
+   </LI><LI>The <CODE>spellcheck</CODE> attribute allows for hinting whether
+    content can be checked for spelling or not.
+  </LI></UL>
+
+  <P>HTML5 also makes all event handler attributes from HTML4 that take the
+   form <CODE>on<VAR>event-name</VAR></CODE> global attributes and adds
+   several new event handler attributes for new events it defines, such as
+   the <CODE>play</CODE> event which is used by the API for the media
+   elements, <CODE>video</CODE> and <CODE>audio</CODE>.
+
+  </P><H3 id="changed-elements"><SPAN class="secno">3.3. </SPAN>Changed Elements</H3>
+
+  <P>These elements have slightly modified meanings in HTML5 to better
+   reflect how they are used on the Web or to make them more useful:
+
+  </P><UL>
+   <LI>
+    <P>The <CODE>a</CODE> element without an <CODE>href</CODE> attribute now
+     represents a "placeholder link". It can also contain flow content rather
+     than being restricted to phrase content.
+
+   </P></LI><LI>
+    <P>The <CODE>address</CODE> element is now scoped by the new concept of
+     sectioning.
+
+   </P></LI><LI>
+    <P>The <CODE>b</CODE> element now represents a span of text to be
+     stylistically offset from the normal prose without conveying any extra
+     importance, such as keywords in a document abstract, product names in a
+     review, or other spans of text whose typical typographic presentation is
+     emboldened.
+
+   </P></LI><LI>
+    <P>The <CODE>hr</CODE> element now represents a paragraph-level thematic
+     break.
+
+   </P></LI><LI>
+    <P>The <CODE>i</CODE> element now represents a span of text in an
+     alternate voice or mood, or otherwise offset from the normal prose, such
+     as a taxonomic designation, a technical term, an idiomatic phrase from
+     another language, a thought, a ship name, or some other prose whose
+     typical typographic presentation is italicized. Usage varies widely by
+     language.
+
+   </P></LI><LI>
+    <P>For the <CODE>label</CODE> element the browser should no longer move
+     focus from the label to the control unless such behavior is standard for
+     the underlying platform user interface.
+
+   </P></LI><LI>
+    <P>The <CODE>menu</CODE> element is redefined to be useful for toolbars
+     and context menus.
+
+   </P></LI><LI>
+    <P>The <CODE>small</CODE> element now represents small print (for side
+     comments and legal print).
+
+   </P></LI><LI>
+    <P>The <CODE>strong</CODE> element now represents importance rather than
+     strong emphasis.
+  </P></LI></UL>
+
+  <H3 id="changed-attributes"><SPAN class="secno">3.4. </SPAN>Changed attributes</H3>
+
+  <P>The following attributes are allowed but authors are strongly encouraged
+   to not use them and instead use an alternative solution:
+
+  </P><UL>
+   <LI>
+    <P>The <CODE>border</CODE> attribute on <CODE>img</CODE>. It is required
+     to have the value "<CODE>0</CODE>" when present. Authors can use CSS
+     instead.
+
+   </P></LI><LI>
+    <P>The <CODE>language</CODE> attribute on <CODE>script</CODE>. It is
+     required to have the value "<CODE>JavaScript</CODE>" (case-insensitive)
+     when present and cannot conflict with the <CODE>type</CODE> attribute.
+     Authors can simply omit it as it has no useful function.
+
+   </P></LI><LI>
+    <P>The <CODE>name</CODE> attribute on <CODE>a</CODE>. Authors can use the
+     <CODE>id</CODE> attribute instead.
+
+   </P></LI><LI>
+    <P>The <CODE>summary</CODE> attribute on <CODE>table</CODE>. The HTML5
+     draft defines several alternative solutions.
+  </P></LI></UL>
+
+  <H3 id="absent-elements"><SPAN class="secno">3.5. </SPAN>Absent Elements</H3>
+
+  <P>The elements in this section are not to be used by authors. User agents
+   will still have to support them and various sections in HTML5 define how.
+   E.g. the obsolete <CODE>isindex</CODE> element is handled by the parser
+   section.
+
+  </P><P>The following elements are not in HTML5 because their effect is purely
+   presentational and their function is better handled by CSS:
+
+  </P><UL>
+   <LI class=na><CODE>basefont</CODE>
+
+   </LI><LI class=done><CODE>big</CODE>
+
+   </LI><LI class=na><CODE>center</CODE>
+
+   </LI><LI class=na><CODE>font</CODE>
+
+   </LI><LI class=done><CODE>s</CODE>
+
+   </LI><LI class=na><CODE>strike</CODE>
+
+   </LI><LI class=done><CODE>tt</CODE>
+
+   </LI><LI class=done><CODE>u</CODE>
+  </LI></UL>
+
+  <P>The following elements are not in HTML5 because their usage affected
+   usability and accessibility for the end user in a negative way:
+
+  </P><UL class=done>
+   <LI><CODE>frame</CODE>
+
+   </LI><LI><CODE>frameset</CODE>
+
+   </LI><LI><CODE>noframes</CODE>
+  </LI></UL>
+
+  <P>The following elements are not included because they have not been used
+   often, created confusion, or their function can be handled by other
+   elements:
+
+  </P><UL>
+   <LI class=done><CODE>acronym</CODE> is not included because it has created a lot of
+    confusion. Authors are to use <CODE>abbr</CODE> for abbreviations.
+
+   </LI><LI class=na><CODE>applet</CODE> has been obsoleted in favor of
+    <CODE>object</CODE>.
+
+   </LI><LI class=na><CODE>isindex</CODE> usage can be replaced by usage of form controls.
+
+   </LI><LI class=na><CODE>dir</CODE> has been obsoleted in favor of <CODE>ul</CODE>.
+  </LI></UL>
+
+  <P>Finally the <CODE>noscript</CODE> is only conforming in the HTML syntax.
+   It is not included in the XML syntax as its usage relies on an HTML
+   parser.
+
+  </P><H3 id="absent-attributes"><SPAN class="secno">3.6. </SPAN>Absent Attributes</H3>
+
+  <P>Some attributes from HTML4 are no longer allowed in HTML5. If they need
+   to have any impact on user agents for compatibility reasons it is defined
+   how they should work in those scenarios.
+
+  </P><UL>
+   <LI class=done><CODE>rev</CODE> and <CODE>charset</CODE> attributes on
+    <CODE>link</CODE> and <CODE>a</CODE>.
+
+   </LI><LI class=na><CODE>shape</CODE> and <CODE>coords</CODE> attributes on
+    <CODE>a</CODE>.
+
+   </LI><LI class=done><CODE>longdesc</CODE> attribute on <CODE>img</CODE> and
+    <CODE>iframe</CODE>.
+
+   </LI><LI class=done><CODE>target</CODE> attribute on <CODE>link</CODE>.
+
+   </LI><LI class=done><CODE>nohref</CODE> attribute on <CODE>area</CODE>.
+
+   </LI><LI class=done><CODE>profile</CODE> attribute on <CODE>head</CODE>.
+
+   </LI><LI class=na><CODE>version</CODE> attribute on <CODE>html</CODE>.
+
+   </LI><LI class=na><CODE>name</CODE> attribute on <CODE>img</CODE> (use <CODE>id</CODE>
+    instead).
+
+   </LI><LI class=done><CODE>scheme</CODE> attribute on <CODE>meta</CODE>.
+
+   </LI><LI class=done><CODE>archive</CODE>, <CODE>classid</CODE>, <CODE>codebase</CODE>,
+    <CODE>codetype</CODE>, <CODE>declare</CODE> and <CODE>standby</CODE>
+    attributes on <CODE>object</CODE>.
+
+   </LI><LI class=done><CODE>valuetype</CODE> and <CODE>type</CODE> attributes on
+    <CODE>param</CODE>.
+
+   </LI><LI class=done><CODE>axis</CODE> and <CODE>abbr</CODE> attributes on <CODE>td</CODE>
+    and <CODE>th</CODE>.
+
+   </LI><LI class=done><CODE>scope</CODE> attribute on <CODE>td</CODE>.
+  </LI></UL>
+
+  <P>In addition, HTML5 has none of the presentational attributes that were
+   in HTML4 as their functions are better handled by CSS:
+
+  </P><UL>
+   <LI><CODE>align</CODE> attribute on <CODE>caption</CODE>,
+    <CODE>iframe</CODE>, <CODE>img</CODE>, <CODE>input</CODE>,
+    <CODE>object</CODE>, <CODE>legend</CODE>, <CODE>table</CODE>,
+    <CODE>hr</CODE>, <CODE>div</CODE>, <CODE>h1</CODE>, <CODE>h2</CODE>,
+    <CODE>h3</CODE>, <CODE>h4</CODE>, <CODE>h5</CODE>, <CODE>h6</CODE>,
+    <CODE>p</CODE>, <CODE>col</CODE>, <CODE>colgroup</CODE>,
+    <CODE>tbody</CODE>, <CODE>td</CODE>, <CODE>tfoot</CODE>, <CODE>th</CODE>,
+    <CODE>thead</CODE> and <CODE>tr</CODE>.
+
+   </LI><LI><CODE>alink</CODE>, <CODE>link</CODE>, <CODE>text</CODE> and
+    <CODE>vlink</CODE> attributes on <CODE>body</CODE>.
+
+   </LI><LI><CODE>background</CODE> attribute on <CODE>body</CODE>.
+
+   </LI><LI><CODE>bgcolor</CODE> attribute on <CODE>table</CODE>, <CODE>tr</CODE>,
+    <CODE>td</CODE>, <CODE>th</CODE> and <CODE>body</CODE>.
+
+   </LI><LI><CODE>border</CODE> attribute on <CODE>table</CODE> and
+    <CODE>object</CODE>.
+
+   </LI><LI><CODE>cellpadding</CODE> and <CODE>cellspacing</CODE> attributes on
+    <CODE>table</CODE>.
+
+   </LI><LI><CODE>char</CODE> and <CODE>charoff</CODE> attributes on
+    <CODE>col</CODE>, <CODE>colgroup</CODE>, <CODE>tbody</CODE>,
+    <CODE>td</CODE>, <CODE>tfoot</CODE>, <CODE>th</CODE>, <CODE>thead</CODE>
+    and <CODE>tr</CODE>.
+
+   </LI><LI><CODE>clear</CODE> attribute on <CODE>br</CODE>.
+
+   </LI><LI><CODE>compact</CODE> attribute on <CODE>dl</CODE>, <CODE>menu</CODE>,
+    <CODE>ol</CODE> and <CODE>ul</CODE>.
+
+   </LI><LI><CODE>frame</CODE> attribute on <CODE>table</CODE>.
+
+   </LI><LI><CODE>frameborder</CODE> attribute on <CODE>iframe</CODE>.
+
+   </LI><LI><CODE>height</CODE> attribute on <CODE>td</CODE> and <CODE>th</CODE>.
+
+   </LI><LI><CODE>hspace</CODE> and <CODE>vspace</CODE> attributes on
+    <CODE>img</CODE> and <CODE>object</CODE>.
+
+   </LI><LI><CODE>marginheight</CODE> and <CODE>marginwidth</CODE> attributes on
+    <CODE>iframe</CODE>.
+
+   </LI><LI><CODE>noshade</CODE> attribute on <CODE>hr</CODE>.
+
+   </LI><LI><CODE>nowrap</CODE> attribute on <CODE>td</CODE> and <CODE>th</CODE>.
+
+   </LI><LI><CODE>rules</CODE> attribute on <CODE>table</CODE>.
+
+   </LI><LI><CODE>scrolling</CODE> attribute on <CODE>iframe</CODE>.
+
+   </LI><LI><CODE>size</CODE> attribute on <CODE>hr</CODE>.
+
+   </LI><LI><CODE>type</CODE> attribute on <CODE>li</CODE>, <CODE>ol</CODE> and
+    <CODE>ul</CODE>.
+
+   </LI><LI><CODE>valign</CODE> attribute on <CODE>col</CODE>,
+    <CODE>colgroup</CODE>, <CODE>tbody</CODE>, <CODE>td</CODE>,
+    <CODE>tfoot</CODE>, <CODE>th</CODE>, <CODE>thead</CODE> and
+    <CODE>tr</CODE>.
+
+   </LI><LI><CODE>width</CODE> attribute on <CODE>hr</CODE>, <CODE>table</CODE>,
+    <CODE>td</CODE>, <CODE>th</CODE>, <CODE>col</CODE>, <CODE>colgroup</CODE>
+    and <CODE>pre</CODE>.
+  </LI></UL>
+
+  <H2 id="apis"><SPAN class="secno">4. </SPAN>APIs</H2>
+
+  <P>HTML5 introduces a number of APIs that help in creating Web
+   applications. These can be used together with the new elements introduced
+   for applications:
+
+  </P><UL>
+   <LI>API for playing of video and audio which can be used with the new
+    <CODE>video</CODE> and <CODE>audio</CODE> elements.
+
+   </LI><LI>An API that enables offline Web applications.
+
+   </LI><LI>An API that allows a Web application to register itself for certain
+    protocols or media types.
+
+   </LI><LI>Editing API in combination with a new global
+    <CODE>contenteditable</CODE> attribute.
+
+   </LI><LI>Drag &amp; drop API in combination with a <CODE>draggable</CODE>
+    attribute.
+
+   </LI><LI>API that exposes the history and allows pages to add to it to prevent
+    breaking the back button.
+  </LI></UL>
+
+  <H3 id="htmldocument-extensions"><SPAN class="secno">4.1. </SPAN>Extensions to
+   <CODE>HTMLDocument</CODE></H3>
+
+  <P>HTML5 has extended the <CODE>HTMLDocument</CODE> interface from DOM
+   Level 2 HTML in a number of ways. The interface is now implemented on
+   <EM>all</EM> objects implementing the <CODE>Document</CODE> interface so
+   it stays meaningful in a compound document context. It also has several
+   noteworthy new members:
+
+  </P><UL>
+   <LI>
+    <P><CODE>getElementsByClassName()</CODE> to select elements by their
+     class name. The way this method is defined will allow it to work for any
+     content with <CODE>class</CODE> attributes and a <CODE>Document</CODE>
+     object such as SVG and MathML.
+
+   </P></LI><LI>
+    <P><CODE>innerHTML</CODE> as an easy way to parse and serialize an HTML
+     or XML document. This attribute was previously only available on
+     <CODE>HTMLElement</CODE> in Web browsers and not part of any standard.
+
+   </P></LI><LI>
+    <P><CODE>activeElement</CODE> and <CODE>hasFocus</CODE> to determine
+     which element is currently focused and whether the <CODE>Document</CODE>
+     has focus respectively.
+
+   </P></LI><LI>
+    <P><CODE>getSelection()</CODE> which returns an object that represents
+     the current selection(s).
+  </P></LI></UL>
+
+  <H3 id="htmlelement-extensions"><SPAN class="secno">4.2. </SPAN>Extensions to
+   <CODE>HTMLElement</CODE></H3>
+
+  <P>The <CODE>HTMLElement</CODE> interface has also gained several
+   extensions in HTML5:
+
+  </P><UL>
+   <LI>
+    <P><CODE>getElementsByClassName()</CODE> which is basically a scoped
+     version of the one found on <CODE>HTMLDocument</CODE>.
+
+   </P></LI><LI>
+    <P><CODE>innerHTML</CODE> as found in Web browsers today. It is also
+     defined to work in XML context (when it is used in an XML document).
+
+   </P></LI><LI>
+    <P><CODE>classList</CODE> is a convenient accessor for
+     <CODE>className</CODE>. The object it returns exposes methods,
+     <CODE>has()</CODE>, <CODE>add()</CODE>, <CODE>remove()</CODE> and
+     <CODE>toggle()</CODE>, for manipulating the element's classes. The
+     <CODE>a</CODE>, <CODE>area</CODE> and <CODE>link</CODE> elements have a
+     similar attribute called <CODE>relList</CODE> that provides the same
+     functionality for the <CODE>rel</CODE> attribute.
+  </P></LI></UL>
+
+  <H2 id="changelog"><SPAN class="secno">5. </SPAN>HTML5 Changelogs</H2>
+
+  <P>The changelogs in this section indicate what has been changed between
+   publications of the HTML5 drafts. Rationale for changes can be found in
+   the <A href="http://lists.w3.org/Archives/Public/public-html/"><CODE>public-html@w3.org</CODE></A>
+   and <A href="http://lists.whatwg.org/pipermail/whatwg-whatwg.org/"><CODE>whatwg@whatwg.org</CODE></A>
+   mailing list archives and to some extent in the <A href="http://blog.whatwg.org/category/weekly-review">This Week in
+   HTML5</A> series of blog posts. Many editorial and minor technical changes
+   are not included in these changelogs. I.e. implementors are strongly
+   encouraged to follow the development of the main specification on a
+   frequent basis so they become aware of all changes that affect them early
+   on.
+
+  </P><P>The changes in the changelogs are in rough chronological order to ease
+   editing this document.
+
+  </P><H3 id="changes-2009-08-25"><SPAN class="secno">5.1. </SPAN>Changes since 25
+   August 2009</H3>
+  <!-- since rev 3673 -->
+
+  <UL>
+   <LI>The <CODE>dialog</CODE> element has been removed. A section with
+    advice on how to mark up conversations has effectively replaced it.
+
+   </LI><LI><CODE>document.head</CODE> has been introduced to provide convenient
+    access to the <CODE>head</CODE> element from script.
+
+   </LI><LI>The link type <CODE title="">feed</CODE> has been removed. <CODE title="rel-alternate">alternate</CODE> with specific media types is to be
+    used instead.
+
+   </LI><LI><CODE>createHTMLDocument()</CODE> has been introduced as API to allow
+    easy creation of HTML documents.
+
+   </LI><LI>Both the <CODE>meter</CODE> and <CODE>progress</CODE> elements no
+    longer have "magic" processing of their contents because it could not be
+    made to work internationally.
+
+   </LI><LI>The <CODE>meter</CODE> and <CODE>progress</CODE> elements, as well as
+    the <CODE>output</CODE> element, can now be labeled using the
+    <CODE>label</CODE> element.
+
+   </LI><LI>A new media type, <CODE>text/html-sandboxed</CODE>, was introduced to
+    allow hosting of potentially hostile content without it causing harm.
+
+   </LI><LI>A <CODE>srcdoc</CODE> attribute for the <CODE>iframe</CODE> element
+    was introduced to allow embedding of potentially hostile content inline.
+    It is expected to be used together with the <CODE>sandbox</CODE> and
+    <CODE>seamless</CODE> attributes.
+
+   </LI><LI>The <CODE>figure</CODE> element now uses a new element
+    <CODE>figcaption</CODE> rather than <CODE>legend</CODE> because people
+    want to use HTML5 long before it reaches W3C Recommendation.
+
+   </LI><LI>The <CODE>details</CODE> element now uses a new element
+    <CODE>summary</CODE> for exactly the same reason.
+
+   </LI><LI>The <CODE>autobuffer</CODE> attribute on media elements was renamed to
+    <CODE>preload</CODE>.
+  </LI></UL>
+
+  <P>A whole lot of other smaller issues have also been resolved. The above
+   list summarises what is thought to be of primary interest to authors.
+
+  </P><P>In addition to all of the above, Microdata, the 2D context API for
+   <CODE>canvas</CODE>, and Web Messaging (<CODE>postMessage()</CODE> API)
+   have been split into their own drafts at the W3C (the WHATWG still
+   publishes a version of HTML5 that includes them):
+
+  </P><UL>
+   <LI><A href="http://dev.w3.org/html5/md/">HTML Microdata</A>
+
+   </LI><LI><A href="http://dev.w3.org/html5/2dcontext/">HTML Canvas 2D
+    Context</A>
+
+   </LI><LI><A href="http://dev.w3.org/html5/postmsg/">HTML5 Web Messaging</A>
+  </LI></UL>
+
+  <P>Specific microdata vocabularies are gone altogether in the W3C draft of
+   HTML5 and are not published as a separate draft. The WHATWG draft of HTML5
+   still includes them.
+
+  </P><H3 id="changes-2009-04-23"><SPAN class="secno">5.2. </SPAN>Changes from 23
+   April 2009 to 25 August 2009</H3>
+  <!-- since rev 2975 -->
+
+  <UL>
+   <LI>When the <CODE>time</CODE> element is empty user agents have to render
+    the time in a locale-specific manner.
+
+   </LI><LI>The <CODE>load</CODE> event is dispatched at <CODE>Window</CODE>, but
+    now has <CODE>Document</CODE> as its target.
+
+   </LI><LI><CODE>pushState()</CODE> now affects the <CODE>Referer</CODE> (sic)
+    header.
+
+   </LI><LI><CODE>onundo</CODE> and <CODE>onredo</CODE> are now on
+    <CODE>Window</CODE>.
+
+   </LI><LI>Media elements now have a <CODE>startTime</CODE> member that indicates
+    where the current resource starts.
+
+   </LI><LI><CODE>header</CODE> has been renamed to <CODE>hgroup</CODE> and a new
+    <CODE>header</CODE> element has been introduced.
+
+   </LI><LI><CODE>createImageData()</CODE> now also takes <CODE>ImageData</CODE>
+    objects.
+
+   </LI><LI><CODE>createPattern()</CODE> can now take a <CODE>video</CODE> element
+    as argument too.
+
+   </LI><LI>The <CODE>footer</CODE> element is no longer allowed in
+    <CODE>header</CODE> and <CODE>header</CODE> is not allowed in
+    <CODE>address</CODE> or <CODE>footer</CODE>.
+
+   </LI><LI>A new control has been introduced: <CODE>&lt;input type="tel"&gt;</CODE>
+
+   </LI><LI>The Command API now works for all elements.
+
+   </LI><LI><CODE>accesskey</CODE> is now properly defined.
+
+   </LI><LI><CODE>section</CODE> and <CODE>article</CODE> now take a
+    <CODE>cite</CODE> attribute.
+
+   </LI><LI>A new feature called Microdata has been introduced which allows people
+    to embed custom data structures in their HTML documents.
+
+   </LI><LI>Using the Microdata model three predefined vocabularies have also been
+    included: vCard, vEvent, and a model for licensing.
+
+   </LI><LI>Drag and drop has been updated to work with the Microdata model.
+
+   </LI><LI>The <A href="http://hsivonen.iki.fi/last-html-quirk/">last of the
+    parsing quirks</A> has been defined.</LI>
+   <!-- don't kill my easter egg -->
+
+   <LI><CODE>textLength</CODE> has been added as member of the
+    <CODE>textarea</CODE> element.
+
+   </LI><LI>The <CODE>rp</CODE> element now takes phrasing content rather than a
+    single character.
+
+   </LI><LI><CODE>location.reload()</CODE> is now defined.
+
+   </LI><LI>The <CODE>hashchange</CODE> event now fires asynchronously.
+
+   </LI><LI>Rules for compatibility with XPath 1.0 and XSLT 1.0 have been added.
+
+   </LI><LI>The <CODE>spellcheck</CODE> IDL attribute now maps to a
+    <CODE>DOMString</CODE>.
+
+   </LI><LI><CODE>hasFeature()</CODE> support has been reduced to a minimum.
+
+   </LI><LI>The <CODE>Audio()</CODE> constructor sets the <CODE>autobuffer</CODE>
+    attribute.
+
+   </LI><LI>The <CODE>td</CODE> element is no longer allowed in
+    <CODE>thead</CODE>.
+
+   </LI><LI>The <CODE>input</CODE> element and <CODE>DataTransfer</CODE> object
+    now have a <CODE>files</CODE> IDL attribute.
+
+   </LI><LI>The <CODE>datagrid</CODE> and <CODE>bb</CODE> have been removed due to
+    their design not being agreed upon.
+
+   </LI><LI>The cue range API has been removed from the media elements.
+
+   </LI><LI>Support for WAI-ARIA has been integrated.
+  </LI></UL>
+
+  <P>On top of this list quite a few minor clarifications, typos, issues
+   specific to implementors, and other small problems have been resolved.
+
+  </P><P>In addition, the following parts of HTML5 have been taken out and will
+   likely be further developed at the IETF:
+
+  </P><UL>
+   <LI>Definition of URLs.
+
+   </LI><LI>Definition of Content-Type sniffing.
+  </LI></UL>
+
+  <H3 id="changes-2009-02-12"><SPAN class="secno">5.3. </SPAN>Changes from 12
+   February 2009 to 23 April 2009</H3>
+
+  <UL>
+   <LI>A new global attribute called <CODE>spellcheck</CODE> has been added.
+
+   </LI><LI>Defined that ECMAScript <CODE>this</CODE> in the global object returns
+    a <CODE>WindowProxy</CODE> object rather than the <CODE>Window</CODE>
+    object.
+
+   </LI><LI>The <CODE>value</CODE> IDL attribute for <CODE>input</CODE> elements
+    in the File Upload state is now defined.
+
+   </LI><LI>Definition of <CODE>designMode</CODE> was changed to be more in line
+    with legacy implementations.
+
+   </LI><LI>The <CODE>drawImage()</CODE> method of the 2D drawing API can now take
+    a <CODE>video</CODE> element as well.
+
+   </LI><LI>The way media elements load resources has been changed.
+
+   </LI><LI><CODE>document.domain</CODE> is now IPv6-compatible.
+
+   </LI><LI>The <CODE>video</CODE> element gained an <CODE>autobuffer</CODE>
+    boolean attribute that serves as a hint.
+
+   </LI><LI>You are now allowed to specify the <CODE>meta</CODE> element with a
+    <CODE>charset</CODE> attribute in XML documents if the value of that
+    attribute matches the encoding of the document. (Note that it does not
+    specify the value, it is just a talisman.)
+
+   </LI><LI>The <CODE>bufferingRate</CODE> and <CODE>bufferingThrottled</CODE>
+    members of media elements have been removed.
+
+   </LI><LI>The media element resource selection algorithm is now asynchronous.
+
+   </LI><LI>The <CODE>postMessage()</CODE> API now takes an array of
+    <CODE>MessagePort</CODE> objects rather than just one.
+
+   </LI><LI>The second argument of the <CODE>add()</CODE> method on the
+    <CODE>select</CODE> element and the <CODE>options</CODE> member of the
+    <CODE>select</CODE> element is now optional.
+
+   </LI><LI>The <CODE>action</CODE>, <CODE>enctype</CODE>, <CODE>method</CODE>,
+    <CODE>novalidate</CODE>, and <CODE>target</CODE> attributes on
+    <CODE>input</CODE> and <CODE>button</CODE> elements have been renamed to
+    <CODE>formaction</CODE>, <CODE>formenctype</CODE>,
+    <CODE>formmethod</CODE>, <CODE>formnovalidate</CODE>, and
+    <CODE>formtarget</CODE>.
+
+   </LI><LI>A "storage mutex" concept has been added to deal with separate pages
+    trying to change a storage object (<CODE>document.cookie</CODE> and
+    <CODE>localStorage</CODE>) at the same time. The <CODE>Navigator</CODE>
+    gained a <CODE>getStorageUpdates()</CODE> method to allow it to be
+    explicitly released.
+
+   </LI><LI>A syntax for SVG similar to MathML is now defined so that SVG can be
+    included in <CODE>text/html</CODE> resources.
+
+   </LI><LI>The <CODE>placeholder</CODE> attribute has been added to the
+    <CODE>textarea</CODE> element.
+
+   </LI><LI>Added a <CODE>keygen</CODE> element for key pair generation.
+
+   </LI><LI>The <CODE>datagrid</CODE> element was revised to make the API more
+    asynchronous and allow for unloaded parts of the grid.
+  </LI></UL>
+
+  <P>In addition, several parts of HTML5 have been taken out and will be
+   further developed by the Web Applications Working Group as standalone
+   specifications:
+
+  </P><UL>
+   <LI><A href="http://dev.w3.org/html5/websockets/">WebSocket API</A>
+
+   </LI><LI><A href="http://tools.ietf.org/html/draft-hixie-thewebsocketprotocol">WebSocket
+    protocol</A>
+
+   </LI><LI><A href="http://dev.w3.org/html5/eventsource/">Server-Sent Events</A>
+
+   </LI><LI><A href="http://dev.w3.org/html5/webstorage/">Web Storage</A>
+    (<CODE>localStorage</CODE> and <CODE>sessionStorage</CODE>)
+
+   </LI><LI><A href="http://dev.w3.org/html5/webdatabase/">Web SQL Database</A>
+  </LI></UL>
+
+  <H3 id="changes-2008-06-10"><SPAN class="secno">5.4. </SPAN>Changes from 10
+   June 2008 to 12 February 2009</H3>
+
+  <UL>
+   <LI>The <CODE>data</CODE> member of <CODE>ImageData</CODE> objects has
+    been changed from an array to a <CODE>CanvasPixelArray</CODE> object.
+
+   </LI><LI>Shadows are now required from implementations of the
+    <CODE>canvas</CODE> element and its API.
+
+   </LI><LI>Security model for <CODE>canvas</CODE> is clarified.
+
+   </LI><LI>Various changes to the processing model of <CODE>canvas</CODE> have
+    been made in response to implementation and author feedback. E.g.
+    clarifying what happens when NaN and Infinity are passed and fixing the
+    definitions of <CODE>arc()</CODE> and <CODE>arcTo()</CODE>.
+
+   </LI><LI><CODE>innerHTML</CODE> in XML was slightly changed to improve
+    round-tripping.
+
+   </LI><LI>The <CODE>toDataURL()</CODE> method on the <CODE>canvas</CODE> element
+    now supports setting a quality level when the media type argument is
+    <CODE>image/jpeg</CODE>.
+
+   </LI><LI>The <CODE>poster</CODE> attribute of the <CODE>video</CODE> element
+    now affects its intrinsic dimensions.
+
+   </LI><LI>The behavior of the <CODE>type</CODE> attribute of the
+    <CODE>link</CODE> element has been clarified.
+
+   </LI><LI>Sniffing is now allowed for <CODE>link</CODE> when the expected type
+    is an image.
+
+   </LI><LI>A section on URLs is introduced dealing with how URL values are to be
+    interpreted and what exactly authors are required to do. Every feature of
+    the specification that uses URLs has been reworded to take the new URL
+    section into account.
+
+   </LI><LI>It is now explicit that the <CODE>href</CODE> attribute of the
+    <CODE>base</CODE> element does not depend on <CODE>xml:base</CODE>.
+
+   </LI><LI>It is now defined what the behavior should be when the base URL
+    changes.
+
+   </LI><LI>URL decomposition IDL attributes are now more aligned with Internet
+    Explorer.
+
+   </LI><LI>The <CODE>xmlns</CODE> attribute with the value
+    <CODE>http://www.w3.org/1999/xhtml</CODE> is now allowed on all HTML
+    elements.
+
+   </LI><LI><CODE>data-<VAR>*</VAR></CODE> attributes and custom attributes on the
+    <CODE>embed</CODE> element now have to match the XML <CODE>Name</CODE>
+    production and cannot contain a colon.
+
+   </LI><LI>WebSocket API is introduced for bidirectional communication with a
+    server.
+
+   </LI><LI>The default value of <CODE>volume</CODE> on media elements is now 1.0
+    rather than 0.5.
+
+   </LI><LI><CODE>event-source</CODE> was renamed to <CODE>eventsource</CODE>
+    because no other HTML element uses a hyphen.
+
+   </LI><LI>A message channel API has been introduced augmenting
+    <CODE>postMessage()</CODE>.
+
+   </LI><LI>A new element named <CODE>bb</CODE> has been added. It represents a
+    user agent command that the user can invoke.
+
+   </LI><LI>The <CODE>addCueRange()</CODE> method on media elements has been
+    modified to take an identifier which is exposed in the callbacks.
+
+   </LI><LI>It is now defined how to mutate a DOM into an infoset.
+
+   </LI><LI>The <CODE>parent</CODE> attribute of the <CODE>Window</CODE> object is
+    now defined.
+
+   </LI><LI>The <CODE>embed</CODE> element is defined to do extension sniffing for
+    compatibilty with servers that deliver Flash as <CODE>text/plain</CODE>.
+    (This is marked as an issue in the specification to figure out if there
+    is a better way to make this work.)</LI>
+   <!-- and no, the answer is not to simply break stuff -->
+
+   <LI>The <CODE>embed</CODE> can now be used without its <CODE>src</CODE>
+    attribute.
+
+   </LI><LI><CODE>getElementsByClassName()</CODE> is defined to be ASCII
+    case-insensitive in quirks mode for consistency with CSS.
+
+   </LI><LI>In HTML documents <CODE>localName</CODE> no longer returns the node
+    name in uppercase.
+
+   </LI><LI><CODE>data-<VAR>*</VAR></CODE> attributes are defined to be always
+    lowercase.
+
+   </LI><LI>The <CODE>opener</CODE> attribute of the <CODE>Window</CODE> object is
+    not to be present when the page was opened from a link with
+    <CODE>target="_blank"</CODE> and <CODE>rel="noreferrer"</CODE>.
+
+   </LI><LI>The <CODE>top</CODE> attribute of the <CODE>Window</CODE> object is
+    now defined.
+
+   </LI><LI>The <CODE>a</CODE> element now allows nested flow content, but not
+    nested interactive content.
+
+   </LI><LI>It is now defined what the <CODE>header</CODE> element means to
+    document summaries and table of contents.
+
+   </LI><LI>What it means to fetch a resource is now defined.
+
+   </LI><LI>Patterns are now required for the <CODE>canvas</CODE> element.
+
+   </LI><LI>The <CODE>autosubmit</CODE> attribute has been removed from the
+    <CODE>menu</CODE> element.
+
+   </LI><LI>Support for <CODE>outerHTML</CODE> and
+    <CODE>insertAdjacentHTML()</CODE> has been added.
+
+   </LI><LI><CODE>xml:lang</CODE> is now allowed in HTML when <CODE>lang</CODE> is
+    also specified and they have the same value. In XML <CODE>lang</CODE> is
+    allowed if <CODE>xml:lang</CODE> is also specified and they have the same
+    value.
+
+   </LI><LI>The <CODE>frameElement</CODE> attribute of the <CODE>Window</CODE>
+    object is now defined.
+
+   </LI><LI>An event loop and task queue is now defined detailing script execution
+    and events. All features have been updated to be defined in terms of this
+    mechanism.
+
+   </LI><LI>If the <CODE>alt</CODE> attribute is omitted a <CODE>title</CODE>
+    attribute, an enclosing <CODE>figure</CODE> element with a
+    <CODE>legend</CODE> element descendant, or an enclosing section with an
+    associated heading must be present.
+
+   </LI><LI>The <CODE>irrelevant</CODE> attribute has been renamed to
+    <CODE>hidden</CODE>.
+
+   </LI><LI>The <CODE>definitionURL</CODE> attribute of MathML is now properly
+    supported. Previously it would have ended up being all lowercase during
+    parsing.
+
+   </LI><LI>User agents must treat US-ASCII as Windows-1252 for compatibility
+    reasons.
+
+   </LI><LI>An alternative syntax for the DOCTYPE is allowed for compatibility
+    with some XML tools.
+
+   </LI><LI>Data templates have been removed (consisted of the
+    <CODE>datatemplate</CODE>, <CODE>rule</CODE> and <CODE>nest</CODE>
+    elements).
+
+   </LI><LI>The media elements now support just a single <CODE>loop</CODE>
+    attribute.
+
+   </LI><LI>The <CODE>load()</CODE> method on media elements has been redefined as
+    asynchronous. It also tries out files in turn now rather than just
+    looking at the <CODE>type</CODE> attribute of the <CODE>source</CODE>
+    element.
+
+   </LI><LI>A new member called <CODE>canPlayType()</CODE> has been added to the
+    media elements.
+
+   </LI><LI>The <CODE>totalBytes</CODE> and <CODE>bufferedBytes</CODE> attributes
+    have been removed from the media elements.
+
+   </LI><LI>The <CODE>Location</CODE> object gained a <CODE>resolveURL()</CODE>
+    method.
+
+   </LI><LI>The <CODE>q</CODE> element has changed again. Punctation is to be
+    provided by the user agent again.
+
+   </LI><LI>Various changes were made to the HTML parser algorithm to be more in
+    line with the behavior Web sites require.
+
+   </LI><LI>The <CODE>unload</CODE> and <CODE>beforeunload</CODE> events are now
+    defined.
+
+   </LI><LI>The IDL blocks in the specification have been revamped to be in line
+    with the upcoming Web IDL specification.
+
+   </LI><LI>Table headers can now have headers. User agents are required to
+    support a <CODE>headers</CODE> attribute pointing to a <CODE>td</CODE> or
+    <CODE>th</CODE> element, but authors are required to only let them point
+    to <CODE>th</CODE> elements.
+
+   </LI><LI>Interested parties can now register new <CODE>http-equiv</CODE>
+    values.
+
+   </LI><LI>When the <CODE>meta</CODE> element has a <CODE>charset</CODE>
+    attribute it must occur within the first 512 bytes.
+
+   </LI><LI>The <CODE>StorageEvent</CODE> object now has a
+    <CODE>storageArea</CODE> attribute.
+
+   </LI><LI>It is now defined how HTML is to be used within the SVG
+    <CODE>foreignObject</CODE> element.
+
+   </LI><LI>The notification API has been dropped.
+
+   </LI><LI>How [[Get]] works for the <CODE>HTMLDocument</CODE> and
+    <CODE>Window</CODE> objects is now defined.
+
+   </LI><LI>The <CODE>Window</CODE> object gained the <CODE>locationbar</CODE>,
+    <CODE>menubar</CODE>, <CODE>personalbar</CODE>, <CODE>scrollbars</CODE>,
+    <CODE>statusbar</CODE> and <CODE>toolbar</CODE> attributes giving
+    information about the user interface.
+
+   </LI><LI>The application cache section has been significantly revised and
+    updated.
+
+   </LI><LI><CODE>document.domain</CODE> now relies on the Public Suffix List.
+    [<CITE><A href="http://www.w3.org/TR/html5-diff/#ref-psl">PSL</A></CITE>]
+
+   </LI><LI>A non-normative rendering section has been added that describes user
+    agent rendering rules for both obsolete and conforming elements.
+
+   </LI><LI>A normative section has been added that defines when certain selectors
+    as defined in the Selectors and the CSS3 Basic User Interface Module
+    match HTML elements. [<CITE><A href="http://www.w3.org/TR/html5-diff/#ref-selectors">SELECTORS</A></CITE>] [<CITE><A href="http://www.w3.org/TR/html5-diff/#ref-css-ui">CSS-UI</A></CITE>]
+  </LI></UL>
+
+  <P>Web Forms 2.0, previously a standalone specification, has been fully
+   integrated into HTML5 since last publication. The following changes were
+   made to the forms chapter:
+
+  </P><UL>
+   <LI>Support for XML submission has been removed.
+
+   </LI><LI>Support for form filling has been removed.
+
+   </LI><LI>Support for filling of the <CODE>select</CODE> and
+    <CODE>datalist</CODE> elements through the <CODE>data</CODE> attribute
+    has been removed.
+
+   </LI><LI>Support for associating a field with multiple forms has been removed.
+    A field can still be associated with a form it is not nested in through
+    the <CODE>form</CODE> attribute.
+
+   </LI><LI>The <CODE>dispatchChangeInput()</CODE> and
+    <CODE>dispatchFormChange()</CODE> methods have been removed from the
+    <CODE>select</CODE>, <CODE>input</CODE>, <CODE>textarea</CODE>, and
+    <CODE>button</CODE> elements.
+
+   </LI><LI>Repetition templates have been removed.
+
+   </LI><LI>The <CODE>inputmode</CODE> attribute has been removed.
+
+   </LI><LI>The <CODE>input</CODE> element in the File Upload state no longer
+    supports the <CODE>min</CODE> and <CODE>max</CODE> attributes.
+
+   </LI><LI>The <CODE>allow</CODE> attribute on <CODE>input</CODE> elements in the
+    File Upload state is no longer authoritative.
+
+   </LI><LI>The <CODE>pattern</CODE> and <CODE>accept</CODE> attributes for
+    <CODE>textarea</CODE> have been removed.
+
+   </LI><LI>RFC 3106 is no longer explicitly supported.
+
+   </LI><LI>The <CODE>submit()</CODE> method now just submits, it no longer
+    ensures the form controls are valid.
+
+   </LI><LI>The <CODE>input</CODE> element in the Range state now defaults to the
+    middle, rather than the minimum value.
+
+   </LI><LI>The <CODE>size</CODE> attribute on the <CODE>input</CODE> element is
+    now conforming (rather than deprecated).
+
+   </LI><LI><CODE>object</CODE> elements now partake in form submission.
+
+   </LI><LI>The <CODE>type</CODE> attribute of the <CODE>input</CODE> element
+    gained the values <CODE>color</CODE> and <CODE>search</CODE>.
+
+   </LI><LI>The <CODE>input</CODE> element gained a <CODE>multiple</CODE>
+    attribute which allows for either multiple e-mails or multiple files to
+    be uploaded depending on the value of the <CODE>type</CODE> attribute.
+
+   </LI><LI>The <CODE>input</CODE>, <CODE>button</CODE> and <CODE>form</CODE>
+    elements now have a <CODE>novalidate</CODE> attribute to indicate that
+    the form fields should not be required to have valid values upon
+    submission.
+
+   </LI><LI>When the <CODE>label</CODE> element contains an <CODE>input</CODE> it
+    may still have a <CODE>for</CODE> attribute as long as it points to the
+    <CODE>input</CODE> element it contains.
+
+   </LI><LI>The <CODE>input</CODE> element now has an <CODE>indeterminate</CODE>
+    IDL attribute.
+
+   </LI><LI>The <CODE>input</CODE> element gained a <CODE>placeholder</CODE>
+    attribute.
+  </LI></UL>
+
+  <H3 id="changes-2008-01-22"><SPAN class="secno">5.5. </SPAN>Changes from 22
+   January 2008 to 10 June 2008</H3>
+
+  <UL>
+   <LI>Implementation and authoring details around the <CODE>ping</CODE>
+    attribute have changed.
+
+   </LI><LI><CODE>&lt;meta http-equiv=content-type&gt;</CODE> is now a conforming way
+    to set the character encoding.
+
+   </LI><LI>API for the <CODE>canvas</CODE> element has been cleaned up. Text
+    support has been added.
+
+   </LI><LI><CODE>globalStorage</CODE> is now restricted to the same-origin policy
+    and renamed to <CODE>localStorage</CODE>. Related event dispatching has
+    been clarified.
+
+   </LI><LI><CODE>postMessage()</CODE> API changed. Only the origin of the message
+    is exposed, no longer the URL. It also requires a second argument that
+    indicates the origin of the target document.
+
+   </LI><LI>Drag and drop API has got clarification. The <CODE>dataTransfer</CODE>
+    object now has a <CODE>types</CODE> attribute indicating the type of data
+    being transferred.
+
+   </LI><LI>The <CODE>m</CODE> element is now called <CODE>mark</CODE>.
+
+   </LI><LI>Server-sent events has changed and gotten clarification. It uses a new
+    format so that older implementations are not broken.
+
+   </LI><LI>The <CODE>figure</CODE> element no longer requires a caption.
+
+   </LI><LI>The <CODE>ol</CODE> element has a new <CODE>reversed</CODE> attribute.
+    
+
+   </LI><LI>Character encoding detection has changed in response to feedback.
+
+   </LI><LI>Various changes have been made to the HTML parser section in response
+    to implementation feedback.
+
+   </LI><LI>Various changes to the editing section have been made, including
+    adding <CODE>queryCommandEnabled()</CODE> and related methods.
+
+   </LI><LI>The <CODE>headers</CODE> attribute has been added for <CODE>td</CODE>
+    elements.
+
+   </LI><LI>The <CODE>table</CODE> element has a new <CODE>createTBody()</CODE>
+    method.
+
+   </LI><LI>MathML support has been added to the HTML parser section. (SVG support
+    is still awaiting input from the SVG WG.)
+
+   </LI><LI>Author-defined attributes have been added. Authors can add attributes
+    to elements in the form of <CODE>data-<VAR>name</VAR></CODE> and can
+    access these through the DOM using <CODE>dataset[<VAR>name</VAR>]</CODE>
+    on the element in question.
+
+   </LI><LI>The <CODE>q</CODE> element has changed to require punctation inside
+    rather than having the browser render it.
+
+   </LI><LI>The <CODE>target</CODE> attribute can now have the value
+    <CODE>_blank</CODE>.
+
+   </LI><LI>The <CODE>showModalDialog</CODE> API has been added.
+
+   </LI><LI>The <CODE>document.domain</CODE> API has been defined.
+
+   </LI><LI>The <CODE>source</CODE> element now has a new <CODE>pixelratio</CODE>
+    attribute useful for videos that have some kind encoding error.
+
+   </LI><LI><CODE>bufferedBytes</CODE>, <CODE>totalBytes</CODE> and
+    <CODE>bufferingThrottled</CODE> IDL attributes have been added to the
+    <CODE>video</CODE> element.
+
+   </LI><LI>Media <CODE>begin</CODE> event has been renamed to
+    <CODE>loadstart</CODE> for consistency with the Progress Events
+    specification.
+
+   </LI><LI><CODE>charset</CODE> attribute has been added to <CODE>script</CODE>.
+
+   </LI><LI>The <CODE>iframe</CODE> element has gained the <CODE>sandbox</CODE>
+    and <CODE>seamless</CODE> attributes which provide sandboxing
+    functionality.
+
+   </LI><LI>The <CODE>ruby</CODE>, <CODE>rt</CODE> and <CODE>rp</CODE> elements
+    have been added to support ruby annotation.
+
+   </LI><LI>A <CODE>showNotification()</CODE> method has been added to show
+    notification messages to the user.
+
+   </LI><LI>Support for <CODE>beforeprint</CODE> and <CODE>afterprint</CODE>
+    events has been added.
+  </LI></UL>
+
+  <H2 class="no-num" id="acknowledgments">Acknowledgments</H2>
+
+  <P>The editor would like to thank Ben Millard, Cameron McCormack, Charles
+   McCathieNevile, Dan Connolly, David Håsäther, Dennis German,
+   Frank Ellermann, Frank Palinkas, Gordon P. Hemsley, Henri Sivonen, James
+   Graham, Jens Meiert, Jürgen Jeka, Krijn Hoetmer, Maciej Stachowiak,
+   Mark Pilgrim, Martijn Wargers, Martyn Haigh, Masataka Yakura, Michael
+   Smith, Olivier Gendrin, Øistein E. Andersen, Philip Taylor, Simon
+   Pieters, and Yngve Spjeld Landro for their contributions to this document
+   as well as to all the people who have contributed to HTML5 over the years
+   for improving the Web!
+
+  </P><H2 class="no-num" id="references">References</H2>
+
+  <DL>
+   <DT>[<DFN id="ref-css-ui">CSS-UI</DFN>]
+
+   </DT><DD><CITE><A href="http://www.w3.org/TR/css3-ui/">CSS3 Basic User
+    Interface Module</A></CITE>, T. Çelik, editor. W3C.
+
+   </DD><DT>[<DFN id="ref-doctype">DOCTYPE</DFN>]
+
+   </DT><DD><CITE><A href="http://hsivonen.iki.fi/doctype/">Activating Browser
+    Modes with Doctype</A></CITE>, H. Sivonen.
+
+   </DD><DT>[<DFN id="ref-dom2html">DOM2HTML</DFN>]
+
+   </DT><DD><CITE><A href="http://www.w3.org/TR/DOM-Level-2-HTML/">Document Object
+    Model (DOM) Level 2 HTML Specification</A></CITE>, J. Stenback, P. Le
+    Hégaret, A. Le Hors, editors. W3C.
+
+   </DD><DT>[<DFN id="ref-html4">HTML4</DFN>]
+
+   </DT><DD><CITE><A href="http://www.w3.org/TR/html4/">HTML 4.01
+    Specification</A></CITE>, D. Raggett, A. Le Hors, I. Jacobs, editors.
+    W3C.
+
+   </DD><DT>[<DFN id="ref-html5">HTML5</DFN>]
+
+   </DT><DD><CITE><A href="http://www.w3.org/TR/html5/">HTML5</A></CITE>, I.
+    Hickson, D. Hyatt, editors. W3C.
+
+   </DD><DD><CITE><A href="http://www.whatwg.org/specs/web-apps/current-work/">HTML5</A></CITE>
+    (editor's draft), I. Hickson, editor. WHATWG.
+
+   </DD><DD><CITE><A href="http://www.w3.org/html/wg/html5/">HTML5</A></CITE>
+    (editors' draft), I. Hickson, D. Hyatt, editors. W3C.
+
+   </DD><DT>[<DFN id="ref-psl">PSL</DFN>]
+
+   </DT><DD><CITE><A href="http://publicsuffix.org/">Public Suffix
+    List</A></CITE>, Mozilla Foundation.
+
+   </DD><DT>[<DFN id="ref-selectors">SELECTORS</DFN>]
+
+   </DT><DD><CITE><A href="http://www.w3.org/TR/css3-selectors/">Selectors</A></CITE>, D.
+    Glazman, T. Çelik, I. Hickson, editors. W3C.
+
+   </DD><DT>[<DFN id="ref-xhtml1">XHTML1</DFN>]
+
+   </DT><DD><CITE><A href="http://www.w3.org/TR/xhtml11">XHTML™ 1.1 -
+    Module-based XHTML (Second Edition)</A></CITE>, S. McCarron, M. Ishikawa,
+    editors. W3C.
+
+   </DD><DT>[<DFN id="ref-xml">XML</DFN>]
+
+   </DT><DD><CITE><A href="http://www.w3.org/TR/xml/">Extensible Markup Language
+    (XML) 1.0 (Fifth Edition)</A></CITE>, T. Bray, J. Paoli, C.
+    Sperberg-McQueen, E. Maler, F. Yergeau, editors. W3C.
+
+   </DD><DD><CITE><A href="http://www.w3.org/TR/xml-names/">Namespaces in XML 1.0
+    (Third Edition)</A></CITE>, T. Bray, D. Hollander, A. Layman, R. Tobin,
+    H. S. Thompson, editors. W3C.
+  </DD></DL>
+</BODY></HTML>

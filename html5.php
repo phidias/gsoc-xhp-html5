@@ -155,7 +155,7 @@ class :address extends :xhp:html-element {
 }
 
 class :area extends :xhp:html-singleton {
-  attribute string alt, string coords, string href, bool nohref, string target;
+  attribute string alt, string coords, string href, string target;
   protected $tagName = 'area';
 }
 
@@ -328,7 +328,6 @@ class :h6 extends :xhp:html-element {
 }
 
 class :head extends :xhp:html-element {
-  attribute string profile;
   children (%metadata*, :title, %metadata*, :base?, %metadata*);
   // Note: html/xhtml spec says that there should be exactly 1 <title />, and at
   // most 1 <base />. These elements can occur in any order, and can be
@@ -360,7 +359,7 @@ class :i extends :xhp:html-element {
 class :iframe extends :xhp:pseudo-singleton {
   attribute
     enum {"1", "0"} frameborder,
-    string height, string longdesc, int marginheight,
+    string height, int marginheight,
     int marginwidth, string name, enum { "yes", "no", "auto" } scrolling,
     string src, string width;
   category %flow, %phrase, %interactive;
@@ -373,7 +372,7 @@ class :img extends :xhp:html-singleton {
     // Lite
     string staticsrc,
     // HTML
-    string alt, string src, string height, bool ismap, string longdesc,
+    string alt, string src, string height, bool ismap,
     string usemap, string width;
   category %flow, %phrase;
   protected $tagName = 'img';
@@ -431,8 +430,8 @@ class :li extends :xhp:html-element {
 
 class :link extends :xhp:html-singleton {
   attribute
-    string charset, string href, string hreflang, string media, string rel,
-    string rev, string target, string type;
+    string href, string hreflang, string media, string rel,
+    string type;
   category %metadata;
   protected $tagName = 'link';
 }
@@ -451,7 +450,7 @@ class :meta extends :xhp:html-singleton {
     enum {
       "content-type", "content-style-type", "expires", "refresh", "set-cookie"
     } http-equiv,
-    string http-equiv, string name, string scheme;
+    string http-equiv, string name;
   category %metadata;
   protected $tagName = 'meta';
 }
@@ -464,9 +463,8 @@ class :noscript extends :xhp:html-element {
 
 class :object extends :xhp:html-element {
   attribute
-    enum { "left", "right", "top", "bottom" } align, string archive, int border,
-    string classid, string codebase, string codetype, string data, bool declare,
-    int height, int hspace, string name, string standby, string type,
+    enum { "left", "right", "top", "bottom" } align, int border,
+    string data, int height, int hspace, string name, string type,
     string usemap, int vspace, int width;
   category %flow, %phrase;
   // transparent, after the params
@@ -499,8 +497,7 @@ class :p extends :xhp:html-element {
 
 class :param extends :xhp:pseudo-singleton {
   attribute
-    string name, string type, string value,
-    enum { "data", "ref", "object" } valuetype;
+    string name, string value;
   protected $tagName = 'param';
 }
 
@@ -608,10 +605,9 @@ class :tbody extends :xhp:html-element {
 
 class :td extends :xhp:html-element {
   attribute
-    string abbr, enum { "left", "right", "center", "justify", "char" } align,
-    string axis, string char, int charoff, int colspan, string headers,
-    int rowspan, enum { "col", "colgroup", "row", "rowgroup" } scope,
-    enum { "top", "middle", "bottom", "baseline" } valign;
+    enum { "left", "right", "center", "justify", "char" } align,
+    string char, int charoff, int colspan, string headers,
+    int rowspan, enum { "top", "middle", "bottom", "baseline" } valign;
   children (pcdata | %flow)*;
   protected $tagName = 'td';
 }
@@ -632,8 +628,8 @@ class :tfoot extends :xhp:html-element {
 
 class :th extends :xhp:html-element {
   attribute
-    string abbr, enum { "left", "right", "center", "justify", "char" } align,
-    string axis, string char, int charoff, int colspan, int rowspan,
+    enum { "left", "right", "center", "justify", "char" } align,
+    string char, int charoff, int colspan, int rowspan,
     enum { "col", "colgroup", "row", "rowgroup" } scope,
     enum { "top", "middle", "bottom", "baseline" } valign;
   children (pcdata | %flow)*;
