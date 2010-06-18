@@ -147,12 +147,6 @@ class :abbr extends :xhp:html-element {
   protected $tagName = 'abbr';
 }
 
-class :acronym extends :xhp:html-element {
-  category %flow, %phrase;
-  children (pcdata | %phrase)*;
-  protected $tagName = 'acronym';
-}
-
 class :address extends :xhp:html-element {
   category %flow;
   // may not contain h1-h6
@@ -176,12 +170,6 @@ class :base extends :xhp:html-singleton {
   // also a member of "metadata", but is not listed here. see comments in :head
   // for more information
   protected $tagName = 'base';
-}
-
-class :big extends :xhp:html-element {
-  category %flow, %phrase;
-  children (pcdata | %phrase)*;
-  protected $tagName = 'big';
 }
 
 class :blockquote extends :xhp:html-element {
@@ -301,19 +289,6 @@ class :form extends :xhp:html-element {
   // may not contain form
   children (pcdata | %flow)*;
   protected $tagName = 'form';
-}
-
-class :frame extends :xhp:html-singleton {
-  attribute
-    bool frameborder, string longdesc, int marginheight, int marginwidth,
-    string name, bool noresize, enum { "yes", "no", "auto" } scrolling,
-    string src;
-  protected $tagName = 'frame';
-}
-
-class :frameset extends :xhp:html-element {
-  children (:frame | :frameset | :noframes)*;
-  protected $tagName = 'frameset';
 }
 
 class :h1 extends :xhp:html-element {
@@ -481,11 +456,6 @@ class :meta extends :xhp:html-singleton {
   protected $tagName = 'meta';
 }
 
-class :noframes extends :xhp:html-element {
-  children (%html-body);
-  protected $tagName = 'noframes';
-}
-
 class :noscript extends :xhp:html-element {
   // transparent
   category %flow, %phrase;
@@ -545,13 +515,6 @@ class :q extends :xhp:html-element {
   category %flow, %phrase;
   children (pcdata | %phrase)*;
   protected $tagName = 'q';
-}
-
-// deprecated
-class :s extends :xhp:html-element {
-  category %flow, %phrase;
-  children (pcdata | %phrase)*;
-  protected $tagName = 's';
 }
 
 class :samp extends :xhp:html-element {
@@ -697,19 +660,6 @@ class :tr extends :xhp:html-element {
     int charoff, enum { "top", "middle", "bottom", "baseline" } valign;
   children (:th | :td)*;
   protected $tagName = 'tr';
-}
-
-class :tt extends :xhp:html-element {
-  category %flow, %phrase;
-  children (pcdata | %phrase)*;
-  protected $tagName = 'tt';
-}
-
-// deprecated
-class :u extends :xhp:html-element {
-  category %flow, %phrase;
-  children (pcdata | %phrase)*;
-  protected $tagName = 'u';
 }
 
 class :ul extends :xhp:html-element {
