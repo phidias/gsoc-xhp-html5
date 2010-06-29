@@ -3,7 +3,7 @@
   +----------------------------------------------------------------------+
   | XHP                                                                  |
   +----------------------------------------------------------------------+
-  | Copyright (c) 2009 - 2010 Facebook, Inc. (http://www.facebook.com)          |
+  | Copyright (c) 2009 - 2010 Facebook, Inc. (http://www.facebook.com)   |
   +----------------------------------------------------------------------+
   | This source file is subject to version 3.01 of the PHP license,      |
   | that is bundled with this package in the file LICENSE.PHP, and is    |
@@ -136,7 +136,8 @@ abstract class :xhp:pseudo-singleton extends :xhp:html-element {
  */
 class :a extends :xhp:html-element {
   attribute
-    string href, string name, string rel, string target;
+    string href, string media, string name, string ping, string rel,
+    string target;
   category %flow, %phrase, %interactive;
   // transparent
   // may not contain %interactive
@@ -158,7 +159,9 @@ class :address extends :xhp:html-element {
 }
 
 class :area extends :xhp:html-singleton {
-  attribute string alt, string coords, string href, string target;
+  attribute 
+    string alt, string coords, string href, string media, string ping,
+    string rel, string target;
   protected $tagName = 'area';
 }
 
@@ -194,7 +197,8 @@ class :br extends :xhp:html-singleton {
 
 class :button extends :xhp:html-element {
   attribute
-    bool disabled, string name, enum { "submit", "button", "reset" } type, string value;
+    bool autofocus, bool disabled, string form,
+    string name, enum { "submit", "button", "reset" } type, string value;
   category %flow, %phrase, %interactive;
   // may not contain interactive
   children (pcdata | %phrase)*;
@@ -275,6 +279,7 @@ class :em extends :xhp:html-element {
 }
 
 class :fieldset extends :xhp:html-element {
+  attribute bool disabled, string form;
   category %flow;
   children (:legend?, (pcdata | %flow)*);
   protected $tagName = 'fieldset';
@@ -283,7 +288,7 @@ class :fieldset extends :xhp:html-element {
 class :form extends :xhp:html-element {
   attribute
     string action, string accept, string accept-charset, string enctype,
-    enum { "get", "post" } method, string name, string target, bool ajaxify;
+    enum { "get", "post" } method, string name, bool novalidate, string target, bool ajaxify;
   category %flow;
   // may not contain form
   children (pcdata | %flow)*;
@@ -344,7 +349,7 @@ class :hr extends :xhp:html-singleton {
 }
 
 class :html extends :xhp:html-element {
-  attribute string xmlns;
+  attribute string manifest, string xmlns;
   children (:head, :body);
   protected $tagName = 'html';
 }
@@ -357,7 +362,8 @@ class :i extends :xhp:html-element {
 
 class :iframe extends :xhp:pseudo-singleton {
   attribute
-    string height, string name, string src, string width;
+    string height, string name, string sandbox, bool seamless, 
+    string srcdoc, string src, string width;
   category %flow, %phrase, %interactive;
   children empty;
   protected $tagName = 'iframe';
@@ -376,12 +382,12 @@ class :img extends :xhp:html-singleton {
 
 class :input extends :xhp:html-singleton {
   attribute
-    // Non-standard
-    enum { "on", "off" } autocomplete,
-    string placeholder,
-    // HTML
-    string accept, string alt, bool checked, bool disabled, int maxlength, string name,
-    bool readonly, int size, string src,
+    string accept, string alt, enum { "on", "off" } autocomplete, bool autofocus, 
+    bool checked, bool disabled, string form, string formaction, string formenctype,
+    enum { "get", "post", "put", "delete" } formmethod, bool formnovalidate, string formtarget,
+    string list, string max, int maxlength, string min,
+    bool multiple, string name, string pattern, string placeholder, bool readonly, bool required, 
+    int size, string src, string step,
     enum {
       "button", "checkbox", "file", "hidden", "image", "password", "radio",
       "reset", "submit", "text"
@@ -419,13 +425,14 @@ class :legend extends :xhp:html-element {
 }
 
 class :li extends :xhp:html-element {
+  attribute int value;
   children (pcdata | %flow)*;
   protected $tagName = 'li';
 }
 
 class :link extends :xhp:html-singleton {
   attribute
-    string href, string hreflang, string media, string rel,
+    string href, string hreflang, string media, string rel, string sizes,
     string type;
   category %metadata;
   protected $tagName = 'link';
@@ -441,7 +448,7 @@ class :map extends :xhp:html-element {
 
 class :meta extends :xhp:html-singleton {
   attribute
-    string content @required,
+    string charset, string content @required,
     enum {
       "content-type", "content-style-type", "expires", "refresh", "set-cookie"
     } http-equiv,
@@ -467,6 +474,8 @@ class :object extends :xhp:html-element {
 }
 
 class :ol extends :xhp:html-element {
+  attribute
+    bool reversed, int start;
   category %flow;
   children (:li)*;
   protected $tagName = 'ol';
@@ -515,13 +524,15 @@ class :samp extends :xhp:html-element {
 }
 
 class :script extends :xhp:pseudo-singleton {
-  attribute string charset, bool defer, string src, string type;
+  attribute bool async, string charset, bool defer, string src, string type;
   category %flow, %phrase, %metadata;
   protected $tagName = 'script';
 }
 
 class :select extends :xhp:html-element {
-  attribute bool disabled, bool multiple, string name, int size;
+  attribute 
+    bool autofocus, bool disabled, string form, bool multiple, 
+    string name, int size;
   category %flow, %phrase, %interactive;
   children (:option | :optgroup)*;
   protected $tagName = 'select';
@@ -550,7 +561,7 @@ class :style extends :xhp:pseudo-singleton {
     enum {
       "screen", "tty", "tv", "projection", "handheld", "print", "braille",
       "aural", "all"
-    } media, string type;
+    } media, bool scoped, string type;
   category %metadata;
   protected $tagName = 'style';
 }
@@ -596,7 +607,10 @@ class :td extends :xhp:html-element {
 }
 
 class :textarea extends :xhp:pseudo-singleton {
-  attribute int cols, int rows, bool disabled, string name, bool readonly;
+  attribute 
+    bool autofocus, int cols, bool disabled, 
+    string form, string name, string placeholder, bool readonly, 
+    bool required, int rows;
   category %flow, %phrase, %interactive;
   protected $tagName = 'textarea';
 }
