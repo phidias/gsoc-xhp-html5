@@ -2,7 +2,7 @@
 test the attributes of the keygen element
 --FILE--
 <?php
-include("../php-lib/init.php");
+include("../php-lib/init-tests.php");
 echo <form action="processkey.cgi" method="post" enctype="multipart/form-data">
  <p><keygen name="key" keytype="rsa" disabled="true" /></p>
  <p><input type="submit" value="Submit key..." /></p>

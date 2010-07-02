@@ -2,7 +2,7 @@
 test the new global attributes
 --FILE--
 <?php
-include("../php-lib/init.php");
+include("../php-lib/init-tests.php");
 echo <figure><h1>Heading 1</h1><h2>Heading 2</h2></figure> . "\n";
 echo <figure><figcaption>Caption on the top</figcaption><img src="logo.png"></img></figure> . "\n";
 echo <figure><img src="logo.png"></img><figcaption>Caption on the bottom</figcaption></figure> . "\n";

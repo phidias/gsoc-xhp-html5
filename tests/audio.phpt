@@ -2,7 +2,7 @@
 test the audio element (source etc)
 --FILE--
 <?php
-include("../php-lib/init.php");
+include("../php-lib/init-tests.php");
 echo <audio src="test.mp3" autoplay="true"></audio> . "\n";
 echo <audio><source src="audio3.mp3" type="audio/mp3" media="all" /></audio> . "\n";
 echo <audio><source src="audio3.mp3" type="audio/mp3" media="all" /><p>Your browser is not working ok?</p></audio> . "\n";

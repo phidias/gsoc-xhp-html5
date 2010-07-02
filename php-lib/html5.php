@@ -174,12 +174,13 @@ class :area extends :xhp:html-singleton {
   protected $tagName = 'area';
 }
 
-class :article extends :xhp:html-singleton {
+class :article extends :xhp:html-element {
   category %flow;
+  children (pcdata | %flow)*;
   protected $tagName = 'article';
 }
 
-class :aside extends :xhp:html-singleton {
+class :aside extends :xhp:html-element {
   category %flow;
   protected $tagName = 'aside';
 }
@@ -556,6 +557,11 @@ class :map extends :xhp:html-element {
 class :mark extends :xhp:html-element {
   category %flow, %phrase;
   protected $tagName = 'mark';
+
+  protected function stringify() {
+    $this->setAttribute("style","background-color:yellow");
+    return parent::stringify();
+  }
 }
 
 class :meta extends :xhp:html-singleton {

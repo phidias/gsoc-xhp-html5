@@ -1,15 +1,25 @@
 <?php
 require_once '../php-lib/init.php';
+
+function getValue($keyword, $file) {
+	$content = file_get_contents('elements/'.$file);
+	$r = preg_match("/".$keyword.":\s*(\w+)/",$content,$matches);
+	return $r ? $matches[1] : "";
+}
+
 $newElementsTable = <table />;
 
 $files = scandir("elements");
-
+$newElementsTable->appendChild(<thead><tr><td>Element</td><td>Demo</td><td>Visible?</td></tr></thead>);
 foreach ($files as $file) {
 	$parts = explode(".",$file);
 	$extension = end($parts);
     $element = prev($parts);
+
 	if ($extension == "php") {
-		$newElementsTable->appendChild(<tr><td>&lt;{$element}&gt;</td><td><a href="show.php?el=figure">show</a></td></tr>);
+		$visible = getValue("VISIBLE",$file);
+		$showURL = "show.php?el=$element";
+		$newElementsTable->appendChild(<tr><td>&lt;{$element}&gt;</td><td><a href={$showURL}>show</a></td><td>{$visible}</td></tr>);
 	}
 }
 
@@ -22,3 +32,5 @@ foreach ($files as $file) {
 <?= $newElementsTable ?>
 
 <h2>New attributes</h2>
+
+<p>no demos yet</p>

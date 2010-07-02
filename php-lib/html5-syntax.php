@@ -174,12 +174,13 @@ class :area extends :xhp:html-singleton {
   protected $tagName = 'area';
 }
 
-class :article extends :xhp:html-singleton {
+class :article extends :xhp:html-element {
   category %flow;
+  children (pcdata | %flow)*;
   protected $tagName = 'article';
 }
 
-class :aside extends :xhp:html-singleton {
+class :aside extends :xhp:html-element {
   category %flow;
   protected $tagName = 'aside';
 }

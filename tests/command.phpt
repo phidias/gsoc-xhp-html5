@@ -2,7 +2,7 @@
 test the attributes of the command element
 --FILE--
 <?php
-include("../php-lib/init.php");
+include("../php-lib/init-tests.php");
 echo <command type="radio" radiogroup="r1" disabled="true" /> . "\n";
 --EXPECT--
 <command type="radio" radiogroup="r1" disabled="1" />

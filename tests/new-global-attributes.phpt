@@ -2,7 +2,7 @@
 test the new global attributes
 --FILE--
 <?php
-include("../php-lib/init.php");
+include("../php-lib/init-tests.php");
 echo <b contenteditable="" draggable="true">hi!</b> . "\n";
 echo <b contenteditable="true" hidden="false" spellcheck="">hi!</b> . "\n";
 echo <b contenteditable="false" hidden="sadf">hi!</b> . "\n";

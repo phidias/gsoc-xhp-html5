@@ -2,7 +2,7 @@
 test the new type attribute of the input element
 --FILE--
 <?php
-include("../php-lib/init.php");
+include("../php-lib/init-tests.php");
 echo <input type="month" /> . "\n";
 echo <input type="week" name="kkk" />;
 --EXPECT--
