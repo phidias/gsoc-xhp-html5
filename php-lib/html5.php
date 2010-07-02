@@ -274,6 +274,12 @@ class :command extends :xhp:html-singleton {
   protected $tagName = 'command';
 }
 
+class :datalist extends :xhp:html-element {
+  category %flow, %phrase;
+  children (:option+ | (pcdata | %phrase | %flow)*);
+  protected $tagName = 'datalist';
+}
+
 class :dd extends :xhp:html-element {
   children (pcdata | %flow)*;
   protected $tagName = 'dd';
@@ -336,15 +342,15 @@ class :fieldset extends :xhp:html-element {
   protected $tagName = 'fieldset';
 }
 
-class :figure extends :xhp:html-element {
-  category %flow;
-  children (:figcaption?, %flow* | %flow*, :figcaption? );
-  protected $tagName = 'figure';
-}
-
 class :figcaption extends :xhp:html-element {
   children (pcdata)*;
   protected $tagName = 'figcaption';
+}
+
+class :figure extends :xhp:html-element {
+  category %flow;
+  children ((:figcaption, %flow*) | (%flow*, :figcaption?) );
+  protected $tagName = 'figure';
 }
 
 class :footer extends :xhp:html-element {
@@ -469,8 +475,9 @@ class :input extends :xhp:html-singleton {
     bool multiple, string name, string pattern, string placeholder, bool readonly, bool required, 
     int size, string src, string step,
     enum {
-      "button", "checkbox", "file", "hidden", "image", "password", "radio",
-      "reset", "submit", "text"
+      "button", "checkbox", "color", "date", "datetime", "datetime-local", "email", "file", 
+      "hidden", "image", "month", "number", "password", "radio", "range", "reset", "search", 
+      "submit", "tel", "text", "time", "url", "week"
     } type,
     string value;
   category %flow, %phrase, %interactive;
@@ -489,6 +496,14 @@ class :kbd extends :xhp:html-element {
   category %flow, %phrase;
   children (pcdata | %phrase)*;
   protected $tagName = 'kbd';
+}
+
+class :keygen extends :xhp:html-singleton {
+  attribute
+    bool autofocus, string challenge, bool disabled,
+    string form, enum { "rsa" } keytype, string name;
+  category %flow, %phrase;
+  protected $tagName = 'keygen';
 }
 
 class :label extends :xhp:html-element {
@@ -589,6 +604,13 @@ class :optgroup extends :xhp:html-element {
 class :option extends :xhp:pseudo-singleton {
   attribute bool disabled, string label, bool selected, string value;
   protected $tagName = 'option';
+}
+
+class :output extends :xhp:html-element {
+  attribute string for, string form, string name;
+  category %flow, %phrase;
+  children (pcdata | %phrase)*;
+  protected $tagName = 'output';
 }
 
 class :p extends :xhp:html-element {
