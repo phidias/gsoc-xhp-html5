@@ -130,6 +130,15 @@ abstract class :xhp:pseudo-singleton extends :xhp:html-element {
   }
 }
 
+abstract class :xhp:media-element extends :xhp:html-element {
+  attribute
+    bool autoplay, bool controls, bool loop, 
+    enum { "none", "metadata", "auto" } preload,
+    string src;
+  category %flow, %phrase;
+  children (:source*, (pcdata|%flow)*);
+}
+
 /**
  * Below is a big wall of element definitions. These are the basic building
  * blocks of XHP pages.
@@ -163,6 +172,20 @@ class :area extends :xhp:html-singleton {
     string alt, string coords, string href, string media, string ping,
     string rel, string target;
   protected $tagName = 'area';
+}
+
+class :article extends :xhp:html-singleton {
+  category %flow;
+  protected $tagName = 'article';
+}
+
+class :aside extends :xhp:html-singleton {
+  category %flow;
+  protected $tagName = 'aside';
+}
+
+class :audio extends :xhp:media-element {
+  protected $tagName = 'audio';
 }
 
 class :b extends :xhp:html-element {
@@ -205,6 +228,12 @@ class :button extends :xhp:html-element {
   protected $tagName = 'button';
 }
 
+class :canvas extends :xhp:html-element {
+  attribute int width, int height;
+  category %flow, %phrase, %embed;
+  protected $tagName = 'canvas';
+}
+
 class :caption extends :xhp:html-element {
   // may not contain table
   children (pcdata | %flow)*;
@@ -236,6 +265,15 @@ class :colgroup extends :xhp:html-element {
   protected $tagName = 'colgroup';
 }
 
+class :command extends :xhp:html-singleton {
+  attribute
+    bool checked, bool disabled, string icon,
+    string label, string radiogroup, string title,
+    enum { "command", "checkbox", "radio" } type;
+  category %flow, %phrase;
+  protected $tagName = 'command';
+}
+
 class :dd extends :xhp:html-element {
   children (pcdata | %flow)*;
   protected $tagName = 'dd';
@@ -247,6 +285,13 @@ class :del extends :xhp:html-element {
   // transparent
   children (pcdata | %flow)*;
   protected $tagName = 'del';
+}
+
+class :details extends :xhp:html-element {
+  attribute bool open;
+  category %flow;
+  children (:summary?, (pcdata | %flow)*);
+  protected $tagName = 'details';
 }
 
 class :div extends :xhp:html-element {
@@ -278,11 +323,34 @@ class :em extends :xhp:html-element {
   protected $tagName = 'em';
 }
 
+/* has dynamic attributes */
+/*class :embed extends :xhp:html-element {
+  attribute int height, string src, string type, int width;
+  protected $tagName = 'embed';
+}*/
+
 class :fieldset extends :xhp:html-element {
   attribute bool disabled, string form;
-  category %flow;
+  category %flow, %phrase;
   children (:legend?, (pcdata | %flow)*);
   protected $tagName = 'fieldset';
+}
+
+class :figure extends :xhp:html-element {
+  category %flow;
+  children (:figcaption?, %flow* | %flow*, :figcaption? );
+  protected $tagName = 'figure';
+}
+
+class :figcaption extends :xhp:html-element {
+  children (pcdata)*;
+  protected $tagName = 'figcaption';
+}
+
+class :footer extends :xhp:html-element {
+  category %flow;
+  children (%flow)*;
+  protected $tagName = 'footer';
 }
 
 class :form extends :xhp:html-element {
@@ -296,37 +364,37 @@ class :form extends :xhp:html-element {
 }
 
 class :h1 extends :xhp:html-element {
-  category %flow;
+  category %flow, %heading;
   children (pcdata | %phrase)*;
   protected $tagName = 'h1';
 }
 
 class :h2 extends :xhp:html-element {
-  category %flow;
+  category %flow, %heading;
   children (pcdata | %phrase)*;
   protected $tagName = 'h2';
 }
 
 class :h3 extends :xhp:html-element {
-  category %flow;
+  category %flow, %heading;
   children (pcdata | %phrase)*;
   protected $tagName = 'h3';
 }
 
 class :h4 extends :xhp:html-element {
-  category %flow;
+  category %flow, %heading;
   children (pcdata | %phrase)*;
   protected $tagName = 'h4';
 }
 
 class :h5 extends :xhp:html-element {
-  category %flow;
+  category %flow, %heading;
   children (pcdata | %phrase)*;
   protected $tagName = 'h5';
 }
 
 class :h6 extends :xhp:html-element {
-  category %flow;
+  category %flow, %heading;
   children (pcdata | %phrase)*;
   protected $tagName = 'h6';
 }
@@ -341,6 +409,18 @@ class :head extends :xhp:html-element {
   // difference between this and the spec is that in XHP the <title /> must
   // appear before the <base />.
   protected $tagName = 'head';
+}
+
+class :header extends :xhp:html-element {
+  category %flow;
+  children (%flow)*;
+  protected $tagName = 'header';
+}
+
+class :hgroup extends :xhp:html-element {
+  category %flow;
+  children (%heading)+;
+  protected $tagName = 'hgroup';
 }
 
 class :hr extends :xhp:html-singleton {
@@ -446,6 +526,11 @@ class :map extends :xhp:html-element {
   protected $tagName = 'map';
 }
 
+class :mark extends :xhp:html-element {
+  category %flow, %phrase;
+  protected $tagName = 'mark';
+}
+
 class :meta extends :xhp:html-singleton {
   attribute
     string charset, string content @required,
@@ -455,6 +540,20 @@ class :meta extends :xhp:html-singleton {
     string http-equiv, string name;
   category %metadata;
   protected $tagName = 'meta';
+}
+
+class :meter extends :xhp:html-element {
+  attribute 
+    string form, string high, string low, string max, 
+    string min, string optimum, string value;
+  category %flow, %phrase;
+  children (pcdata | %flow)*;
+  protected $tagName = 'meter';
+}
+
+class :nav extends :xhp:html-element {
+  category %flow, %sectioning;
+  children (%flow)*;
 }
 
 class :noscript extends :xhp:html-element {
@@ -510,11 +609,34 @@ class :pre extends :xhp:html-element {
   protected $tagName = 'pre';
 }
 
+class :progress extends :xhp:html-element {
+  attribute string form, string max, string value;
+  category %flow, %phrase;
+  children (pcdata | %flow)*;
+  protected $tagName = 'progress';
+}
+
 class :q extends :xhp:html-element {
   attribute string cite;
   category %flow, %phrase;
   children (pcdata | %phrase)*;
   protected $tagName = 'q';
+}
+
+class :rp extends :xhp:html-element {
+  children (pcdata)*;
+  protected $tagName = 'rp';
+}
+
+class :rt extends :xhp:html-element {
+  children (pcdata)*;
+  protected $tagName = 'rt';
+}
+
+class :ruby extends :xhp:html-element {
+  category %flow, %phrase;
+  children ( (pcdata | %flow)*, (:rt | (:rp, :rt, :rp)) )+;
+  protected $tagName = 'ruby';
 }
 
 class :samp extends :xhp:html-element {
@@ -527,6 +649,11 @@ class :script extends :xhp:pseudo-singleton {
   attribute bool async, string charset, bool defer, string src, string type;
   category %flow, %phrase, %metadata;
   protected $tagName = 'script';
+}
+
+class :section extends :xhp:html-element {
+  category %flow;
+  protected $tagName = 'section';
 }
 
 class :select extends :xhp:html-element {
@@ -542,6 +669,11 @@ class :small extends :xhp:html-element {
   category %flow, %phrase;
   children (pcdata | %phrase)*;
   protected $tagName = 'small';
+}
+
+class :source extends :xhp:html-singleton {
+  attribute string src, string type, string media;
+  protected $tagName = "source";
 }
 
 class :span extends :xhp:html-element {
@@ -570,6 +702,11 @@ class :sub extends :xhp:html-element {
   category %flow, %phrase;
   children (pcdata | %phrase);
   protected $tagName = 'sub';
+}
+
+class :summary extends :xhp:html-element {
+  children (pcdata | %phrase)*;
+  protected $tagName = 'summary';
 }
 
 class :sup extends :xhp:html-element {
@@ -633,6 +770,13 @@ class :thead extends :xhp:html-element {
   protected $tagName = 'thead';
 }
 
+class :time extends :xhp:html-element {
+  attribute string datetime, bool pubdate;
+  category %flow, %phrase;
+  children (pcdata | %flow)*;
+  protected $tagName = 'time';
+}
+
 class :title extends :xhp:pseudo-singleton {
   // also a member of "metadata", but is not listed here. see comments in :head
   // for more information.
@@ -654,6 +798,12 @@ class :var extends :xhp:html-element {
   category %flow, %phrase;
   children (pcdata | %phrase)*;
   protected $tagName = 'var';
+}
+
+class :video extends :xhp:media-element {
+  attribute
+    int height, string poster, int width;
+  protected $tagName = 'video';
 }
 
 /**
