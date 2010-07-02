@@ -345,24 +345,12 @@ class :fieldset extends :xhp:html-element {
 class :figcaption extends :xhp:html-element {
   children (pcdata | %flow)*;
   protected $tagName = 'figcaption';
-
-  protected function stringify() {
-    $this->tagName = 'div';
-    $this->addClass("html5-figcaption");
-    return parent::stringify();
-  }
 }
 
 class :figure extends :xhp:html-element {
   category %flow;
-  children ((:figcaption, %flow*) | (%flow*, :figcaption?));
+  children ((:figcaption, %flow*) | (%flow*, :figcaption?) );
   protected $tagName = 'figure';
-
-  protected function stringify() {
-    $this->tagName = 'div';
-	$this->addClass("html5-figure");
-    return parent::stringify();
-  }
 }
 
 class :footer extends :xhp:html-element {
