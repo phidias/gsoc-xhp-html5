@@ -15,6 +15,7 @@ if (isset($_GET['el'])) {
     $browserURL = "render.php?el={$_GET['el']}&target=browser";
 	$xhpURL = "render.php?el={$_GET['el']}&target=xhp";
 	echo <a href="index.php">Back</a>;
+	echo <h1>&lt;{$_GET['el']}&gt;</h1>;
 	echo <h2>Code</h2>;
 	echo <pre style="padding: 5px;border:2px solid black; background-color:#F8F8F8;">{getCode($_GET['el'])}</pre>;
 	echo <h2>Browser Rendering</h2>;

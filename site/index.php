@@ -21,7 +21,7 @@ $newElementsTable->appendChild(<thead>
 		<td>Demo</td>
 		<td>Visual?</td>
 		<td>Firefox</td>
-		<td>Chrome</td>
+		<td>Chrome (Webkit)</td>
 		<td>Opera</td>
 		<td>IE</td>
 		<td>simulated in XHP?</td>
@@ -36,6 +36,9 @@ foreach ($files as $file) {
 		$content = file_get_contents('elements/'.$file); 
 		$visible = getValue("VISUAL",$content);
 		$chrome = getValue("CHROME",$content);
+		$firefox = getValue("FIREFOX",$content);
+		$opera = getValue("OPERA",$content);
+		$ie = getValue("IE",$content);
 		$xhp = getValue("XHP",$content);
 		$showURL = "show.php?el=$element";
 		$newElementsTable->appendChild(
@@ -51,7 +54,6 @@ foreach ($files as $file) {
 			</tr>);
 	}
 }
-
 ?>
 
 <h1>HTML5 support in XHP</h1>
@@ -66,4 +68,8 @@ foreach ($files as $file) {
 
 <h2>Spec</h2>
 
-<a href="spec/HTML5 differences from HTML4.html">link</a>
+<a href="spec/HTML5 differences from HTML4.html">HTML5 differences from HTML4</a> (progress marked inside this document)
+
+<h2>Browser Versions</h2>
+
+Chrome: 5.0.375.99 beta

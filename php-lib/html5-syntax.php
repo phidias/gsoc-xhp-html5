@@ -41,6 +41,17 @@ abstract class :xhp:html-element extends :x:primitive {
     string onmousemove, string onmouseout, string onmouseover, string onmouseup,
     string onreset, string onresize, string onselect, string onsubmit,
     string onunload,
+    
+    //HTML5 events
+    string oncanplay, string oncanplaythrough, string oncontextmenu, string ondrag,
+    string ondragend, string ondragenter, string ondragleave, string ondragover,
+    string ondragstart, string ondrop, string ondurationchange, string onemptied,
+    string onended, string onformchange, string onforminput, string oninput,
+    string oninvalid, string onloadeddata, string onloadedmetadata, string onloadstart,
+    string onmousewheel, string onplay, string onplaying, string onprogress,
+    string onratechange, string onreadystatechange, string onscroll, string onseeked,
+	string onseeking, string onshow, string onstalled, string onsuspend, 
+	string ontimeupdate, string onvolumechange, string onwaiting,
 
     // IE only
     string onmouseenter, string onmouseleave,
@@ -545,6 +556,13 @@ class :map extends :xhp:html-element {
 class :mark extends :xhp:html-element {
   category %flow, %phrase;
   protected $tagName = 'mark';
+}
+
+class :menu extends :xhp:html-singleton {
+  attribute enum {"context", "toolbar"} type, string label;
+  category %flow;
+  children (:li+ | (pcdata | %flow)*);
+  protected $tagName = 'menu';
 }
 
 class :meta extends :xhp:html-singleton {
