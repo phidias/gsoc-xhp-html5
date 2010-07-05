@@ -1,5 +1,7 @@
 <?php
-//VISIBLE: yes
+//VISUAL: yes
+//CHROME: no
+//XHP: yes
 echo <p lang="en-US">Consider the following quote:</p>;
 echo <blockquote lang="en-GB">
 		<p>Look around and you will find, no-one's really

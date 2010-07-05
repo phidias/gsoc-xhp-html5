@@ -13,6 +13,7 @@
       pre code { color:inherit }
       .done { background-color: #97ED8C; }
       .done-syntax-only, .done-so { background-color: #8CC8ED; }
+      .done-demo { background-color: #F2DCDF; }
       .na { background-color: #F2EC96; }
     </STYLE>
   <LINK href="http://www.w3.org/StyleSheets/TR/W3C-WD" rel="stylesheet">
@@ -20,6 +21,13 @@
  </HEAD><BODY>
   <DIV class="head">
    <P><A href="http://www.w3.org/"><IMG alt="W3C" height="48" src="./HTML5 differences from HTML4_files/w3c_home" width="72"></A></P>
+   
+   <H1>Color Code</H1>
+   
+   <div class=done>Done compeletely (no further attention needed)</div>
+   <div class=na>Not appropriate / Irrelevant</div>
+   <div class=done-so>Done (syntax only)</div>
+   <div class=done-demo>Demo is done</div>
 
    <H1 id="html5-diff">HTML5 differences from HTML4</H1>
 
@@ -452,32 +460,32 @@
 
   </P><UL>
    <LI>
-    <P class=done-so><A href="http://www.w3.org/TR/html5/semantics.html#the-section-element"><CODE>section</CODE></A>
+    <P class=done-demo><A href="http://www.w3.org/TR/html5/semantics.html#the-section-element"><CODE>section</CODE></A>
      represents a generic document or application section. It can be <A href="http://www.w3.org/TR/html5/semantics.html#headings-and-sections" title="Headings and sections">used together</A> with the
      <CODE>h1</CODE>, <CODE>h2</CODE>, <CODE>h3</CODE>, <CODE>h4</CODE>,
      <CODE>h5</CODE>, and <CODE>h6</CODE> elements to indicate the document
      structure.
 
    </P></LI><LI>
-    <P class=done-so><A href="http://www.w3.org/TR/html5/semantics.html#the-article-element"><CODE>article</CODE></A>
+    <P class=done-demo><A href="http://www.w3.org/TR/html5/semantics.html#the-article-element"><CODE>article</CODE></A>
      represents an independent piece of content of a document, such as a blog
      entry or newspaper article.
 
    </P></LI><LI>
-    <P class=done-so><A href="http://www.w3.org/TR/html5/semantics.html#the-aside-element"><CODE>aside</CODE></A>
+    <P class=done-demo><A href="http://www.w3.org/TR/html5/semantics.html#the-aside-element"><CODE>aside</CODE></A>
      represents a piece of content that is only slightly related to the rest
      of the page.
 
    </P></LI><LI>
-    <P class=done-so><A href="http://www.w3.org/TR/html5/semantics.html#the-hgroup-element"><CODE>hgroup</CODE></A>
+    <P class=done-demo><A href="http://www.w3.org/TR/html5/semantics.html#the-hgroup-element"><CODE>hgroup</CODE></A>
      represents the header of a section.
 
    </P></LI><LI>
-    <P class=done-so><A href="http://www.w3.org/TR/html5/semantics.html#the-header-element"><CODE>header</CODE></A>
+    <P class=done-demo><A href="http://www.w3.org/TR/html5/semantics.html#the-header-element"><CODE>header</CODE></A>
      represents a group of introductory or navigational aids.
 
    </P></LI><LI>
-    <P class=done-so><A href="http://www.w3.org/TR/html5/semantics.html#the-footer-element"><CODE>footer</CODE></A>
+    <P class=done-demo><A href="http://www.w3.org/TR/html5/semantics.html#the-footer-element"><CODE>footer</CODE></A>
      represents a footer for a section and can contain information about the
      author, copyright information, et cetera.
 
@@ -486,23 +494,23 @@
      represents a section of the document intended for navigation.
 
    </P></LI><LI>
-    <P class=done-so><A href="http://www.w3.org/TR/html5/embedded-content-0.html#the-figure-element"><CODE>figure</CODE></A>
+    <P class=done><A href="http://www.w3.org/TR/html5/embedded-content-0.html#the-figure-element"><CODE>figure</CODE></A>
      can be used to associate a caption together with some embedded content,
      such as a graphic or video:</P>
 
-    <PRE class=done-so><CODE>&lt;figure&gt;
+    <PRE class=done><CODE>&lt;figure&gt;
  &lt;video src="ogg"&gt;&lt;/video&gt;
  &lt;figcaption&gt;Example&lt;/figcaption&gt;
 &lt;/figure&gt;</CODE></PRE>
 
-    <P class=done-so><CODE>figcaption</CODE> provides the caption.</P>
+    <P class=done><CODE>figcaption</CODE> provides the caption.</P>
   </LI></UL>
 
   <P>Then there are several other new elements:
 
   </P><UL>
    <LI>
-    <P class=done-so><A href="http://www.w3.org/TR/html5/video.html#video"><CODE>video</CODE></A>
+    <P class=done-so><A href="http://www.w3.org/TR/html5/video.html#video"><CODE class=done-demo>video</CODE></A>
      and <A href="http://www.w3.org/TR/html5/video.html#audio"><CODE>audio</CODE></A>
      for multimedia content. Both provide an API so application authors can
      script their own user interface, but there is also a way to trigger a
@@ -515,16 +523,16 @@
      is used for plugin content.
 
    </P></LI><LI>
-    <P class=done-so><A href="http://www.w3.org/TR/html5/text-level-semantics.html#the-mark-element"><CODE>mark</CODE></A>
+    <P class=done><A href="http://www.w3.org/TR/html5/text-level-semantics.html#the-mark-element"><CODE>mark</CODE></A>
      represents a run of marked text.
 
    </P></LI><LI>
-    <P class=done-so><A href="http://www.w3.org/TR/html5/text-level-semantics.html#the-progress-element"><CODE>progress</CODE></A>
+    <P class=done-demo><A href="http://www.w3.org/TR/html5/text-level-semantics.html#the-progress-element"><CODE>progress</CODE></A>
      represents a completion of a task, such as downloading or when
      performing a series of expensive operations.
 
    </P></LI><LI>
-    <P class=done-so><A href="http://www.w3.org/TR/html5/text-level-semantics.html#the-meter-element"><CODE>meter</CODE></A>
+    <P class=done-demo><A href="http://www.w3.org/TR/html5/text-level-semantics.html#the-meter-element"><CODE>meter</CODE></A>
      represents a measurement, such as disk usage.
 
    </P></LI><LI>

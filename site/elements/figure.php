@@ -1,5 +1,7 @@
 <?php
-//VISIBLE: yes
+//VISUAL: yes
+//CHROME: no
+//XHP: yes
 echo <p>paragraph 1</p>;
 echo 
 	<figure>

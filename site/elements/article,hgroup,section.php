@@ -1,5 +1,6 @@
 <?php
-//VISIBLE: no
+//VISUAL: no
+//XHP: not needed
 echo 
 <article>
  <hgroup>
