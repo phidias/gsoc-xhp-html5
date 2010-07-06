@@ -1,6 +1,7 @@
 <?php
 //VISUAL: yes
 //CHROME: no
+//OPERA: no
 //XHP: yes
 echo <p>paragraph 1</p>;
 echo 

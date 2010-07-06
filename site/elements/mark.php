@@ -1,6 +1,7 @@
 <?php
 //VISUAL: yes
 //CHROME: no
+//OPERA: no
 //XHP: yes
 echo <p lang="en-US">Consider the following quote:</p>;
 echo <blockquote lang="en-GB">

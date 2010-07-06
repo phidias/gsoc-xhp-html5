@@ -1,6 +1,8 @@
 <?php
 //VISUAL: yes
 //CHROME: no
+//OPERA: no
+//XHP: todo
 echo
 <section class="progress window">
  <h1>Copying "Really Achieving Your Childhood Dreams"</h1>

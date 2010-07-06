@@ -1,6 +1,7 @@
 <?php
 //VISUAL: yes
 //CHROME: no
+//OPERA: no
 echo <ruby>
  漢 <rp>(</rp><rt>かん</rt><rp>)</rp>
  字 <rp>(</rp><rt>じ</rt><rp>)</rp>

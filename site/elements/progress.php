@@ -1,6 +1,8 @@
 <?php
-//CHROME: no
 //VISUAL: yes
+//CHROME: no
+//OPERA: no
+//XHP: todo
 echo 
 <section>
  <h2>Task Progress</h2>

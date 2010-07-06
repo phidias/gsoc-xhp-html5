@@ -1,6 +1,8 @@
 <?php
 //VISUAL: yes
 //CHROME: no
+//OPERA: no
+//XHP: todo
 echo
 <ul>
  <li>

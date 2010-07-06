@@ -1,6 +1,7 @@
 <?php
 //VISUAL: no
 //CHROME: no
+//OPERA: yes
 echo
 <section>
 	<input list="browsers" />

@@ -1,6 +1,7 @@
 <?php
 //VISUAL: yes
 //CHROME: no
+//OPERA: yes
 echo
 <form onsubmit="return false">
  <input name="a" type="number" step="any"/> +

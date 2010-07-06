@@ -7,7 +7,10 @@ if (isset($_GET['target'])) {
 		require_once '../php-lib/html5.php';
 }
 if (isset($_GET['el'])) {
-	require "elements/{$_GET['el']}.php";
+	if (isset($_GET['attr']))
+		require "attributes/{$_GET['el']}-{$_GET['attr']}.php";
+	else
+		require "elements/{$_GET['el']}.php";
 } else {
 	echo "No element specified";
 }
