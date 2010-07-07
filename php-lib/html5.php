@@ -348,7 +348,7 @@ class :em extends :xhp:html-element {
 }*/
 
 class :fieldset extends :xhp:html-element {
-  attribute bool disabled, string form;
+  attribute bool disabled, string form, string name;
   category %flow, %phrase;
   children (:legend?, (pcdata | %flow)*);
   protected $tagName = 'fieldset';
