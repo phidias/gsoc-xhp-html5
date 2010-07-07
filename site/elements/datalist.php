@@ -2,6 +2,7 @@
 //VISUAL: no
 //CHROME: no
 //OPERA: yes
+//XHP: todo
 echo
 <section>
 	<input list="browsers" />

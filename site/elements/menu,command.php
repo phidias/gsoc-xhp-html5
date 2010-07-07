@@ -2,6 +2,7 @@
 //VISUAL: yes
 //CHROME: no
 //OPERA: no
+//XHP: todo
 echo
 <menu type="toolbar">
  <command type="radio" radiogroup="alignment" checked="checked"

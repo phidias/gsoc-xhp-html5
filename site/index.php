@@ -115,7 +115,8 @@ echo $newAttributesTable;
 
 echo <h2>Spec</h2>;
 ?>
-<a href="spec/HTML5 differences from HTML4.html">HTML5 differences from HTML4</a> (progress marked inside this document)
+<a href="spec/HTML5 differences from HTML4.html">HTML5 differences from HTML4</a> (progress marked inside this document)<br>
+<a href="http://en.wikipedia.org/wiki/Comparison_of_layout_engines_(HTML_5)">Comparison of layout engines (HTML5)</a>
 
 <h2>Browser Versions</h2>
 

@@ -735,7 +735,7 @@ class :style extends :xhp:pseudo-singleton {
       "screen", "tty", "tv", "projection", "handheld", "print", "braille",
       "aural", "all"
     } media, bool scoped, string type;
-  category %metadata;
+  category %flow, %metadata;
   protected $tagName = 'style';
 }
 
