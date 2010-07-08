@@ -310,6 +310,57 @@ class :details extends :xhp:html-element {
   category %flow;
   children (:summary?, (pcdata | %flow)*);
   protected $tagName = 'details';
+  
+  protected function stringify() {
+  	$open = $this->getAttribute("open");
+  	$children = $this->getChildren();
+  	$summary = null;
+  	if (count($children) > 0) {
+  		 if ($children[0] instanceof :summary) {
+  		 	$summary = $children[0];
+  		 	$children = array_slice($children, 1, count($children)-1);
+  		 }
+  	}
+  	
+  	$details = <div style={$open ? "" : "display:none"} />;
+  	$details->appendChild($children);
+  	$id = $details->requireUniqueId();
+  	
+  	$div = <div/>;
+  	$div->appendChild($summary);
+  	$div->appendChild(
+  		<span style="font-size:small">
+	  		<span style="color:blue; cursor: pointer" 
+	  			onclick={"toggleDetails(this,'$id')"} 
+	  			class={$open ? "open" : "closed"}>
+	  			 ({$open ? "less" : "more"})  
+	  		</span>
+  		</span>);
+  	$div->appendChild($details);
+  	
+  	$script = <<<SCRIPT
+  	<script>
+  	if (!toggleDetails) {
+	  	function toggleDetails(el,id) {
+//	  		alert("-"+el.className+"-");
+	  		if (el.className == "open") {
+//	  			alert("hide"); 
+	  			document.getElementById(id).style.display = "none";
+	  			el.innerHTML = " (more) ";
+	  			el.className = "closed";
+	  		} else if (el.className == "closed") {
+//	  			alert("more");
+	  			document.getElementById(id).style.display = "";
+	  			el.innerHTML = " (less) ";
+	  			el.className = "open";
+	  		}
+	  	}
+  	}
+	</script>
+SCRIPT;
+  	
+    return $div->stringify() . $script;
+  }
 }
 
 class :div extends :xhp:html-element {
@@ -606,10 +657,11 @@ class :meter extends :xhp:html-element {
   	$max = $this->getAttribute("max");
   	$value = $this->getAttribute("value");
   	$title = $this->getAttribute("title");
+  	
   	$min = $min == null ? 0 : $min;
   	$max = $max == null ? 1 : $max;
-
   	$value = max($min,min($value,$max));
+
   	$percentage = ($value - $min) / ($max - $min);
   	$percentage = $percentage * 100;
  	
@@ -695,6 +747,27 @@ class :progress extends :xhp:html-element {
   category %flow, %phrase;
   children (pcdata | %flow)*;
   protected $tagName = 'progress';
+  
+  protected function stringify() {
+  	$max = $this->getAttribute("max");
+  	$value = $this->getAttribute("value");
+  	
+  	$max = $max == null ? 1 : $max;
+  	$value = max(0,min($value,$max));
+
+  	$percentage = $value / $max;
+  	$percentage = $percentage * 100;
+ 	
+ 	$title = "Progress $percentage% ($value out of $max)";
+  	
+    $outterDiv = <div style="display:inline-block;"/>;
+    $div = <div style="width: 50px; border:1px solid black; height: 10px; display:inline-block" title={$title}/>;
+    $innerDiv = <div style={"background-color:green; width: $percentage%; height: 10px; display: inline-block;"}/>;
+    $div->appendChild($innerDiv);
+    $outterDiv->appendChild($div);
+    $outterDiv->appendChild($this->getChildren());    
+    return $outterDiv->stringify();
+  }
 }
 
 class :q extends :xhp:html-element {
