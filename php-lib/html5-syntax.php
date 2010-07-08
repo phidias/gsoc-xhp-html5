@@ -579,7 +579,7 @@ class :meta extends :xhp:html-singleton {
 class :meter extends :xhp:html-element {
   attribute 
     string form, string high, string low, string max, 
-    string min, string optimum, string value;
+    string min, string optimum, string value @required;
   category %flow, %phrase;
   children (pcdata | %flow)*;
   protected $tagName = 'meter';

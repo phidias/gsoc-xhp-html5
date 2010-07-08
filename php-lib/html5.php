@@ -596,10 +596,33 @@ class :meta extends :xhp:html-singleton {
 class :meter extends :xhp:html-element {
   attribute 
     string form, string high, string low, string max, 
-    string min, string optimum, string value;
+    string min, string optimum, string value @required;
   category %flow, %phrase;
   children (pcdata | %flow)*;
   protected $tagName = 'meter';
+  
+  protected function stringify() {
+  	$min = $this->getAttribute("min");
+  	$max = $this->getAttribute("max");
+  	$value = $this->getAttribute("value");
+  	$title = $this->getAttribute("title");
+  	$min = $min == null ? 0 : $min;
+  	$max = $max == null ? 1 : $max;
+
+  	$value = max($min,min($value,$max));
+  	$percentage = ($value - $min) / ($max - $min);
+  	$percentage = $percentage * 100;
+ 	
+ 	$title = "Value is $value in the range of $min..$max $title";
+  	
+    $outterDiv = <div style="display:inline-block;"/>;
+    $div = <div style="width: 50px; border:1px solid black; height: 10px; display:inline-block" title={$title}/>;
+    $innerDiv = <div style={"background-color:green; width: $percentage%; height: 10px; display: inline-block;"}/>;
+    $div->appendChild($innerDiv);
+    $outterDiv->appendChild($div);
+    $outterDiv->appendChild($this->getChildren());    
+    return $outterDiv->stringify();
+  }
 }
 
 class :nav extends :xhp:html-element {
