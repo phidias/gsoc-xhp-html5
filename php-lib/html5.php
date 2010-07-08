@@ -557,6 +557,30 @@ class :input extends :xhp:html-singleton {
     string value;
   category %flow, %phrase, %interactive;
   protected $tagName = 'input';
+  
+  protected function stringify() {
+  	$attributes = $this->getAttributes();
+  	$placeholder = $this->getAttribute("placeholder");
+  	if ($placeholder != null) {
+	  	$id = $this->requireUniqueId();
+	  	$input = <input/>;
+	  	foreach ($this->getAttributes() as $key => $value) {
+	  		if ($key != "placeholder")
+	  			$input->setAttribute($key,$value);
+	  	}
+	  	$input->setAttribute("value",$placeholder);
+	  	$input->setAttribute("style","color:gray");
+	  	$input->setAttribute("onfocus","javascript:if(this.value=='$placeholder') {this.value=''; this.style.color='black';}");
+	  	$input->setAttribute("onblur","javascript:if(this.value=='') {this.value='$placeholder'; this.style.color='grey';}");
+	  	$script = <<<SCRIPT
+	  	<script>
+	  		
+	  	</script>
+SCRIPT;
+		return $input->stringify();
+	}
+  	return parent::stringify();
+  }
 }
 
 class :ins extends :xhp:html-element {

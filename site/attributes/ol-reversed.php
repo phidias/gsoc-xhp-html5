@@ -2,6 +2,7 @@
 //VISUAL: yes
 //CHROME: no
 //OPERA: no
+//XHP: todo
 echo <p>The list order should be descending</p>;
 echo
 <ol reversed="true">

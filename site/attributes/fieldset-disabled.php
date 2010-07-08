@@ -2,6 +2,7 @@
 //VISUAL: yes
 //CHROME: no
 //OPERA: yes
+//XHP: todo
 echo
 <fieldset name="clubfields" disabled="true">
  <legend> <label>
