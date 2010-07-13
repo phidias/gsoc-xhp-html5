@@ -2,6 +2,8 @@
 //VISUAL: yes
 //CHROME: yes
 //OPERA: yes
+//FIREFOX: no
+//XHP: todo
 echo <p>Refresh the page to randomly focus one of the following inputs</p>;
 $r = rand(1,4);
 echo <p>Focus now should be on input: <strong>{$r}</strong></p>;

@@ -2,9 +2,9 @@
 //VISUAL: yes
 //CHROME: yes
 //OPERA: no
-//XHP: done for input only (needs improvement)
-echo <script src="/xhp-html5/jquery-1.4.2.min.js"/>;
-echo <script src="/xhp-html5/html5.js"/>;
+//XHP: yes
+echo <script src="/xhp-html5/html5-init.js"/>;
+
 echo
 <dl>
 	<dt>placeholder</dt>

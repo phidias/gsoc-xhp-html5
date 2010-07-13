@@ -570,7 +570,9 @@ class :input extends :xhp:html-singleton {
 	  	}
 	  	$script = <<<SCRIPT
 	  	<script>
-	  		new xhp_Input('$id', { placeholder: '$placeholder' });
+	  		LazyJS.inline( function() {
+	  			new xhp_Input('$id', { placeholder: '$placeholder' });
+	  		});
 	  	</script>
 SCRIPT;
 		return $input->stringify() . $script;
@@ -937,7 +939,9 @@ class :textarea extends :xhp:pseudo-singleton {
 	  	}
 	  	$script = <<<SCRIPT
 	  	<script>
-	  		new xhp_Input('$id', { placeholder: '$placeholder' });
+	  		LazyJS.inline( function() {
+	  			new xhp_Input('$id', { placeholder: '$placeholder' });
+	  		});
 	  	</script>
 SCRIPT;
 		return $textarea->stringify() . $script;

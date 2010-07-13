@@ -2,6 +2,7 @@
 //VISUAL: yes
 //CHROME: yes
 //OPERA: yes
+//FIREFOX: no
 echo <p>Even though the form elements are marked as required, it should ignore it (no validation)</p>;
 echo 
 <form action="demo/form.php" novalidate="true">
