@@ -924,6 +924,26 @@ class :textarea extends :xhp:pseudo-singleton {
     bool required, int rows;
   category %flow, %phrase, %interactive;
   protected $tagName = 'textarea';
+  
+  protected function stringify() {
+  	$attributes = $this->getAttributes();
+  	$placeholder = $this->getAttribute("placeholder");
+  	if ($placeholder != null) {
+	  	$id = $this->requireUniqueId();
+	  	$textarea = <textarea/>;
+	  	foreach ($this->getAttributes() as $key => $value) {
+	  		if ($key != "placeholder")
+	  			$textarea->setAttribute($key,$value);
+	  	}
+	  	$script = <<<SCRIPT
+	  	<script>
+	  		new xhp_Input('$id', { placeholder: '$placeholder' });
+	  	</script>
+SCRIPT;
+		return $textarea->stringify() . $script;
+	}
+  	return parent::stringify();
+  }
 }
 
 class :tfoot extends :xhp:html-element {
