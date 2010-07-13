@@ -181,7 +181,9 @@ class :address extends :xhp:html-element {
 class :area extends :xhp:html-singleton {
   attribute 
     string alt, string coords, string href, string media, string ping,
-    string rel, string target;
+    string rel, 
+    enum {"circle","circ","default","poly","polygon","rect","rectangle"} shape,
+    string target;
   protected $tagName = 'area';
 }
 

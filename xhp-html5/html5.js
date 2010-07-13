@@ -1,3 +1,7 @@
+if (typeof xhp_html5 == "undefined") {
+
+xhp_html5 = true;
+
 xhp_Input = function(id, options) {
 	
 	var input = document.getElementById(id);
@@ -38,3 +42,26 @@ xhp_Input = function(id, options) {
 		
 	}
 };
+
+xhp_Fieldset = function(id,options) {
+	
+	if (options.disabled == '1') {
+		//disable the input elements that are not inside the legend
+		$("#"+id).children(":not(legend)").find("*").attr("disabled","disabled");
+	}
+};
+
+xhp_A = function(id,options) {
+	var clicked = false;
+	if (options.ping) {
+		$("#"+id).click(function() {
+			urls = options.ping.split(" ");
+			jQuery.each(urls,function(index,value) {
+				$.ajax({async:false,url:value});
+			});
+			return true;
+		});
+	}
+};
+
+}

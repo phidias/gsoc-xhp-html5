@@ -163,6 +163,32 @@ class :a extends :xhp:html-element {
   // may not contain %interactive
   children (pcdata | %flow)*;
   protected $tagName = 'a';
+  
+	protected function stringify() {
+  	$ping = $this->getAttribute("ping");
+  	if ($ping != null) {
+	  	$a = <a/>;
+	  	$id = $a->requireUniqueId();
+	  	
+	    foreach ($this->getAttributes() as $key => $value) {
+	    	if ($key != "ping")
+	    	  $a->setAttribute($key,$value);
+	    }
+	    
+	    $a->appendChild($this->getChildren());
+	    
+	    $script = <<<SCRIPT
+	  	<script>
+	  		LazyJS.inline( function() {
+	  			new xhp_A('$id', { ping: '$ping' });
+	  		});
+	  	</script>
+SCRIPT;
+	    
+	  	return $a->stringify() . $script;
+  	}
+  	return parent::stringify();
+  }
 }
 
 class :abbr extends :xhp:html-element {
@@ -181,8 +207,36 @@ class :address extends :xhp:html-element {
 class :area extends :xhp:html-singleton {
   attribute 
     string alt, string coords, string href, string media, string ping,
-    string rel, string target;
+    string rel, 
+    enum {"circle","circ","default","poly","polygon","rect","rectangle"} shape,
+    string target;
   protected $tagName = 'area';
+  
+	protected function stringify() {
+  	$ping = $this->getAttribute("ping");
+  	if ($ping != null) {
+	  	$area = <area/>;
+	  	$id = $area->requireUniqueId();
+	  	
+	    foreach ($this->getAttributes() as $key => $value) {
+	    	if ($key != "ping")
+	    	  $area->setAttribute($key,$value);
+	    }
+	    
+	    $area->appendChild($this->getChildren());
+	    
+	    $script = <<<SCRIPT
+	  	<script>
+	  		LazyJS.inline( function() {
+	  			new xhp_A('$id', { ping: '$ping' });
+	  		});
+	  	</script>
+SCRIPT;
+	    
+	  	return $area->stringify() . $script;
+  	}
+  	return parent::stringify();
+  }
 }
 
 class :article extends :xhp:html-element {
@@ -403,6 +457,32 @@ class :fieldset extends :xhp:html-element {
   category %flow, %phrase;
   children (:legend?, (pcdata | %flow)*);
   protected $tagName = 'fieldset';
+  
+  protected function stringify() {
+  	$disabled = $this->getAttribute("disabled");
+  	if ($disabled) {
+	  	$fieldset = <fieldset/>;
+	  	$id = $fieldset->requireUniqueId();
+	  	
+	    foreach ($this->getAttributes() as $key => $value) {
+	    	if ($key != "disabled")
+	    	  $fieldset->setAttribute($key,$value);
+	    }
+	    
+	    $fieldset->appendChild($this->getChildren());
+	    
+	    $script = <<<SCRIPT
+	  	<script>
+	  		LazyJS.inline( function() {
+	  			new xhp_Fieldset('$id', { disabled: '$disabled' });
+	  		});
+	  	</script>
+SCRIPT;
+	    
+	  	return $fieldset->stringify() . $script;
+  	}
+  	return parent::stringify();
+  }
 }
 
 class :figcaption extends :xhp:html-element {
