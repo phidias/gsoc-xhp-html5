@@ -2,7 +2,7 @@ if (typeof xhp_html5 == "undefined") {
 
 xhp_html5 = true;
 
-xhp_Input = function(id, options) {
+xhp_input = function(id, options) {
 	
 	var input = document.getElementById(id);
 	
@@ -41,18 +41,22 @@ xhp_Input = function(id, options) {
 		});
 		
 	}
+	
+	if (options.autofocus) {
+		input.focus();
+	}
 };
 
-xhp_Fieldset = function(id,options) {
-	
-	if (options.disabled == '1') {
+xhp_textarea = xhp_input;
+
+xhp_fieldset = function(id,options) {
+	if (options.disabled) {
 		//disable the input elements that are not inside the legend
 		$("#"+id).children(":not(legend)").find("*").attr("disabled","disabled");
 	}
 };
 
-xhp_A = function(id,options) {
-	var clicked = false;
+xhp_a = function(id,options) {
 	if (options.ping) {
 		$("#"+id).click(function() {
 			urls = options.ping.split(" ");
@@ -63,5 +67,7 @@ xhp_A = function(id,options) {
 		});
 	}
 };
+
+xhp_area = xhp_a;
 
 }

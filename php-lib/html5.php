@@ -78,7 +78,11 @@ abstract class :xhp:html-element extends :x:primitive {
   protected final function renderBaseAttrs() {
     $buf = '<'.$this->tagName;
     foreach ($this->getAttributes() as $key => $val) {
-      if ($val !== null && $val !== false) {
+      if ($this->html5attrs && in_array($key,$this->html5attrs))
+      	$show = false;
+      else
+      	$show = true;
+      if ($val !== null && $val !== false && $show) {
         $buf .= ' ' . htmlspecialchars($key) . '="' . htmlspecialchars($val, true) . '"';
       }
     }
@@ -97,14 +101,50 @@ abstract class :xhp:html-element extends :x:primitive {
     $this->setAttribute('class', trim($currentClasses.' '.$class));
     return $this;
   }
+  
+  protected function hasHTML5Attrs() {
+  	if (isset($this->html5attrs))
+  		foreach ($this->html5attrs as $attr) {
+  			if ($this->getAttribute($attr) != null)
+  				return true;
+  		}
+  	return false;
+  }
+  
+  protected function getJsonHtml5Attrs() {
+  	$attrs = array();
+	  	foreach ($this->html5attrs as $attr) {
+	  		if ($this->getAttribute($attr) != null)
+	  			$attrs[$attr] = $this->getAttribute($attr);
+	  	}
+	$json = json_encode($attrs);
+	return $json;
+  }
+  
+  protected function getScript() {
+    if ($this->hasHTML5Attrs()) {
+	  $id = $this->requireUniqueId();
+	  $json = $this->getJsonHtml5Attrs();
+	  $script = <<<SCRIPT
+	  <script>
+	    LazyJS.inline( function() {
+	      new xhp_{$this->tagName}('$id', $json);
+	  	});
+	  </script>
+SCRIPT;
+	 return $script;
+  	}
+  	return "";
+  }
 
   protected function stringify() {
+  	$script = $this->getScript();
     $buf = $this->renderBaseAttrs() . '>';
     foreach ($this->getChildren() as $child) {
       $buf .= :x:base::renderChild($child);
     }
     $buf .= '</'.$this->tagName.'>';
-    return $buf;
+    return $buf . $script;
   }
 }
 
@@ -116,7 +156,8 @@ abstract class :xhp:html-singleton extends :xhp:html-element {
   children empty;
 
   protected function stringify() {
-    return $this->renderBaseAttrs() . ' />';
+  	$script = $this->getScript();
+    return $this->renderBaseAttrs() . ' />' . $script;
   }
 }
 
@@ -133,11 +174,12 @@ abstract class :xhp:pseudo-singleton extends :xhp:html-element {
   }
 
   protected function stringify() {
+  	$script = $this->getScript();
     $buf = $this->renderBaseAttrs() . '>';
     if ($children = $this->getChildren()) {
       $buf .= :x:base::renderChild($children[0]);
     }
-    return $buf . '</'.$this->tagName.'>';
+    return $buf . '</'.$this->tagName.'>' . $script;
   }
 }
 
@@ -163,32 +205,7 @@ class :a extends :xhp:html-element {
   // may not contain %interactive
   children (pcdata | %flow)*;
   protected $tagName = 'a';
-  
-	protected function stringify() {
-  	$ping = $this->getAttribute("ping");
-  	if ($ping != null) {
-	  	$a = <a/>;
-	  	$id = $a->requireUniqueId();
-	  	
-	    foreach ($this->getAttributes() as $key => $value) {
-	    	if ($key != "ping")
-	    	  $a->setAttribute($key,$value);
-	    }
-	    
-	    $a->appendChild($this->getChildren());
-	    
-	    $script = <<<SCRIPT
-	  	<script>
-	  		LazyJS.inline( function() {
-	  			new xhp_A('$id', { ping: '$ping' });
-	  		});
-	  	</script>
-SCRIPT;
-	    
-	  	return $a->stringify() . $script;
-  	}
-  	return parent::stringify();
-  }
+  protected $html5attrs = array("ping");
 }
 
 class :abbr extends :xhp:html-element {
@@ -211,32 +228,7 @@ class :area extends :xhp:html-singleton {
     enum {"circle","circ","default","poly","polygon","rect","rectangle"} shape,
     string target;
   protected $tagName = 'area';
-  
-	protected function stringify() {
-  	$ping = $this->getAttribute("ping");
-  	if ($ping != null) {
-	  	$area = <area/>;
-	  	$id = $area->requireUniqueId();
-	  	
-	    foreach ($this->getAttributes() as $key => $value) {
-	    	if ($key != "ping")
-	    	  $area->setAttribute($key,$value);
-	    }
-	    
-	    $area->appendChild($this->getChildren());
-	    
-	    $script = <<<SCRIPT
-	  	<script>
-	  		LazyJS.inline( function() {
-	  			new xhp_A('$id', { ping: '$ping' });
-	  		});
-	  	</script>
-SCRIPT;
-	    
-	  	return $area->stringify() . $script;
-  	}
-  	return parent::stringify();
-  }
+  protected $html5attrs = array("ping");
 }
 
 class :article extends :xhp:html-element {
@@ -457,32 +449,7 @@ class :fieldset extends :xhp:html-element {
   category %flow, %phrase;
   children (:legend?, (pcdata | %flow)*);
   protected $tagName = 'fieldset';
-  
-  protected function stringify() {
-  	$disabled = $this->getAttribute("disabled");
-  	if ($disabled) {
-	  	$fieldset = <fieldset/>;
-	  	$id = $fieldset->requireUniqueId();
-	  	
-	    foreach ($this->getAttributes() as $key => $value) {
-	    	if ($key != "disabled")
-	    	  $fieldset->setAttribute($key,$value);
-	    }
-	    
-	    $fieldset->appendChild($this->getChildren());
-	    
-	    $script = <<<SCRIPT
-	  	<script>
-	  		LazyJS.inline( function() {
-	  			new xhp_Fieldset('$id', { disabled: '$disabled' });
-	  		});
-	  	</script>
-SCRIPT;
-	    
-	  	return $fieldset->stringify() . $script;
-  	}
-  	return parent::stringify();
-  }
+  protected $html5attrs = array("disabled");
 }
 
 class :figcaption extends :xhp:html-element {
@@ -637,28 +604,7 @@ class :input extends :xhp:html-singleton {
     string value;
   category %flow, %phrase, %interactive;
   protected $tagName = 'input';
-  
-  protected function stringify() {
-  	$attributes = $this->getAttributes();
-  	$placeholder = $this->getAttribute("placeholder");
-  	if ($placeholder != null) {
-	  	$id = $this->requireUniqueId();
-	  	$input = <input/>;
-	  	foreach ($this->getAttributes() as $key => $value) {
-	  		if ($key != "placeholder")
-	  			$input->setAttribute($key,$value);
-	  	}
-	  	$script = <<<SCRIPT
-	  	<script>
-	  		LazyJS.inline( function() {
-	  			new xhp_Input('$id', { placeholder: '$placeholder' });
-	  		});
-	  	</script>
-SCRIPT;
-		return $input->stringify() . $script;
-	}
-  	return parent::stringify();
-  }
+  protected $html5attrs = array('placeholder','autofocus');
 }
 
 class :ins extends :xhp:html-element {
@@ -1006,28 +952,7 @@ class :textarea extends :xhp:pseudo-singleton {
     bool required, int rows;
   category %flow, %phrase, %interactive;
   protected $tagName = 'textarea';
-  
-  protected function stringify() {
-  	$attributes = $this->getAttributes();
-  	$placeholder = $this->getAttribute("placeholder");
-  	if ($placeholder != null) {
-	  	$id = $this->requireUniqueId();
-	  	$textarea = <textarea/>;
-	  	foreach ($this->getAttributes() as $key => $value) {
-	  		if ($key != "placeholder")
-	  			$textarea->setAttribute($key,$value);
-	  	}
-	  	$script = <<<SCRIPT
-	  	<script>
-	  		LazyJS.inline( function() {
-	  			new xhp_Input('$id', { placeholder: '$placeholder' });
-	  		});
-	  	</script>
-SCRIPT;
-		return $textarea->stringify() . $script;
-	}
-  	return parent::stringify();
-  }
+  protected $html5attrs = array("placeholder","autofocus");
 }
 
 class :tfoot extends :xhp:html-element {

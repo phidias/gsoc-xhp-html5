@@ -4,6 +4,7 @@
 //OPERA: yes
 //FIREFOX: no
 //XHP: todo
+echo <script src="/xhp-html5/html5-init.js"/>;
 echo <p>Refresh the page to randomly focus one of the following inputs</p>;
 $r = rand(1,4);
 echo <p>Focus now should be on input: <strong>{$r}</strong></p>;
