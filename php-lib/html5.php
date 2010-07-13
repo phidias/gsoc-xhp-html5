@@ -568,16 +568,12 @@ class :input extends :xhp:html-singleton {
 	  		if ($key != "placeholder")
 	  			$input->setAttribute($key,$value);
 	  	}
-	  	$input->setAttribute("value",$placeholder);
-	  	$input->setAttribute("style","color:gray");
-	  	$input->setAttribute("onfocus","javascript:if(this.value=='$placeholder') {this.value=''; this.style.color='black';}");
-	  	$input->setAttribute("onblur","javascript:if(this.value=='') {this.value='$placeholder'; this.style.color='grey';}");
 	  	$script = <<<SCRIPT
 	  	<script>
-	  		
+	  		new xhp_Input('$id', { placeholder: '$placeholder' });
 	  	</script>
 SCRIPT;
-		return $input->stringify();
+		return $input->stringify() . $script;
 	}
   	return parent::stringify();
   }
