@@ -1,6 +1,7 @@
 if (typeof xhp_html5 == "undefined") {
 
 	xhp_html5 = true;
+	xhp_datalists = [];
 	
 	xhp_a = function(id,options) {
 		if (options.ping) {
@@ -15,6 +16,10 @@ if (typeof xhp_html5 == "undefined") {
 	};
 	
 	xhp_area = xhp_a;
+	
+	xhp_datalist = function(id, options) {
+		xhp_datalists[id] = options;
+	}
 	
 	xhp_fieldset = function(id,options) {
 		if (options.disabled) {
@@ -89,6 +94,10 @@ if (typeof xhp_html5 == "undefined") {
 					return true;
 				}
 			});
+		}
+		
+		if (options.list) {
+			$("#"+id).autocomplete(xhp_datalists[options.list]);
 		}
 		
 	};

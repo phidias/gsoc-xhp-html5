@@ -1,4 +1,5 @@
 <?php
+$XHP_HTML5_RESOURCES_URL = "/xhp-html5/";
 /*
   +----------------------------------------------------------------------+
   | XHP                                                                  |
@@ -337,6 +338,25 @@ class :datalist extends :xhp:html-element {
   category %flow, %phrase;
   children (:option+ | (pcdata | %phrase | %flow)*);
   protected $tagName = 'datalist';
+  
+  protected function stringify() {
+  	$options = array();
+  	foreach ($this->getChildren() as $child) {
+  		if ($child instanceof :option) {
+  			$options[] = $child->getAttribute("value");
+  		}
+  	}
+  	$id = $this->requireUniqueId();
+  	$json = json_encode($options);
+  	$script = <<<SCRIPT
+	  <script>
+	    LazyJS.inline( function() {
+	      new xhp_{$this->tagName}('$id', $json);
+	  	});
+	  </script>
+SCRIPT;
+	return $script;
+  }
 }
 
 class :dd extends :xhp:html-element {

@@ -261,8 +261,18 @@ var LazyJS = new function()
     };
 };
 
+
 LazyJS.directory("/xhp-html5/");
-LazyJS.externals( {sequence : ["jquery.js","html5.js"]} );
+LazyJS.externals( {sequence : ["jquery.js","jquery.lazy.js","html5.js"]} );
+LazyJS.inline( function() {
+	$.lazy({
+	    src: '/xhp-html5/jquery.autocomplete.min.js',
+	    name: 'autocomplete',
+	    dependencies : {
+			css: ["/xhp-html5/jquery.autocomplete.css"]
+		}
+});
+});
 
 var old = window.onload ? window.onload : function() {};
 window.onload = function () { old(); LazyJS.load() };
