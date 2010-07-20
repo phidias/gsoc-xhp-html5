@@ -3,7 +3,7 @@
 //CHROME: yes
 //OPERA: yes
 //FIREFOX: no
-//XHP: todo
+//XHP: yes
 echo <script src="/xhp-html5/html5-init.js"/>;
 echo <p>Refresh the page to randomly focus one of the following inputs</p>;
 $r = rand(1,4);
@@ -25,5 +25,5 @@ echo
 	<dd><textarea autofocus={$r == 3 ? "true" : "false"}/></dd>
 
 	<dt>input 4</dt>
-	<dd><button value="button" autofocus={$r == 4 ? "true" : "false"}/></dd>
+	<dd><button type="button" autofocus={$r == 4 ? "true" : "false"}>Click me!</button></dd>
 </dl>;

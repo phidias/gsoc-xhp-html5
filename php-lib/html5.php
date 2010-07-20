@@ -284,6 +284,7 @@ class :button extends :xhp:html-element {
   // may not contain interactive
   children (pcdata | %phrase)*;
   protected $tagName = 'button';
+  protected $html5attrs = array('autofocus');
 }
 
 class :canvas extends :xhp:html-element {
@@ -489,6 +490,7 @@ class :form extends :xhp:html-element {
   // may not contain form
   children (pcdata | %flow)*;
   protected $tagName = 'form';
+  protected $html5attrs = array('novalidate');
 }
 
 class :h1 extends :xhp:html-element {
@@ -604,7 +606,7 @@ class :input extends :xhp:html-singleton {
     string value;
   category %flow, %phrase, %interactive;
   protected $tagName = 'input';
-  protected $html5attrs = array('placeholder','autofocus');
+  protected $html5attrs = array('placeholder','autofocus','required','list');
 }
 
 class :ins extends :xhp:html-element {
@@ -752,6 +754,22 @@ class :ol extends :xhp:html-element {
   category %flow;
   children (:li)*;
   protected $tagName = 'ol';
+  
+  protected function stringify() {
+  	$list = <div class="xhp-ol" style="margin-bottom: 1em"/>;
+  	if ($this->getAttribute("start") != null) {
+  		$c = $this->getAttribute("start");
+  	} else {
+  		$c = count($this->getChildren());
+  	}
+  	foreach ($this->getChildren() as $child) {
+  		$item = <div class="xhp-li" style="text-indent:1em">{$c}. </div>;
+  		$item->appendChild($child->getChildren());
+  		$list->appendChild($item);
+  		$c--;
+  	}
+  	return $list->stringify();
+  }
 }
 
 class :optgroup extends :xhp:html-element {
@@ -865,6 +883,7 @@ class :select extends :xhp:html-element {
   category %flow, %phrase, %interactive;
   children (:option | :optgroup)*;
   protected $tagName = 'select';
+  protected $html5attrs = array('autofocus');
 }
 
 class :small extends :xhp:html-element {
@@ -952,7 +971,7 @@ class :textarea extends :xhp:pseudo-singleton {
     bool required, int rows;
   category %flow, %phrase, %interactive;
   protected $tagName = 'textarea';
-  protected $html5attrs = array("placeholder","autofocus");
+  protected $html5attrs = array("placeholder","autofocus","required");
 }
 
 class :tfoot extends :xhp:html-element {
