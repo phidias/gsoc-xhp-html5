@@ -122,10 +122,15 @@ abstract class :xhp:html-element extends :x:primitive {
 	return $json;
   }
   
+  protected function getJsonAttrs() {
+  	return json_encode($this->getAttributes());
+  }
+  
   protected function getScript() {
-    if ($this->hasHTML5Attrs()) {
+    if ($this->html5 || $this->hasHTML5Attrs()) {
 	  $id = $this->requireUniqueId();
-	  $json = $this->getJsonHtml5Attrs();
+	  //$json = $this->getJsonHtml5Attrs();
+	  $json = $this->getJsonAttrs();
 	  $script = <<<SCRIPT
 	  <script>
 	    LazyJS.inline( function() {
@@ -626,7 +631,8 @@ class :input extends :xhp:html-singleton {
     string value;
   category %flow, %phrase, %interactive;
   protected $tagName = 'input';
-  protected $html5attrs = array('placeholder','autofocus','required','list');
+  protected $html5attrs = array('placeholder','autofocus','required','list','pattern');
+  protected $html5 = true;
 }
 
 class :ins extends :xhp:html-element {

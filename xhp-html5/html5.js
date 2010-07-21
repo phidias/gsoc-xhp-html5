@@ -100,6 +100,41 @@ if (typeof xhp_html5 == "undefined") {
 			$("#"+id).autocomplete(xhp_datalists[options.list]);
 		}
 		
+		if (options.pattern && input.form) {
+			$(input.form).submit(function(event) {
+				if (input.form.xhp_novalidate)
+					return true;
+				
+				patternRegexp = new RegExp("^(?:"+options.pattern+")$");
+				if (input.value != '' && input.value.match(patternRegexp) == null) {
+					input.focus();
+					return false;
+				} else {
+					return true;
+				}
+			});
+		}
+		
+		if (options.type) {
+			if (options.type == "color") {
+				marker = $('<span />').insertBefore('#'+id);
+				$('#'+id).detach().attr("type","text").insertAfter(marker);
+				marker.remove();
+				$('#'+id).ColorPicker({
+					onSubmit: function(hsb, hex, rgb, el) {
+						$(el).val(hex);
+						$(el).css("background-color",hex);
+						$(el).ColorPickerHide();
+					},
+					onBeforeShow: function () {
+						$(this).ColorPickerSetColor(this.value);
+					}
+				}).bind('keyup', function(){
+					$(this).ColorPickerSetColor(this.value);
+				});
+			} else {
+			}
+		}
 	};
 
 	xhp_button = xhp_input;

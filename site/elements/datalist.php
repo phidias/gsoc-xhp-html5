@@ -2,7 +2,7 @@
 //VISUAL: no
 //CHROME: no
 //OPERA: yes
-//XHP: todo
+//XHP: yes
 echo <script src="/xhp-html5/html5-init.js"/>;
 echo <p>Start typing the name of a popular browser. A drop-down box should appear</p>;
 echo

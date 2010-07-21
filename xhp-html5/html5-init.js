@@ -271,7 +271,14 @@ LazyJS.inline( function() {
 	    dependencies : {
 			css: ["/xhp-html5/jquery.autocomplete.css"]
 		}
-});
+	});
+	$.lazy({
+	    src: '/xhp-html5/colorpicker/js/colorpicker.js',
+	    name: 'ColorPicker',
+	    dependencies : {
+			css: ["/xhp-html5/colorpicker/css/colorpicker.css"]
+		}
+	});
 });
 
 var old = window.onload ? window.onload : function() {};
