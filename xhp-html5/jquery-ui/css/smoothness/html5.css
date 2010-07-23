@@ -1,0 +1,7 @@
+table.html5-month tbody:hover {
+	border: 2px gray solid;
+}
+
+table.html5-week tbody tr:hover {
+	border: 2px gray solid;
+}

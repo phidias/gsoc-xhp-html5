@@ -116,10 +116,13 @@ if (typeof xhp_html5 == "undefined") {
 		}
 		
 		if (options.type) {
-			if (options.type == "color") {
+			var changeTypeToText = function(id) {
 				marker = $('<span />').insertBefore('#'+id);
 				$('#'+id).detach().attr("type","text").insertAfter(marker);
 				marker.remove();
+			}
+			if (options.type == "color") {
+				changeTypeToText(id);
 				$('#'+id).ColorPicker({
 					onSubmit: function(hsb, hex, rgb, el) {
 						$(el).val(hex);
@@ -131,6 +134,38 @@ if (typeof xhp_html5 == "undefined") {
 					}
 				}).bind('keyup', function(){
 					$(this).ColorPickerSetColor(this.value);
+				});
+			} else if (options.type == "date") {
+				changeTypeToText(id);
+				dp = $('#'+id).datepicker({
+					dateFormat: "yy-mm-dd",
+					showButtonPanel: true,
+					changeMonth: true,
+					changeYear: true,
+					showWeek: true,
+					closeText: "None"
+				});
+			} else if (options.type == "month") {
+				changeTypeToText(id);
+				$('#'+id).datepicker({
+					dateFormat: "yy-mm",
+					showButtonPanel: true,
+					changeMonth: true,
+					changeYear: true,
+					showWeek: true,
+					closeText: "None",
+					scope: 'month'
+				});
+			} else if (options.type == "week") {
+				changeTypeToText(id);
+				$('#'+id).datepicker({
+					dateFormat: "yy-mm-Ww",
+					showButtonPanel: true,
+					changeMonth: true,
+					changeYear: true,
+					showWeek: true,
+					closeText: "None",
+					scope: 'week'
 				});
 			} else {
 			}

@@ -279,6 +279,23 @@ LazyJS.inline( function() {
 			css: ["/xhp-html5/colorpicker/css/colorpicker.css"]
 		}
 	});
+/*	$.lazy({
+		src: '/xhp-html5/jquery-ui/js/jquery-ui-1.8.2.custom.min',
+		name: 'datepicker',
+		dependencies : {
+			css : ["/xhp-html5/jquery-ui/css/smoothness/jquery-ui-1.8.2.custom.css",
+			       "/xhp-html5/jquery-ui/css/smoothness/html5.css"]
+		}
+	});*/
+	$.lazy({
+		src: '/xhp-html5/jquery-ui/development-bundle/ui/jquery.ui.datepicker.js',
+		name: 'datepicker',
+		dependencies : {
+			js : ['/xhp-html5/jquery-ui/development-bundle/ui/jquery.ui.core.js'],
+			css : ["/xhp-html5/jquery-ui/css/smoothness/jquery-ui-1.8.2.custom.css",
+			       "/xhp-html5/jquery-ui/css/smoothness/html5.css"]
+		}
+	});
 });
 
 var old = window.onload ? window.onload : function() {};
