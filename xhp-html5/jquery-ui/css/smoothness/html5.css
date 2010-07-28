@@ -5,3 +5,8 @@ table.html5-month tbody:hover {
 table.html5-week tbody tr:hover {
 	border: 2px gray solid;
 }
+
+.html5-selected {
+	border: 2px gray solid;
+	background-color: #E3E3E3;
+}

@@ -631,7 +631,7 @@ class :input extends :xhp:html-singleton {
     string value;
   category %flow, %phrase, %interactive;
   protected $tagName = 'input';
-  protected $html5attrs = array('placeholder','autofocus','required','list','pattern');
+  protected $html5attrs = array('placeholder','autofocus','required','list','pattern','multiple');
   protected $html5 = true;
 }
 

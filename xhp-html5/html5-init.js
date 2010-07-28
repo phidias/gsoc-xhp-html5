@@ -265,36 +265,68 @@ var LazyJS = new function()
 LazyJS.directory("/xhp-html5/");
 LazyJS.externals( {sequence : ["jquery.js","jquery.lazy.js","html5.js"]} );
 LazyJS.inline( function() {
-	$.lazy({
+/*	$.lazy({
 	    src: '/xhp-html5/jquery.autocomplete.min.js',
 	    name: 'autocomplete',
 	    dependencies : {
 			css: ["/xhp-html5/jquery.autocomplete.css"]
-		}
-	});
+		},
+		cache: true
+	});*/
 	$.lazy({
 	    src: '/xhp-html5/colorpicker/js/colorpicker.js',
 	    name: 'ColorPicker',
 	    dependencies : {
 			css: ["/xhp-html5/colorpicker/css/colorpicker.css"]
-		}
+		},
+//		cache: true
 	});
-/*	$.lazy({
-		src: '/xhp-html5/jquery-ui/js/jquery-ui-1.8.2.custom.min',
-		name: 'datepicker',
-		dependencies : {
-			css : ["/xhp-html5/jquery-ui/css/smoothness/jquery-ui-1.8.2.custom.css",
-			       "/xhp-html5/jquery-ui/css/smoothness/html5.css"]
-		}
-	});*/
 	$.lazy({
-		src: '/xhp-html5/jquery-ui/development-bundle/ui/jquery.ui.datepicker.js',
+		src: '/xhp-html5/jquery-ui/js/jquery-ui-1.8.2.custom.min.js',
+		name: 'autocomplete',
+		dependencies : {
+			css : ["/xhp-html5/jquery-ui/css/smoothness/jquery-ui-1.8.2.custom.css"]
+		},
+//		cache: true
+	});
+	$.lazy({
+		src: '/xhp-html5/jquery-ui/js/jquery-ui-1.8.2.custom.min.js',
 		name: 'datepicker',
 		dependencies : {
-			js : ['/xhp-html5/jquery-ui/development-bundle/ui/jquery.ui.core.js'],
 			css : ["/xhp-html5/jquery-ui/css/smoothness/jquery-ui-1.8.2.custom.css",
 			       "/xhp-html5/jquery-ui/css/smoothness/html5.css"]
-		}
+		},
+//		cache: true
+	});
+	$.lazy({
+		src: '/xhp-html5/jquery-ui/js/ui.spinner.js',
+		name: 'spinner',
+		dependencies: {
+			css: ['/xhp-html5/jquery-ui/css/ui.spinner.css']
+		},
+//		cache: true
+	});
+	$.lazy({
+		src: '/xhp-html5/timepicker/jquery-ui-timepicker-addon-0.5.js',
+		name: 'datetimepicker',
+		dependencies : {
+			js : ['/xhp-html5/jquery-ui/js/jquery-ui-1.8.2.custom.min.js'],
+			css : ['/xhp-html5/timepicker/jquery-ui-timepicker.css',
+			       "/xhp-html5/jquery-ui/css/smoothness/jquery-ui-1.8.2.custom.css",
+			       "/xhp-html5/jquery-ui/css/smoothness/html5.css"]
+		},
+//		cache: true
+	});
+	$.lazy({
+		src: '/xhp-html5/timepicker/jquery-ui-timepicker-addon-0.5.js',
+		name: 'timepicker',
+		dependencies : {
+			js : ['/xhp-html5/jquery-ui/js/jquery-ui-1.8.2.custom.min.js'],
+			css : ['/xhp-html5/timepicker/jquery-ui-timepicker.css',
+			       "/xhp-html5/jquery-ui/css/smoothness/jquery-ui-1.8.2.custom.css",
+			       "/xhp-html5/jquery-ui/css/smoothness/html5.css"]
+		},
+//		cache: true
 	});
 });
 

@@ -1,4 +1,12 @@
 if (typeof xhp_html5 == "undefined") {
+	
+	function iso8601WeekInverse(year,week) {
+		var checkDate = new Date(year,0,1);
+		checkDate.setDate(checkDate.getDate() + 4 - (checkDate.getDay() || 7));
+		//checkDate now has the date of the first thursday of the year
+		checkDate.setDate(checkDate.getDate() + (week*7));
+		return checkDate;
+	}
 
 	xhp_html5 = true;
 	xhp_datalists = [];
@@ -97,7 +105,41 @@ if (typeof xhp_html5 == "undefined") {
 		}
 		
 		if (options.list) {
-			$("#"+id).autocomplete(xhp_datalists[options.list]);
+			if (options.multiple) {
+				var split = function(val) {
+					return val.split(/,\s*/);
+				}
+				var extractLast = function(term) {
+					return split(term).pop();
+				}
+				
+				$("#"+id).autocomplete({
+					minLength: 0,
+					source: function(request, response) {
+						// delegate back to autocomplete, but extract the last term
+						response($.ui.autocomplete.filter(xhp_datalists[options.list], extractLast(request.term)));
+					},
+					focus: function() {
+						// prevent value inserted on focus
+						return false;
+					},
+					select: function(event, ui) {
+						var terms = split( this.value );
+						// remove the current input
+						terms.pop();
+						// add the selected item
+						terms.push( ui.item.value );
+						// add placeholder to get the comma-and-space at the end
+						terms.push("");
+						this.value = terms.join(", ");
+						return false;
+					}
+				});
+			} else {
+				$("#"+id).autocomplete({
+					source: xhp_datalists[options.list], 
+				});
+			}
 		}
 		
 		if (options.pattern && input.form) {
@@ -121,7 +163,11 @@ if (typeof xhp_html5 == "undefined") {
 				$('#'+id).detach().attr("type","text").insertAfter(marker);
 				marker.remove();
 			}
-			if (options.type == "color") {
+			if (options.type == "number") {
+//				alert("number");
+//				changeTypeToText(id);
+//				$('#'+id).spinner({currency: '$'});
+			} else if (options.type == "color") {
 				changeTypeToText(id);
 				$('#'+id).ColorPicker({
 					onSubmit: function(hsb, hex, rgb, el) {
@@ -137,36 +183,96 @@ if (typeof xhp_html5 == "undefined") {
 				});
 			} else if (options.type == "date") {
 				changeTypeToText(id);
-				dp = $('#'+id).datepicker({
+				dp = $('#'+id).datetimepicker({
 					dateFormat: "yy-mm-dd",
+					firstDay : 1,
 					showButtonPanel: true,
 					changeMonth: true,
 					changeYear: true,
 					showWeek: true,
+					showHour: false,
+					showMinute: false,
+					showTime: false,
+					holdDatepickerOpen: false,
+					alwaysSetTime: false,
 					closeText: "None"
 				});
 			} else if (options.type == "month") {
 				changeTypeToText(id);
-				$('#'+id).datepicker({
-					dateFormat: "yy-mm",
+				$('#'+id).datetimepicker({
+					dateFormat: "yy-mm-dd",
+					firstDay : 1,
 					showButtonPanel: true,
 					changeMonth: true,
 					changeYear: true,
 					showWeek: true,
+					showHour: false,
+					showMinute: false,
+					showTime: false,
+					alwaysSetTime: false,
+					holdDatepickerOpen: false,
 					closeText: "None",
-					scope: 'month'
+					scope: 'month',
+					beforeShow: function(input,inst) {
+						if (input.value) {
+							input.value += "-01";
+						}
+						inst.settings.dateFormat = "yy-mm-dd";
+					},
+					onClose: function(dateText,inst) {
+						inst.settings.dateFormat = "yy-mm";
+					}
 				});
 			} else if (options.type == "week") {
 				changeTypeToText(id);
-				$('#'+id).datepicker({
-					dateFormat: "yy-mm-Ww",
+				$('#'+id).datetimepicker({
+					dateFormat: "yy-mm-dd",
+					firstDay : 1,
 					showButtonPanel: true,
 					changeMonth: true,
 					changeYear: true,
 					showWeek: true,
+					showHour: false,
+					showMinute: false,
+					showTime: false,
+					holdDatepickerOpen: false,
+					alwaysSetTime: false,
 					closeText: "None",
-					scope: 'week'
+					scope: 'week',
+					beforeShow: function(input,inst) {
+						if (typeof input.value != "undefined") {
+							var year = input.value.split("-W")[0];
+							var week = input.value.split("-W")[1];
+							console.log(year+ " " + week);
+							weekDate = iso8601WeekInverse(year,week);
+							console.log(weekDate);
+							inst.settings.dateFormat = "yy-mm-dd";
+							input.value = weekDate.getFullYear() + "-" + (weekDate.getMonth()+1) + "-" + weekDate.getDate();
+						}
+					},
+					onClose: function(dateText,inst) {
+						console.log(dateText);
+						if (dateText) {
+							week = $.datepicker.iso8601Week(new Date(dateText));
+							inst.settings.dateFormat = "yy-W"+week;
+						}
+					}
 				});
+			} else if (options.type == "datetime") {
+				changeTypeToText(id);
+				$('#'+id).datetimepicker({
+					dateFormat: "yy-mm-dd",
+					firstDay : 1,
+					showButtonPanel: true,
+					withTime: true,
+					changeMonth: true,
+					changeYear: true,
+					showWeek: true,
+					closeText: "Done",
+				});
+			} else if (options.type == "time") {
+				changeTypeToText(id);
+				$('#'+id).timepicker();
 			} else {
 			}
 		}
