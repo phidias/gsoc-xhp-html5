@@ -263,23 +263,20 @@ var LazyJS = new function()
 
 
 LazyJS.directory("/xhp-html5/");
-LazyJS.externals( {sequence : ["jquery.js","jquery.lazy.js","html5.js"]} );
+LazyJS.externals( {sequence : ["jquery.js",
+                               "jquery.lazy.source.js",
+                               "html5.js"
+//                               "colorpicker/js/colorpicker.js",
+//                               "jquery-ui/js/jquery-ui-1.8.2.custom.min.js",
+//                               "timepicker/jquery-ui-timepicker-addon-0.5.js",
+                               ]} );
 LazyJS.inline( function() {
-/*	$.lazy({
-	    src: '/xhp-html5/jquery.autocomplete.min.js',
-	    name: 'autocomplete',
-	    dependencies : {
-			css: ["/xhp-html5/jquery.autocomplete.css"]
-		},
-		cache: true
-	});*/
 	$.lazy({
 	    src: '/xhp-html5/colorpicker/js/colorpicker.js',
 	    name: 'ColorPicker',
 	    dependencies : {
 			css: ["/xhp-html5/colorpicker/css/colorpicker.css"]
 		},
-//		cache: true
 	});
 	$.lazy({
 		src: '/xhp-html5/jquery-ui/js/jquery-ui-1.8.2.custom.min.js',
@@ -287,7 +284,6 @@ LazyJS.inline( function() {
 		dependencies : {
 			css : ["/xhp-html5/jquery-ui/css/smoothness/jquery-ui-1.8.2.custom.css"]
 		},
-//		cache: true
 	});
 	$.lazy({
 		src: '/xhp-html5/jquery-ui/js/jquery-ui-1.8.2.custom.min.js',
@@ -296,15 +292,6 @@ LazyJS.inline( function() {
 			css : ["/xhp-html5/jquery-ui/css/smoothness/jquery-ui-1.8.2.custom.css",
 			       "/xhp-html5/jquery-ui/css/smoothness/html5.css"]
 		},
-//		cache: true
-	});
-	$.lazy({
-		src: '/xhp-html5/jquery-ui/js/ui.spinner.js',
-		name: 'spinner',
-		dependencies: {
-			css: ['/xhp-html5/jquery-ui/css/ui.spinner.css']
-		},
-//		cache: true
 	});
 	$.lazy({
 		src: '/xhp-html5/timepicker/jquery-ui-timepicker-addon-0.5.js',
@@ -315,7 +302,6 @@ LazyJS.inline( function() {
 			       "/xhp-html5/jquery-ui/css/smoothness/jquery-ui-1.8.2.custom.css",
 			       "/xhp-html5/jquery-ui/css/smoothness/html5.css"]
 		},
-//		cache: true
 	});
 	$.lazy({
 		src: '/xhp-html5/timepicker/jquery-ui-timepicker-addon-0.5.js',
@@ -326,9 +312,9 @@ LazyJS.inline( function() {
 			       "/xhp-html5/jquery-ui/css/smoothness/jquery-ui-1.8.2.custom.css",
 			       "/xhp-html5/jquery-ui/css/smoothness/html5.css"]
 		},
-//		cache: true
 	});
 });
+
 
 var old = window.onload ? window.onload : function() {};
 window.onload = function () { old(); LazyJS.load() };

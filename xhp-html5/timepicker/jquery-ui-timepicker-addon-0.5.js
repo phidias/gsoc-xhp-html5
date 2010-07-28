@@ -14,6 +14,9 @@
 * #ui-timepicker-div dl dt{ height: 25px; }
 * #ui-timepicker-div dl dd{ margin: -25px 0 10px 65px; }
 */
+if (typeof _xhp_timepicker == "undefined") {
+_xhp_timepicker = true;
+
 (function($) {
     function Timepicker() { }
 
@@ -346,74 +349,71 @@
             }
         });
 
-        if (o.withTime) {
-            //########################################################################
-            // the bad hack :/ override datepicker so it doesnt close on select
-            //########################################################################
-            $.datepicker._selectDate = function(id, dateStr) {
-                var target = $(id);
-                var inst = this._getInst(target[0]);
-                var holdDatepickerOpen = (this._get(inst, 'holdDatepickerOpen') === true) ? true : false; // this line for timepicker..
-                dateStr = (dateStr != null ? dateStr : this._formatDate(inst));
+        $(this).datepicker(tp.defaults);
+    };
+    
+  //########################################################################
+    // the bad hack :/ override datepicker so it doesnt close on select
+    //########################################################################
+    $.datepicker._selectDate = function(id, dateStr) {
+        var target = $(id);
+        var inst = this._getInst(target[0]);
+        var holdDatepickerOpen = (this._get(inst, 'holdDatepickerOpen') === true) ? true : false; // this line for timepicker..
+        dateStr = (dateStr != null ? dateStr : this._formatDate(inst));
 
-                if (inst.input)
-                    inst.input.val(dateStr);
-                this._updateAlternate(inst);
-                var onSelect = this._get(inst, 'onSelect');
-                if (onSelect)
-                    onSelect.apply((inst.input ? inst.input[0] : null), [dateStr, inst]);  // trigger custom callback
-                else if (inst.input)
-                    inst.input.trigger('change'); // fire the change event
-                if (inst.inline)
-                    this._updateDatepicker(inst);
-                else if (holdDatepickerOpen) { } // this line for timepicker..
-                else {
-                    this._hideDatepicker();
-                    this._lastInput = inst.input[0];
-                    if (typeof (inst.input[0]) != 'object')
-                        inst.input.focus(); // restore focus
-                    this._lastInput = null;
-                }
-
-                this._notifyChange(inst);
-            };
-
-            //Change 4 - reduction of code required for override for _updateDatepicker function 
-            $.datepicker._base_updateDatepicker = $.datepicker._updateDatepicker;
-            //#############################################################################################
-            // second bad hack :/ override datepicker so it triggers an event when changing the input field
-            //#############################################################################################
-            /* Generate the date picker content. */
-            $.datepicker._updateDatepicker = function(inst) {
-                this._base_updateDatepicker(inst);
-                // Reload the time control when changing something in the input text field.
-                this._beforeShow(inst.input, inst);
-            };
-
-            $.datepicker._beforeShow = function(input, inst) {
-                var beforeShow = this._get(inst, 'beforeShow');
-                if (beforeShow)
-                    beforeShow.apply((inst.input ? inst.input[0] : null), [inst.input, inst]);
-            };
-            //End Change 4 --------------------------------------------------------------------
-
-            //#######################################################################################
-            // third bad hack :/ override datepicker so it allows spaces and colan in the input field
-            //#######################################################################################
-            $.datepicker._doKeyPress = function(event) {
-                var inst = $.datepicker._getInst(event.target);
-                if ($.datepicker._get(inst, 'constrainInput')) {
-                    var dateChars = $.datepicker._possibleChars($.datepicker._get(inst, 'dateFormat'));
-                    var chr = String.fromCharCode(event.charCode == undefined ? event.keyCode : event.charCode);
-                    // keyCode == 58 => ":"
-                    // keyCode == 32 => " "
-                    return event.ctrlKey || (chr < ' ' || !dateChars || dateChars.indexOf(chr) > -1 || event.keyCode == 58 || event.keyCode == 32);
-                }
-            };
-            
+        if (inst.input)
+            inst.input.val(dateStr);
+        this._updateAlternate(inst);
+        var onSelect = this._get(inst, 'onSelect');
+        if (onSelect)
+            onSelect.apply((inst.input ? inst.input[0] : null), [dateStr, inst]);  // trigger custom callback
+        else if (inst.input)
+            inst.input.trigger('change'); // fire the change event
+        if (inst.inline)
+            this._updateDatepicker(inst);
+        else if (holdDatepickerOpen) { } // this line for timepicker..
+        else {
+            this._hideDatepicker();
+            this._lastInput = inst.input[0];
+            if (typeof (inst.input[0]) != 'object')
+                inst.input.focus(); // restore focus
+            this._lastInput = null;
         }
 
-        $(this).datepicker(tp.defaults);
+        this._notifyChange(inst);
+    };
+
+    //Change 4 - reduction of code required for override for _updateDatepicker function 
+    $.datepicker._base_updateDatepicker = $.datepicker._updateDatepicker;
+    //#############################################################################################
+    // second bad hack :/ override datepicker so it triggers an event when changing the input field
+    //#############################################################################################
+    /* Generate the date picker content. */
+    $.datepicker._updateDatepicker = function(inst) {
+        this._base_updateDatepicker(inst);
+        // Reload the time control when changing something in the input text field.
+        this._beforeShow(inst.input, inst);
+    };
+
+    $.datepicker._beforeShow = function(input, inst) {
+        var beforeShow = this._get(inst, 'beforeShow');
+        if (beforeShow)
+            beforeShow.apply((inst.input ? inst.input[0] : null), [inst.input, inst]);
+    };
+    //End Change 4 --------------------------------------------------------------------
+
+    //#######################################################################################
+    // third bad hack :/ override datepicker so it allows spaces and colan in the input field
+    //#######################################################################################
+    $.datepicker._doKeyPress = function(event) {
+        var inst = $.datepicker._getInst(event.target);
+        if ($.datepicker._get(inst, 'constrainInput')) {
+            var dateChars = $.datepicker._possibleChars($.datepicker._get(inst, 'dateFormat'));
+            var chr = String.fromCharCode(event.charCode == undefined ? event.keyCode : event.charCode);
+            // keyCode == 58 => ":"
+            // keyCode == 32 => " "
+            return event.ctrlKey || (chr < ' ' || !dateChars || dateChars.indexOf(chr) > -1 || event.keyCode == 58 || event.keyCode == 32);
+        }
     };
 
     //########################################################################
@@ -426,3 +426,5 @@
     };
 
 })(jQuery);
+
+}
