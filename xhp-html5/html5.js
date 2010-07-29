@@ -147,12 +147,25 @@ if (typeof xhp_html5 == "undefined") {
 				if (input.form.xhp_novalidate)
 					return true;
 				
-				patternRegexp = new RegExp("^(?:"+options.pattern+")$");
+				var patternRegexp = new RegExp("^(?:"+options.pattern+")$");
 				if (input.value != '' && input.value.match(patternRegexp) == null) {
 					input.focus();
 					return false;
 				} else {
 					return true;
+				}
+			});
+			
+			$(input.form).change(function(event) {
+				if (input.form.xhp_novalidate) {
+					//do nothing
+				} else {
+					var patternRegexp = new RegExp("^(?:"+options.pattern+")$");
+					if (input.value != '' && input.value.match(patternRegexp) == null) {
+						$('#'+id).addClass("html5-invalid");
+					} else {
+						$('#'+id).removeClass("html5-invalid");
+					}
 				}
 			});
 		}

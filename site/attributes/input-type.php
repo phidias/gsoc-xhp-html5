@@ -2,7 +2,7 @@
 //VISUAL: yes
 //CHROME: range and search widgets. validation for all the rest
 //OPERA: all widgets except search and color
-//XHP: todo
+//XHP: widgets yes, validation no
 echo <script src="/xhp-html5/html5-init.js"/>;
 echo <div><strong>Types of input</strong></div>;
 echo

@@ -112,6 +112,8 @@ abstract class :xhp:html-element extends :x:primitive {
   	return false;
   }
   
+  /* Not Used */
+  /*
   protected function getJsonHtml5Attrs() {
   	$attrs = array();
 	  	foreach ($this->html5attrs as $attr) {
@@ -120,7 +122,7 @@ abstract class :xhp:html-element extends :x:primitive {
 	  	}
 	$json = json_encode($attrs);
 	return $json;
-  }
+  }*/
   
   protected function getJsonAttrs() {
   	return json_encode($this->getAttributes());

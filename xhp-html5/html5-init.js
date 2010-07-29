@@ -261,7 +261,6 @@ var LazyJS = new function()
     };
 };
 
-
 LazyJS.directory("/xhp-html5/");
 LazyJS.externals( {sequence : ["jquery.js",
                                "jquery.lazy.source.js",
@@ -313,8 +312,16 @@ LazyJS.inline( function() {
 			       "/xhp-html5/jquery-ui/css/smoothness/html5.css"]
 		},
 	});
-});
+	
+	$("head").append("<link>");
+	css = $("head").children(":last");
+	css.attr({
+	  rel:  "stylesheet",
+	  type: "text/css",
+	  href: "/xhp-html5/jquery-ui/css/smoothness/html5.css"
+	});
 
+});
 
 var old = window.onload ? window.onload : function() {};
 window.onload = function () { old(); LazyJS.load() };

@@ -180,7 +180,9 @@ _xhp_timepicker = true;
 
                 $dp.find('.ui-datepicker-calendar').after($tp);
                 
-                //Added by Avgoustinos Kadis to support month & week
+                /*
+                 * Added by Avgoustinos Kadis to support month & week highlighting
+                 */
                 if (tp_inst.defaults.scope == "week") {
 	                $dp.find('.ui-datepicker-calendar tbody tr').mouseenter(function(event) {
 	                	$(event.currentTarget).addClass('html5-selected');
@@ -191,11 +193,9 @@ _xhp_timepicker = true;
                 } else if (tp_inst.defaults.scope == "month") {
                 	$dp.find('.ui-datepicker-calendar tbody').mouseenter(function(event) {
 	                	$(event.currentTarget).addClass('html5-selected');
-//	                	$dp.find('.ui-datepicker-calendar tbody a.ui-state-default').addClass('ui-state-hover');
 	                });
 	                $dp.find('.ui-datepicker-calendar tbody').mouseleave(function(event) {
 	                	$(event.currentTarget).removeClass('html5-selected');
-//	                	$dp.find('.ui-datepicker-calendar tbody a.ui-state-hover').removeClass("ui-state-hover");
 	                });
                 }
                 
