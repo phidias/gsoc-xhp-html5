@@ -286,6 +286,20 @@ LazyJS.inline( function() {
 	});
 	$.lazy({
 		src: '/xhp-html5/jquery-ui/js/jquery-ui-1.8.2.custom.min.js',
+		name: 'slider',
+		dependencies : {
+			css : ["/xhp-html5/jquery-ui/css/smoothness/jquery-ui-1.8.2.custom.css"]
+		},
+	});
+	$.lazy({
+		src: '/xhp-html5/jquery-ui/js/jquery-ui-1.8.2.custom.min.js',
+		name: 'progressbar',
+		dependencies : {
+			css : ["/xhp-html5/jquery-ui/css/smoothness/jquery-ui-1.8.2.custom.css"]
+		},
+	});
+	$.lazy({
+		src: '/xhp-html5/jquery-ui/js/jquery-ui-1.8.2.custom.min.js',
 		name: 'datepicker',
 		dependencies : {
 			css : ["/xhp-html5/jquery-ui/css/smoothness/jquery-ui-1.8.2.custom.css",

@@ -172,7 +172,7 @@ if (typeof xhp_html5 == "undefined") {
 		
 		if (options.type) {
 			var changeTypeToText = function(id) {
-				marker = $('<span />').insertBefore('#'+id);
+				var marker = $('<span />').insertBefore('#'+id);
 				$('#'+id).detach().attr("type","text").insertAfter(marker);
 				marker.remove();
 			}
@@ -302,6 +302,23 @@ if (typeof xhp_html5 == "undefined") {
 			} else if (options.type == "time") {
 				changeTypeToText(id);
 				$('#'+id).timepicker();
+			} else if (options.type == "range") {
+				changeTypeToText(id);
+				var slider_orientation = $('#'+id).height() / $('#'+id).width() > 1.0 ? "vertical" : "horizontal";
+				var cssName = slider_orientation == "vertical" ? "height" : "width";
+				var cssSize = slider_orientation == "vertical" ? $('#'+id).height() : $('#'+id).width();
+				marker = $('<div id="'+id+'_range" style="'+cssName+':'+cssSize+'" />').insertBefore('#'+id);
+				marker.slider({
+					value : input.value,
+					min: parseFloat(options.min),
+					max: parseFloat(options.max),
+					step: parseFloat(options.step),
+					orientation: slider_orientation,
+					slide: function(event,ui) {
+						$('#'+id).val(ui.value);
+					}
+				});
+				$('#'+id).hide();
 			} else {
 			}
 		}
@@ -312,4 +329,40 @@ if (typeof xhp_html5 == "undefined") {
 	xhp_select = xhp_input;
 	
 	xhp_textarea = xhp_input;
+	
+	xhp_progress = function(id, options) {
+		var progress = $("#"+id);
+		
+		var calcProgressValue = function(paramValue) {
+			var max = 1.0;
+			if (options.max)
+				max = parseFloat(options.max);
+			var value = 0.0;
+			if (typeof paramValue != "undefined") {
+				value = parseFloat(paramValue);
+			} else {
+				value = max; //set to max so if not set it will be indeterminate
+			}
+			value = Math.max(0,Math.min(value,max));
+			return (value / max) * 100;
+		};
+		
+		progress.progressbar({
+			value: calcProgressValue(options.value,options.max)
+		});
+		
+		//create a function to read and change progress
+		document.getElementById(id).setProgress = function(value) {
+			progress.progressbar("value",calcProgressValue(value));
+		}
+		document.getElementById(id).getProgress = function() {
+			return progress.progressbar("value") * options.max / 100;
+		}
+		document.getElementById(id).incProgress = function(amount) {
+			document.getElementById(id).setProgress(document.getElementById(id).getProgress() + amount);
+		}
+		document.getElementById(id).decProgress = function(amount) {
+			document.getElementById(id).setProgress(document.getElementById(id).getProgress() - amount);
+		}
+	};
 }

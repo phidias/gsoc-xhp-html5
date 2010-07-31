@@ -128,9 +128,10 @@ abstract class :xhp:html-element extends :x:primitive {
   	return json_encode($this->getAttributes());
   }
   
-  protected function getScript() {
+  protected function getScript($id=null) {
     if ($this->html5 || $this->hasHTML5Attrs()) {
-	  $id = $this->requireUniqueId();
+      if ($id == null)
+	    $id = $this->requireUniqueId();
 	  //$json = $this->getJsonHtml5Attrs();
 	  $json = $this->getJsonAttrs();
 	  $script = <<<SCRIPT
@@ -841,27 +842,42 @@ class :progress extends :xhp:html-element {
   category %flow, %phrase;
   children (pcdata | %flow)*;
   protected $tagName = 'progress';
+  protected $html5 = true;
   
   protected function stringify() {
-  	$max = $this->getAttribute("max");
-  	$value = $this->getAttribute("value");
-  	
-  	$max = $max == null ? 1 : $max;
-  	$value = max(0,min($value,$max));
-
-  	$percentage = $value / $max;
-  	$percentage = $percentage * 100;
- 	
- 	$title = "Progress $percentage% ($value out of $max)";
-  	
-    $outterDiv = <div style="display:inline-block;"/>;
-    $div = <div style="width: 50px; border:1px solid black; height: 10px; display:inline-block" title={$title}/>;
-    $innerDiv = <div style={"background-color:green; width: $percentage%; height: 10px; display: inline-block;"}/>;
-    $div->appendChild($innerDiv);
-    $outterDiv->appendChild($div);
-    $outterDiv->appendChild($this->getChildren());    
-    return $outterDiv->stringify();
+	$outterDiv = <div/>;
+  	$id = $outterDiv->requireUniqueId();
+	$decl = $outterDiv->__xhpAttributeDeclaration();
+  	foreach ($this->getAttributes() as $key => $value)
+  		if (isset($decl[$key]))
+  			$outterDiv->setAttribute($key,$value);
+  	$nextDiv = <div/>;
+  	$nextDiv->appendChild($this->getChildren());
+  	return $outterDiv->stringify() . 
+  			$nextDiv->stringify() . 
+  			parent::getScript($outterDiv->getAttribute("id"));
   }
+  
+//  protected function stringify() {
+//  	$max = $this->getAttribute("max");
+//  	$value = $this->getAttribute("value");
+//  	
+//  	$max = $max == null ? 1 : $max;
+//  	$value = max(0,min($value,$max));
+//
+//  	$percentage = $value / $max;
+//  	$percentage = $percentage * 100;
+// 	
+// 	$title = "Progress $percentage% ($value out of $max)";
+  	
+//    $outterDiv = <div style="display:inline-block;"/>;
+//    $div = <div style="width: 50px; border:1px solid black; height: 10px; display:inline-block" title={$title}/>;
+//    $innerDiv = <div style={"background-color:green; width: $percentage%; height: 10px; display: inline-block;"}/>;
+//    $div->appendChild($innerDiv);
+//    $outterDiv->appendChild($div);
+//    $outterDiv->appendChild($this->getChildren());
+//    return $outterDiv->stringify() . parent::getScript("progress");
+//  }
 }
 
 class :q extends :xhp:html-element {
