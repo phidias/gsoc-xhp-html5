@@ -1,5 +1,7 @@
 if (typeof xhp_html5 == "undefined") {
 	
+	$("<style type='text/css'> .html5-invalid { border: 2px solid red; } </style>").appendTo("head");
+	
 	function iso8601WeekInverse(year,week) {
 		var checkDate = new Date(year,0,1);
 		checkDate.setDate(checkDate.getDate() + 4 - (checkDate.getDay() || 7));
@@ -43,12 +45,102 @@ if (typeof xhp_html5 == "undefined") {
 		if (options.novalidate) {
 			form.xhp_novalidate = options.novalidate;
 		}
-		
+
+		$('#'+id).submit(function(event) {
+			if (form.xhp_novalidate)
+				return true;
+			
+			var allValid = true;
+			
+			$('#'+id).find("input").each(function() {
+				if (!this.isValid()) {
+					$(this).addClass("html5-invalid");
+					allValid = false;
+				} else {
+					$(this).removeClass("html5-invalid");
+				}
+			});
+			
+			return allValid;
+		});	
 	}
 	
 	xhp_input = function(id, options) {
 		
 		var input = document.getElementById(id);
+		
+		input.isValid = function() {
+			if (options.required) {
+				if (input.value == '')
+					return false;
+			}
+			if (options.pattern) {
+				var patternRegexp = new RegExp("^(?:"+options.pattern+")$");
+				if (input.value != '' && input.value.match(patternRegexp) == null)
+					return false;
+			}
+			if (options.type == "url") {
+				var urlRegExp = new RegExp('^(https?|ftp|gopher|telnet|file|notes|ms-help):((//)|(\\\\))+[\\w\\d:#@%/;$()~_?\+-=\\\.&]*$');
+				if (input.value != '' && input.value.match(urlRegExp) == null)
+					return false;
+			}
+			if (options.type == "number") {
+				var numberRegExp = new RegExp('^[-+]?[0-9]*\.?[0-9]+([eE][-+]?[0-9]+)?$');
+				if (input.value != '' && input.value.match(numberRegExp) == null)
+					return false;
+			}
+			if (options.type == "email") {
+				var emailRegExp = new RegExp('^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,6}$');
+				if (input.value != '' && input.value.match(emailRegExp) == null)
+					return false;
+			}
+			if (options.type == "date") {
+				var datetimelocalRegExp = new RegExp('^\\d{4}-(0[1-9]|1[012])-(0[1-9]|[12][0-9]|3[01])$');
+				if (input.value != '' && input.value.match(datetimelocalRegExp) == null)
+					return false;
+			}
+			if (options.type == "month") {
+				var datetimelocalRegExp = new RegExp('^\\d{4}-(0[1-9]|1[012])$');
+				if (input.value != '' && input.value.match(datetimelocalRegExp) == null)
+					return false;
+			}
+			if (options.type == "week") {
+				var datetimelocalRegExp = new RegExp('^\\d{4}-W(0[1-9]|[1-4][0-9]|5[012])$');
+				if (input.value != '' && input.value.match(datetimelocalRegExp) == null)
+					return false;
+			}
+			if (options.type == "time") {
+				var datetimelocalRegExp = new RegExp('^([0-1][0-9]|2[0-3]):([0-5][0-9])(:[0-5][0-9](\\.\d+)?)?$');
+				if (input.value != '' && input.value.match(datetimelocalRegExp) == null)
+					return false;
+			}
+			if (options.type == "datetime-local") {
+				var datetimelocalRegExp = new RegExp('^\\d{4}-(0[1-9]|1[012])-(0[1-9]|[12][0-9]|3[01])T([0-1][0-9]|2[0-3]):([0-5][0-9])(:[0-5][0-9](\\.\d+)?)?$');
+				if (input.value != '' && input.value.match(datetimelocalRegExp) == null)
+					return false;
+			}
+			if (options.type == "datetime") {
+				var datetimelocalRegExp = new RegExp('^\\d{4}-(0[1-9]|1[012])-(0[1-9]|[12][0-9]|3[01])T([0-1][0-9]|2[0-3]):([0-5][0-9])(:[0-5][0-9](\\.\\d+)?)?(Z|[\\+-]([0-1][0-9]|2[0-3]):[0-5][0-9])$');
+				console.log(datetimelocalRegExp);
+				if (input.value != '' && input.value.match(datetimelocalRegExp) == null)
+					return false;
+			}
+			return true;
+		}
+		
+		//input onchange validation
+		$(input).bind('change load keyup focus',function(event) {
+			console.log(event);
+			if (input.form && input.form.xhp_novalidate) {
+				//do nothing
+			} else {
+				if (this.isValid()) {
+					$(this).removeClass("html5-invalid");
+				} else {
+					$(this).addClass("html5-invalid");
+				}
+			}
+		});
 		
 		if (options.placeholder) {
 		
@@ -90,19 +182,19 @@ if (typeof xhp_html5 == "undefined") {
 			input.focus();
 		}
 		
-		if (options.required && input.form) {
-			$(input.form).submit(function(event) {
-				if (input.form.xhp_novalidate)
-					return true;
-				
-				if (input.value == '') {
-					input.focus();
-					return false;
-				} else {
-					return true;
-				}
-			});
-		}
+//		if (options.required && input.form) {
+//			$(input.form).submit(function(event) {
+//				if (input.form.xhp_novalidate)
+//					return true;
+//				
+//				if (input.value == '') {
+//					input.focus();
+//					return false;
+//				} else {
+//					return true;
+//				}
+//			});
+//		}
 		
 		if (options.list) {
 			if (options.multiple) {
@@ -142,33 +234,33 @@ if (typeof xhp_html5 == "undefined") {
 			}
 		}
 		
-		if (options.pattern && input.form) {
-			$(input.form).submit(function(event) {
-				if (input.form.xhp_novalidate)
-					return true;
-				
-				var patternRegexp = new RegExp("^(?:"+options.pattern+")$");
-				if (input.value != '' && input.value.match(patternRegexp) == null) {
-					input.focus();
-					return false;
-				} else {
-					return true;
-				}
-			});
-			
-			$(input.form).change(function(event) {
-				if (input.form.xhp_novalidate) {
-					//do nothing
-				} else {
-					var patternRegexp = new RegExp("^(?:"+options.pattern+")$");
-					if (input.value != '' && input.value.match(patternRegexp) == null) {
-						$('#'+id).addClass("html5-invalid");
-					} else {
-						$('#'+id).removeClass("html5-invalid");
-					}
-				}
-			});
-		}
+//		if (options.pattern && input.form) {
+//			$(input.form).submit(function(event) {
+//				if (input.form.xhp_novalidate)
+//					return true;
+//				
+//				var patternRegexp = new RegExp("^(?:"+options.pattern+")$");
+//				if (input.value != '' && input.value.match(patternRegexp) == null) {
+//					input.focus();
+//					return false;
+//				} else {
+//					return true;
+//				}
+//			});
+//			
+//			$(input.form).change(function(event) {
+//				if (input.form.xhp_novalidate) {
+//					//do nothing
+//				} else {
+//					var patternRegexp = new RegExp("^(?:"+options.pattern+")$");
+//					if (input.value != '' && input.value.match(patternRegexp) == null) {
+//						$('#'+id).addClass("html5-invalid");
+//					} else {
+//						$('#'+id).removeClass("html5-invalid");
+//					}
+//				}
+//			});
+//		}
 		
 		if (options.type) {
 			var changeTypeToText = function(id) {
@@ -269,9 +361,10 @@ if (typeof xhp_html5 == "undefined") {
 					onClose: function(dateText,inst) {
 						var mydate = $('#'+id).datepicker("getDate");
 						var week = $.datepicker.iso8601Week(mydate);
-						inst.settings.dateFormat = "yy-W"+week;
+						var strWeek = (week < 10 ? "0" : "") + week;
+						inst.settings.dateFormat = "yy-W"+strWeek;
 						if (input.value == input.valueBefore) {
-							input.value = mydate.getFullYear() + "-W" + week;
+							input.value = mydate.getFullYear() + "-W" + strWeek;
 						}
 					}
 				});
@@ -356,7 +449,7 @@ if (typeof xhp_html5 == "undefined") {
 			progress.progressbar("value",calcProgressValue(value));
 		}
 		document.getElementById(id).getProgress = function() {
-			return progress.progressbar("value") * options.max / 100;
+			return progress.progressbar("value") * options.max / 100; //rescaled to its original range
 		}
 		document.getElementById(id).incProgress = function(amount) {
 			document.getElementById(id).setProgress(document.getElementById(id).getProgress() + amount);
@@ -365,4 +458,5 @@ if (typeof xhp_html5 == "undefined") {
 			document.getElementById(id).setProgress(document.getElementById(id).getProgress() - amount);
 		}
 	};
+	
 }

@@ -519,6 +519,7 @@ class :form extends :xhp:html-element {
   children (pcdata | %flow)*;
   protected $tagName = 'form';
   protected $html5attrs = array('novalidate');
+  protected $html5 = true;
 }
 
 class :h1 extends :xhp:html-element {
