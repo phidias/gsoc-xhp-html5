@@ -9,7 +9,7 @@ echo
 	<dt>url</dt>
 	<dd><input type="url" name="url_invalid" value="invalid url" /><input type="url" name="url_valid" value="http://html5.com" /></dd>
 	<dt>number</dt>
-    <dd><input type="number" value="abc" /><input type="number" value="2321" /></dd>
+    <dd><input type="number" value="abc" /><input type="number" value="2321" min="10" max="100" /><input type="number" value="2321" /></dd>
 	<dt>email</dt>
     <dd><input type="email" value="some@emailcom" /><input type="email" value="some@email.com" /></dd>
     <dt>datetime</dt>

@@ -108,6 +108,11 @@ if (typeof xhp_html5 == "undefined") {
 				var numberRegExp = new RegExp('^[-+]?[0-9]*\.?[0-9]+([eE][-+]?[0-9]+)?$');
 				if (input.value != '' && input.value.match(numberRegExp) == null)
 					return false;
+				
+				if (options.min && parseFloat(input.value) < parseFloat(options.min))
+					return false;
+				if (options.max && parseFloat(input.value) > parseFloat(options.max))
+					return false;
 			}
 			if (options.type == "email") {
 				var emailRegExp = new RegExp('^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,6}$');
