@@ -454,6 +454,13 @@ class :html extends :xhp:html-element {
   protected $tagName = 'html';
 }
 
+class :html5init extends :xhp:html-singleton {
+  protected $tagName = 'html5';
+  protected function stringify() {
+  	return "";
+  }
+}
+
 class :i extends :xhp:html-element {
   category %flow, %phrase;
   children (pcdata | %phrase)*;

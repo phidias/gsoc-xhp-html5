@@ -32,10 +32,30 @@ if (typeof xhp_html5 == "undefined") {
 	}
 	
 	xhp_fieldset = function(id,options) {
+		var fieldset = document.getElementById(id);
 		if (options.disabled) {
 			//disable the input elements that are not inside the legend
 			$("#"+id).children(":not(legend)").find("*").attr("disabled","disabled");
 		}
+		fieldset.enabled = !options.disabled;
+		fieldset.enable = function() {
+			$("#"+id).children(":not(legend)").find("*").removeAttr('disabled');
+			fieldset.enabled = true;
+		};
+		fieldset.disable = function() {
+			$("#"+id).children(":not(legend)").find("*").attr("disabled","disabled");
+			fieldset.enabled = false;
+		};
+		fieldset.isEnabled = function() {
+			return fieldset.enabled;
+		};
+		fieldset.toggle = function() {
+			if (fieldset.isEnabled()) {
+				fieldset.disable();
+			} else {
+				fieldset.enable();
+			}
+		};
 	};
 	
 	xhp_form = function(id,options) {
@@ -52,7 +72,7 @@ if (typeof xhp_html5 == "undefined") {
 			
 			var allValid = true;
 			
-			$('#'+id).find("input").each(function() {
+			$('#'+id).find("input,textarea,select").each(function() {
 				if (!this.isValid()) {
 					$(this).addClass("html5-invalid");
 					allValid = false;
@@ -120,8 +140,7 @@ if (typeof xhp_html5 == "undefined") {
 					return false;
 			}
 			if (options.type == "datetime") {
-				var datetimelocalRegExp = new RegExp('^\\d{4}-(0[1-9]|1[012])-(0[1-9]|[12][0-9]|3[01])T([0-1][0-9]|2[0-3]):([0-5][0-9])(:[0-5][0-9](\\.\\d+)?)?(Z|[\\+-]([0-1][0-9]|2[0-3]):[0-5][0-9])$');
-				console.log(datetimelocalRegExp);
+				var datetimelocalRegExp = new RegExp('^\\d{4}-(0[1-9]|1[012])-(0[1-9]|[12][0-9]|3[01])T([0-1][0-9]|2[0-3]):([0-5][0-9])(:[0-5][0-9](\\.\\d+)?)?(Z|[\\+-]([0-1][0-9]|2[0-3]):[0-5][0-9])?$');
 				if (input.value != '' && input.value.match(datetimelocalRegExp) == null)
 					return false;
 			}
@@ -130,7 +149,6 @@ if (typeof xhp_html5 == "undefined") {
 		
 		//input onchange validation
 		$(input).bind('change load keyup focus',function(event) {
-			console.log(event);
 			if (input.form && input.form.xhp_novalidate) {
 				//do nothing
 			} else {
@@ -412,7 +430,15 @@ if (typeof xhp_html5 == "undefined") {
 					}
 				});
 				$('#'+id).hide();
+			} else if (options.type == "number") {
+				console.log("here");
+				changeTypeToText(id);
+			} else if (options.type == "email") {
+				changeTypeToText(id);
+			} else if (options.type == "url") {
+				changeTypeToText(id);
 			} else {
+				
 			}
 		}
 	};

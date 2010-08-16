@@ -1,5 +1,8 @@
 <?php
-echo <script src="/xhp-html5/html5-init.js"/>;
+//CHROME: yes
+//FIREFOX: no
+//XHP: yes
+echo <html5init/>;
 echo
 <form action="demo/form.php">
 <dl>

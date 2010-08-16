@@ -4,11 +4,11 @@
 //OPERA: yes
 //FIREFOX: no
 //XHP: yes (90%)
-echo <script src="/xhp-html5/html5-init.js"/>;
+echo <html5init/>;
 echo
-<fieldset name="clubfields" disabled="true">
+<fieldset id="fset" name="clubfields" disabled="true">
  <legend><label>
-  <input type="checkbox" name="club" onchange="form.clubfields.disabled = !checked"/>
+  <input type="checkbox" name="club" onchange="document.getElementById('fset').toggle()"/>
   Use Club Card
  </label></legend>
  <p><label>Name on card: <input name="clubname" required="true"/></label></p>

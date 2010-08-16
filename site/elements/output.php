@@ -2,6 +2,7 @@
 //VISUAL: yes
 //CHROME: no
 //OPERA: yes
+//XHP: no
 echo
 <form onsubmit="return false">
  <input name="a" type="number" step="any"/> +

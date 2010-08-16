@@ -4,7 +4,7 @@
 //OPERA: yes
 //FIREFOX: no
 //XHP: yes
-echo <script src="/xhp-html5/html5-init.js"/>;
+echo <html5init/>;
 echo <p>Even though the form elements are marked as required, it should ignore it (no validation)</p>;
 echo <p>This form should submit (novalidate = true)</p>;
 echo 

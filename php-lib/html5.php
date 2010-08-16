@@ -1,5 +1,4 @@
 <?php
-$XHP_HTML5_RESOURCES_URL = "/xhp-html5/";
 /*
   +----------------------------------------------------------------------+
   | XHP                                                                  |
@@ -415,7 +414,7 @@ class :details extends :xhp:html-element {
   	
   	$script = <<<SCRIPT
   	<script>
-  	if (!toggleDetails) {
+  	if (typeof toggleDetails == "undefined") {
 	  	function toggleDetails(el,id) {
 //	  		alert("-"+el.className+"-");
 	  		if (el.className == "open") {
@@ -591,6 +590,16 @@ class :html extends :xhp:html-element {
   attribute string manifest, string xmlns;
   children (:head, :body);
   protected $tagName = 'html';
+}
+
+class :html5init extends :xhp:html-singleton {
+  protected function stringify() {
+  	global $XHP_HTML5_RESOURCES_URL;
+  	$url = $XHP_HTML5_RESOURCES_URL . "/html5-init.js";
+  	$script = <script>{"__xhp_html5_resources_url = '$XHP_HTML5_RESOURCES_URL'"}</script>;
+  	$src = <script src={$url}/>;
+  	return $script->stringify() . $src->stringify();
+  }
 }
 
 class :i extends :xhp:html-element {

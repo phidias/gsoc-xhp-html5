@@ -3,8 +3,8 @@
 //CHROME: yes
 //OPERA: yes
 //FIREFOX: no
-//XHP: todo
-echo <script src="/xhp-html5/html5-init.js"/>;
+//XHP: yes
+echo <html5init/>;
 echo
 <form action="demo/form.php">
 	<dl>

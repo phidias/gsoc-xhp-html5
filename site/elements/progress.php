@@ -3,7 +3,7 @@
 //CHROME: no
 //OPERA: no
 //XHP: yes
-echo <script src="/xhp-html5/html5-init.js"/>;
+echo <html5init/>;
 echo 
 <section>
  <p>Loading: <progress id="p" max="100" style="width:200px;height:20px"></progress></p>

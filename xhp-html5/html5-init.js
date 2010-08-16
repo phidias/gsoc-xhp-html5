@@ -261,7 +261,7 @@ var LazyJS = new function()
     };
 };
 
-LazyJS.directory("/xhp-html5/");
+LazyJS.directory(__xhp_html5_resources_url + "/");
 LazyJS.externals( {sequence : ["jquery.js",
                                "jquery.lazy.source.js",
                                "html5.js"
@@ -271,59 +271,59 @@ LazyJS.externals( {sequence : ["jquery.js",
                                ]} );
 LazyJS.inline( function() {
 	$.lazy({
-	    src: '/xhp-html5/colorpicker/js/colorpicker.js',
+	    src: __xhp_html5_resources_url + '/colorpicker/js/colorpicker.js',
 	    name: 'ColorPicker',
 	    dependencies : {
-			css: ["/xhp-html5/colorpicker/css/colorpicker.css"]
+			css: [__xhp_html5_resources_url + "/colorpicker/css/colorpicker.css"]
 		},
 	});
 	$.lazy({
-		src: '/xhp-html5/jquery-ui/js/jquery-ui-1.8.2.custom.min.js',
+		src: __xhp_html5_resources_url + '/jquery-ui/js/jquery-ui-1.8.2.custom.min.js',
 		name: 'autocomplete',
 		dependencies : {
-			css : ["/xhp-html5/jquery-ui/css/smoothness/jquery-ui-1.8.2.custom.css"]
+			css : [__xhp_html5_resources_url + "/jquery-ui/css/smoothness/jquery-ui-1.8.2.custom.css"]
 		},
 	});
 	$.lazy({
-		src: '/xhp-html5/jquery-ui/js/jquery-ui-1.8.2.custom.min.js',
+		src: __xhp_html5_resources_url + '/jquery-ui/js/jquery-ui-1.8.2.custom.min.js',
 		name: 'slider',
 		dependencies : {
-			css : ["/xhp-html5/jquery-ui/css/smoothness/jquery-ui-1.8.2.custom.css"]
+			css : [__xhp_html5_resources_url + "/jquery-ui/css/smoothness/jquery-ui-1.8.2.custom.css"]
 		},
 	});
 	$.lazy({
-		src: '/xhp-html5/jquery-ui/js/jquery-ui-1.8.2.custom.min.js',
+		src: __xhp_html5_resources_url + '/jquery-ui/js/jquery-ui-1.8.2.custom.min.js',
 		name: 'progressbar',
 		dependencies : {
-			css : ["/xhp-html5/jquery-ui/css/smoothness/jquery-ui-1.8.2.custom.css"]
+			css : [__xhp_html5_resources_url + "/jquery-ui/css/smoothness/jquery-ui-1.8.2.custom.css"]
 		},
 	});
 	$.lazy({
-		src: '/xhp-html5/jquery-ui/js/jquery-ui-1.8.2.custom.min.js',
+		src: __xhp_html5_resources_url + '/jquery-ui/js/jquery-ui-1.8.2.custom.min.js',
 		name: 'datepicker',
 		dependencies : {
-			css : ["/xhp-html5/jquery-ui/css/smoothness/jquery-ui-1.8.2.custom.css",
-			       "/xhp-html5/jquery-ui/css/smoothness/html5.css"]
+			css : [__xhp_html5_resources_url + "/jquery-ui/css/smoothness/jquery-ui-1.8.2.custom.css",
+			       __xhp_html5_resources_url + "/jquery-ui/css/smoothness/html5.css"]
 		},
 	});
 	$.lazy({
-		src: '/xhp-html5/timepicker/jquery-ui-timepicker-addon-0.5.js',
+		src: __xhp_html5_resources_url + '/timepicker/jquery-ui-timepicker-addon-0.5.js',
 		name: 'datetimepicker',
 		dependencies : {
-			js : ['/xhp-html5/jquery-ui/js/jquery-ui-1.8.2.custom.min.js'],
-			css : ['/xhp-html5/timepicker/jquery-ui-timepicker.css',
-			       "/xhp-html5/jquery-ui/css/smoothness/jquery-ui-1.8.2.custom.css",
-			       "/xhp-html5/jquery-ui/css/smoothness/html5.css"]
+			js : [__xhp_html5_resources_url + '/jquery-ui/js/jquery-ui-1.8.2.custom.min.js'],
+			css : [__xhp_html5_resources_url + '/timepicker/jquery-ui-timepicker.css',
+			       __xhp_html5_resources_url + "/jquery-ui/css/smoothness/jquery-ui-1.8.2.custom.css",
+			       __xhp_html5_resources_url + "/jquery-ui/css/smoothness/html5.css"]
 		},
 	});
 	$.lazy({
-		src: '/xhp-html5/timepicker/jquery-ui-timepicker-addon-0.5.js',
+		src: __xhp_html5_resources_url + '/timepicker/jquery-ui-timepicker-addon-0.5.js',
 		name: 'timepicker',
 		dependencies : {
-			js : ['/xhp-html5/jquery-ui/js/jquery-ui-1.8.2.custom.min.js'],
-			css : ['/xhp-html5/timepicker/jquery-ui-timepicker.css',
-			       "/xhp-html5/jquery-ui/css/smoothness/jquery-ui-1.8.2.custom.css",
-			       "/xhp-html5/jquery-ui/css/smoothness/html5.css"]
+			js : [__xhp_html5_resources_url + '/jquery-ui/js/jquery-ui-1.8.2.custom.min.js'],
+			css : [__xhp_html5_resources_url + '/timepicker/jquery-ui-timepicker.css',
+			       __xhp_html5_resources_url + "/jquery-ui/css/smoothness/jquery-ui-1.8.2.custom.css",
+			       __xhp_html5_resources_url + "/jquery-ui/css/smoothness/html5.css"]
 		},
 	});
 	
@@ -332,7 +332,7 @@ LazyJS.inline( function() {
 	css.attr({
 	  rel:  "stylesheet",
 	  type: "text/css",
-	  href: "/xhp-html5/jquery-ui/css/smoothness/html5.css"
+	  href: __xhp_html5_resources_url + "/jquery-ui/css/smoothness/html5.css"
 	});
 
 });

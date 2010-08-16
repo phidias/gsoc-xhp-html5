@@ -3,6 +3,7 @@
 //CHROME: no
 //OPERA: no
 //XHP: yes
+echo <html5init/>;
 echo
 <section class="progress window">
  <h3>Copying "Really Achieving Your Childhood Dreams"</h3>

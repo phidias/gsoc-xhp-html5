@@ -3,8 +3,7 @@
 //CHROME: yes
 //OPERA: no
 //XHP: yes
-echo <script src="/xhp-html5/html5-init.js"/>;
-
+echo <html5init/>;
 echo
 <dl>
 	<dt>placeholder</dt>

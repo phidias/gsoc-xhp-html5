@@ -3,7 +3,7 @@
 //OPERA: no
 //VISUAL: no
 //XHP: yes
-echo <script src="/xhp-html5/html5-init.js"/>;
+echo <html5init/>;
 echo <iframe src="demo/ping1.php?show=true"/>;
 echo <iframe src="demo/ping2.php?show=true"/>;
 
